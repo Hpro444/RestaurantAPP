@@ -42,7 +42,9 @@ public class AppRunner {
             case "Password Change":
                 return "Your password has been changed successfully. Please log in with your new credentials";
             case "Reservation Confirmation":
-                return "Greetings %name %surname, Your reservation for %date at %time has been confirmed";
+                return "Good day %name! As your dedicated reservation manager, I'm delighted to confirm that your booking for %date at %time is now finalized. Please feel free to reach out if you have any further requests or questions.";
+            case "Reservation Confirmation Manager":
+                return "ALERT! New reservation incoming! Prepare for invasion by hungry customer %name, descending upon your restaurant %restaurant at %date and %time.";
             case "Reservation Cancellation Client":
                 return "Your reservation has been cancelled successfully.";
             case "Reservation Cancellation Manager":

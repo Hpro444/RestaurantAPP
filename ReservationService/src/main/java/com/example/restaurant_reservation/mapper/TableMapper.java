@@ -9,6 +9,16 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class TableMapper {
 
+    public TableEntity getDomainFromDTO(TableDTO tableDTO) {
+        TableEntity tableEntity = new TableEntity();
+        tableEntity.setCapacity(tableDTO.getCapacity());
+        tableEntity.setZone(tableDTO.getZone());
+        tableEntity.setTableName(tableDTO.getTableName());
+        tableEntity.setMergeable(tableDTO.isMergeable());
+
+        return tableEntity;
+    }
+
     public TableDTO getDTOFromDomain(TableEntity table) {
         TableDTO tableDTO = new TableDTO();
         tableDTO.setTableName(table.getTableName());

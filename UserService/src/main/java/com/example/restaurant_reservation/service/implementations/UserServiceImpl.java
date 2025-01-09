@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
             Claims claims = Jwts.claims();
             claims.put("role", user.getRole());
             claims.put("username", user.getUsername());
+            claims.put("email", user.getEmail());
             return tokenService.generate(claims);
         }
         return "User does not exist";

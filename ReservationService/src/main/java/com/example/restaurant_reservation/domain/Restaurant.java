@@ -17,8 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Restaurant extends BaseEntity{
+
+    private Long managerId;
+    private String manager_email;
+
     private String name;
     private String description;
+
     private LocalTime openingTime;
     private LocalTime closingTime;
     //    private String location;   would be fun
@@ -28,5 +33,7 @@ public class Restaurant extends BaseEntity{
 
     @Embedded
     private Address address;
+
+
 
 }

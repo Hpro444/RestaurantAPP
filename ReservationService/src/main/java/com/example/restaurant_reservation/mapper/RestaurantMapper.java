@@ -23,4 +23,16 @@ public class RestaurantMapper {
         return dto;
     }
 
+    public Restaurant getDomainFromDTO(RestaurantDTO dto){
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName(dto.getName());
+        restaurant.setDescription(dto.getDescription());
+        restaurant.setAddress(dto.getAddress());
+        restaurant.setKitchenType(dto.getKitchenType());     // enum to string
+        restaurant.setOpeningTime(dto.getOpeningTime());
+        restaurant.setClosingTime(dto.getClosingTime());
+
+        return restaurant;
+    }
+
 }

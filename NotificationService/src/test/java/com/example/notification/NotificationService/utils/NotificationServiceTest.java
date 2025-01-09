@@ -11,7 +11,7 @@ public class NotificationServiceTest {
 
     public static void main(String[] args) {
         // Set the URL for the GET request
-        String url = "http://localhost:8080/notifications/types"; // Adjust the port if necessary
+        String url = "http://localhost:8081/notifications/types"; // Adjust the port if necessary
 
         // Bearer Token from the logs
         String bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJ1c2VybmFtZSI6ImpvaG5kb2UifQ.KPcARb-sjS8xglmvNvssonmg2BDsiO7D1v1EkRjJ7ME";

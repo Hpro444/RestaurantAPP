@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -26,4 +27,11 @@ public class TableEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AppointmentEntity> appointments;
+
+    public AppointmentEntity getAppointmentByLocalDateTime(LocalDateTime localDateTime) {
+        return appointments.stream()
+                .filter(appointment -> appointment.getDate().equals(localDateTime))
+                .findFirst()
+                .orElse(null);
+    }
 }

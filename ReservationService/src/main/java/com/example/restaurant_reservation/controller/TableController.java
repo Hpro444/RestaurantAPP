@@ -16,6 +16,7 @@ import java.util.List;
 @RequestMapping("/tables")
 @AllArgsConstructor
 public class TableController {
+
     private final TableService tableService;
 
     @GetMapping("/restaurant/{restaurantId}")

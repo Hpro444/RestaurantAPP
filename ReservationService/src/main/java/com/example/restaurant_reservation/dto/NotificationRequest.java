@@ -5,15 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
+import java.util.Map;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservationDTO {
-    private Long customerId;
-    private Long tableId;
-    private LocalDateTime reservationTime;
-    private String description;
+public class NotificationRequest implements Serializable {
+    private String type;
+    private Map<String, String> params;
+    private String email;
+
 }

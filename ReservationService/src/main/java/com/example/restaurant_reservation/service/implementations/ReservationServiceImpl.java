@@ -1,10 +1,12 @@
 package com.example.restaurant_reservation.service.implementations;
 
 import com.example.restaurant_reservation.domain.Reservation;
+import com.example.restaurant_reservation.domain.Restaurant;
 import com.example.restaurant_reservation.domain.TableEntity;
 import com.example.restaurant_reservation.dto.ReservationDTO;
 import com.example.restaurant_reservation.mapper.ReservationMapper;
 import com.example.restaurant_reservation.repository.ReservationRepository;
+import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
 import com.example.restaurant_reservation.security.service.TokenService;
 import com.example.restaurant_reservation.service.ReservationService;
@@ -12,31 +14,40 @@ import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ReservationServiceImpl implements ReservationService {
     private ReservationRepository reservationRepository;
     private TableRepository tableRepository;
+    private RestaurantRepository restaurantRepository;
 
     private ReservationMapper reservationMapper;
 
 
     @Override
-    public ReservationDTO makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate) {
-
-        // Validate the reservation date and time
+    public Long makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate,String description) {
         LocalDateTime reservationTime = LocalDateTime.parse(reservationDate);
+        Optional<TableEntity> tableEntity = tableRepository.findById(tableEntityId);
 
-        // Create a new ReservationDTO
-        ReservationDTO reservation = new ReservationDTO();
-        reservation.setCustomerId(customerId);
-        reservation.setTableId(tableEntityId);
-        reservation.setReservationTime(reservationTime);
+        if (tableEntity.isPresent()) {
+            Reservation reservation = new Reservation();
+            reservation.setCustomerId(customerId);
+            reservation.setTable(tableEntity.get());
+            reservation.setReservationTime(reservationTime);
+            reservation.setDescription(description);
+            tableEntity.get().getAppointmentByLocalDateTime(reservationTime).setAvailable(false);
+            reservationRepository.save(reservation);
+            return reservation.getId();
+        }
 
-        return reservation;
+        return null;
     }
 
     @Override
@@ -61,6 +72,52 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservation = reservationRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
         return reservationMapper.getDTOFromDomain(reservation);
+    }
+
+    @Override
+    public String getManagerEmailByReservationId(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+
+        Restaurant restaurant = restaurantRepository.findById(reservation.getTable().getRestaurantId()).orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        return restaurant.getManager_email();
+    }
+
+    @Override
+    public String getRestaurantNameByReservationId(Long id) {
+
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+
+        Restaurant restaurant = restaurantRepository.findById(reservation.getTable().getRestaurantId()).orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        return restaurant.getName();
+    }
+
+    @Override
+    public List<ReservationDTO> getReservationsForRestaurantByDateRange(Long restaurantId, LocalDateTime startDate, LocalDateTime endDate) {
+        return reservationRepository.findReservationsByRestaurantIdAndDateRange(restaurantId, startDate, endDate)
+                .stream()
+                .map(reservationMapper::getDTOFromDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReservationDTO> getReservationsForRestaurantToday(Long restaurantId) {
+        LocalDateTime today = LocalDateTime.now();
+        return reservationRepository.findReservationsByRestaurantIdAndDateRange(restaurantId, today, today)
+                .stream()
+                .map(reservationMapper::getDTOFromDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReservationDTO> getReservationsByCustomer(Long customerId) {
+        return reservationRepository.findReservationsByCustomerId(customerId)
+                .stream()
+                .map(reservationMapper::getDTOFromDomain)
+                .collect(Collectors.toList());
     }
 
 }

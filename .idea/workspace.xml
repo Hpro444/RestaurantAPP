@@ -5,147 +5,143 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/ManagerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/AppointmentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/TableDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/ManagerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/config/RabbitConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/NotificationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/NotificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/TableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/TableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/TableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/TableService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/ReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/ReservationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/ReservationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/ReservationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/ManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/ManagerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/CustomerServiceImpl.java" afterDir="false" />
-    </list>
-    <list id="7addd141-c623-4c10-8ffb-8e7418e80f8b" name="Changes by subin" comment="">
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/test/java/com/example/notification/NotificationService/utils/NotificationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/test/java/com/example/notification/NotificationService/utils/NotificationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/TableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/TableDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/TableDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/TableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/TableEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/ReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/ReservationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/RestaurantMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/RestaurantMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/TableMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/TableMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/RestaurantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/RestaurantRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/TableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/TableService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/TableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/TableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="">
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/ReservationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Amchestnut"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Amchestnut&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Hpro444/RestaurantAPP.git",
-    "accountId": "9e17dcb2-d945-49cc-b0b1-6b1e8bb04e17"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Hpro444/RestaurantAPP.git&quot;,
+    &quot;accountId&quot;: &quot;c6e9f0d2-d55e-4e35-b0f0-730e84373187&quot;
   }
-}]]></component>
+}</component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/TableService.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
-        <range start1="8" end1="8" start2="9" end2="10" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/ReservationServiceImpl.java">
       <ranges>
-        <range start1="25" end1="26" start2="25" end2="25" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="27" end1="53" start2="26" end2="26" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="55" end1="56" start2="28" end2="39" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="59" end1="61" start2="42" end2="43" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="65" end1="66" start2="47" end2="48" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="72" end1="73" start2="54" end2="54" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="78" end1="80" start2="59" end2="63" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
-        <range start1="82" end1="89" start2="65" end2="65" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
+        <range start1="3" end1="3" start2="3" end2="4" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="7" end1="7" start2="8" end2="9" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="14" end1="14" start2="16" end2="17" changelist="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" />
+        <range start1="16" end1="16" start2="19" end2="22" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="22" end1="22" start2="28" end2="29" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="27" end1="30" start2="34" end2="35" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="31" end1="31" start2="36" end2="37" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="32" end1="37" start2="38" end2="48" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="38" end1="39" start2="49" end2="50" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="64" end1="64" start2="75" end2="85" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="65" end1="65" start2="86" end2="105" changelist="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="5" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="4" end1="4" start2="7" end2="9" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="6" end1="6" start2="11" end2="16" changelist="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/ReservationService.java">
       <ranges>
-        <range start1="7" end1="8" start2="7" end2="8" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="9" end1="10" start2="9" end2="10" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="2" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="4" end1="4" start2="3" end2="4" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="6" end1="7" start2="6" end2="6" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="17" end1="18" start2="16" end2="16" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
-        <range start1="19" end1="21" start2="17" end2="19" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
-        <range start1="39" end1="48" start2="37" end2="40" changelist="7addd141-c623-4c10-8ffb-8e7418e80f8b" />
+        <range start1="2" end1="3" start2="2" end2="2" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="5" end1="5" start2="4" end2="7" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="6" end1="7" start2="8" end2="9" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="8" end1="9" start2="10" end2="10" changelist="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" />
+        <range start1="10" end1="10" start2="11" end2="26" changelist="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" />
       </ranges>
     </file>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2rOPqDgWeZnKVUwJB3wDyJaxYUh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.NotificationServiceApplication.executor": "Run",
-    "Spring Boot.ReservationServiceApplication.executor": "Run",
-    "Spring Boot.RestaurantReservationApplication.executor": "Run",
-    "Spring Boot.UserServiceApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Windows11/Desktop/raf/Semestar 5/Softverske komponente/RestaurantAPP/UserService/src/main/java/com/example/restaurant_reservation/dto",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ReservationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RestaurantReservationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/subin/IdeaProjects/RestaurantAPP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\UserService\src\main\java\com\example\restaurant_reservation\dto" />
       <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\ReservationService\src" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.restaurant_reservation.dto" />
-    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.NotificationServiceApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration name="NotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="NotificationService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notification.NotificationService.NotificationServiceApplication" />
@@ -154,7 +150,7 @@
       </method>
     </configuration>
     <configuration name="ReservationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="ReservationService" />
+      <module name="restaurant_reservation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ReservationServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -184,7 +180,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1736427337569</updated>
-      <workItem from="1736427338739" duration="10568000" />
+      <workItem from="1736427338739" duration="5031000" />
+      <workItem from="1736443184168" duration="814000" />
+      <workItem from="1736445003778" duration="408000" />
     </task>
     <servers />
   </component>

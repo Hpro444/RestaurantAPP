@@ -1,5 +1,6 @@
 package com.example.restaurant_reservation.service.implementations;
 
+import com.example.restaurant_reservation.domain.Restaurant;
 import com.example.restaurant_reservation.domain.TableEntity;
 import com.example.restaurant_reservation.dto.TableDTO;
 import com.example.restaurant_reservation.mapper.TableMapper;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.domain.AppointmentEntity;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,5 +51,63 @@ public class TableServiceImpl implements TableService {
             throw new EntityNotFoundException("Table with ID " + tableId + " not found.");
         }
     }
+
+    @Override
+    public TableDTO addTableToRestaurant(Long restaurantId, TableDTO tableDTO) {
+        TableEntity table = tableMapper.getDomainFromDTO(tableDTO);
+        table.setRestaurantId(restaurantId);
+
+        table = tableRepository.save(table);
+
+        return tableMapper.getDTOFromDomain(table);
+    }
+
+    @Override
+    public List<TableDTO> getAllTablesByRestaurant(Long restaurantId) {
+        // Fetch all tables where the restaurantId matches
+        return tableRepository.findAllByRestaurantId(restaurantId)
+                .stream()
+                .map(tableMapper::getDTOFromDomain) // Map each TableEntity to TableDTO
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public TableDTO updateTable(Long tableId, TableDTO updatedTableDTO) {
+        TableEntity table = tableRepository.findById(tableId).orElseThrow(EntityNotFoundException::new);
+
+        table.setTableName(updatedTableDTO.getTableName());
+        table.setZone(updatedTableDTO.getZone());
+        table.setCapacity(updatedTableDTO.getCapacity());
+        table.setMergeable(updatedTableDTO.isMergeable());
+        table = tableRepository.save(table);
+
+        return tableMapper.getDTOFromDomain(table);
+    }
+
+    @Override
+    public void deleteTable(Long tableId) {
+        TableEntity table = tableRepository.findById(tableId).orElseThrow(EntityNotFoundException::new);
+        tableRepository.delete(table);
+    }
+
+    @Override
+    public List<TableDTO> getAvailableTables(Long restaurantId, String zone, int capacity, LocalDateTime dateTime) {
+        List<TableEntity> tableEntities = tableRepository.findAllByRestaurantId(restaurantId);
+
+        List<TableEntity> filteredTables = tableEntities.stream()
+                .filter(table -> table.getZone().equalsIgnoreCase(zone))
+                .filter(table -> table.getCapacity() >= capacity)
+//                .filter(table -> {
+//                    // Check if the table is available at the given dateTime
+//                    return table.getAppointments().stream()
+//                            .anyMatch(appointment -> appointment.getLocalDateTime().equals(dateTime) && appointment.isAvailable());
+//                })
+                .toList();
+
+        return filteredTables.stream()
+                .map(tableMapper::getDTOFromDomain)
+                .collect(Collectors.toList());
+    }
+
 
 }
