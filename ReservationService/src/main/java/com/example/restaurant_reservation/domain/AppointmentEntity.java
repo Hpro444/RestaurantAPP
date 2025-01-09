@@ -14,11 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppointmentEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private Long id;
+public class AppointmentEntity extends BaseEntity {
 
     @Column(name = "date", nullable = false)
     private LocalDateTime date;

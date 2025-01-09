@@ -49,7 +49,7 @@ public class AppRunner {
 
             restaurantRepository.save(restaurant1);
             restaurantRepository.save(restaurant2);
-            TableEntity table1 = new TableEntity(1L, 10, true, "Indoor", "Table 1", 1L);
+            TableEntity table1 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
             tableRepository.save(table1);
 
 //            tableRepository.save(new TableEntity(2L,

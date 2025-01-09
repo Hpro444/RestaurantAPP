@@ -79,7 +79,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ReservationServiceApplication">
     <configuration name="NotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="NotificationService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notification.NotificationService.NotificationServiceApplication" />
@@ -88,7 +88,7 @@
       </method>
     </configuration>
     <configuration name="ReservationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="restaurant_reservation" />
+      <module name="ReservationService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ReservationServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />

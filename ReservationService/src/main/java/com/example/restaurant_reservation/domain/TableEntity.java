@@ -14,10 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TableEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private int capacity;
     private boolean isMergeable;
     private String zone; // smoking, non-smoking, indoor, outdoor
