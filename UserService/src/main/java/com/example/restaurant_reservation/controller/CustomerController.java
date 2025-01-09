@@ -25,15 +25,15 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/restaurants")
-    public ResponseEntity<List<RestaurantDTO>> getAllRestaurants() {
-        try {
-            List<RestaurantDTO> restaurants = customerService.findAllRestaurants();
-            return ResponseEntity.ok(restaurants);
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
-        }
-    }
+//    @GetMapping("/restaurants")
+//    public ResponseEntity<List<RestaurantDTO>> getAllRestaurants() {
+//        try {
+//            List<RestaurantDTO> restaurants = customerService.findAllRestaurants();
+//            return ResponseEntity.ok(restaurants);
+//        } catch (Exception e) {
+//            return ResponseEntity.internalServerError().build();
+//        }
+//    }
 
     @PutMapping("/{customerId}")
     public ResponseEntity<CustomerDTO> updateCustomer(@RequestBody CustomerDTO customerDTO, @PathVariable Long customerId) {
@@ -45,13 +45,13 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/{customerId}/reservations")
-    public ResponseEntity<List<ReservationDTO>> getAllReservations(@PathVariable Long customerId) {
-        try {
-            List<ReservationDTO> reservations = customerService.getReservationsForCustomer(customerId);
-            return ResponseEntity.ok(reservations);
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @GetMapping("/{customerId}/reservations")
+//    public ResponseEntity<List<ReservationDTO>> getAllReservations(@PathVariable Long customerId) {
+//        try {
+//            List<ReservationDTO> reservations = customerService.getReservationsForCustomer(customerId);
+//            return ResponseEntity.ok(reservations);
+//        } catch (Exception e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 }
