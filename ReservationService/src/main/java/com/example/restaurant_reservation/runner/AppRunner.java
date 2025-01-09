@@ -1,6 +1,10 @@
 package com.example.restaurant_reservation.runner;
 
-import com.example.restaurant_reservation.domain.*;
+import com.example.restaurant_reservation.domain.Address;
+import com.example.restaurant_reservation.domain.KitchenType;
+import com.example.restaurant_reservation.domain.Restaurant;
+import com.example.restaurant_reservation.domain.TableEntity;
+import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
 import lombok.AllArgsConstructor;
@@ -8,7 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.sql.Date;
 import java.time.LocalTime;
 
 @AllArgsConstructor
@@ -17,28 +20,66 @@ public class AppRunner {
 
     private final RestaurantRepository restaurantRepository;
     private final TableRepository tableRepository;
+    private final AppointmentRepository appointmentRepository;
 
-//    @Bean
-//    CommandLineRunner loadData() {
-//        return args -> {
-//            Address address = new Address();
+    @Bean
+    CommandLineRunner loadData() {
+        return args -> {
+            Restaurant restaurant1 = new Restaurant(
+                    1L,
+                    "subin.mateja@gmail.com",
+                    "Bistro Bliss",
+                    "Trendy French cuisine with a cozy atmosphere.",
+                    LocalTime.of(12, 0),
+                    LocalTime.of(22, 0),
+                    KitchenType.ITALIAN,
+                    new Address("123 Main St", "Anytown", "USA", "231")
+            );
+
+            Restaurant restaurant2 = new Restaurant(
+                    2L,
+                    "msubin8323rn@raf.rs",
+                    "Tasty Bites",
+                    "Delicious Asian fusion with a modern twist.",
+                    LocalTime.of(11, 30),
+                    LocalTime.of(21, 30),
+                    KitchenType.SERBIAN,
+                    new Address("456 Elm St", "Othertown", "USA", "123")
+            );
+
+            restaurantRepository.save(restaurant1);
+            restaurantRepository.save(restaurant2);
+            TableEntity table1 = new TableEntity(1L, 10, true, "Indoor", "Table 1", 1L);
+            tableRepository.save(table1);
+
+//            tableRepository.save(new TableEntity(2L,
+//                    20,
+//                    false,
+//                    "Outdoor",
+//                    "Table 2",
+//                    restaurant1.getId()
+//            ));
 //
-//            Restaurant restaurant = new Restaurant("Smash burgers", "Najjaci burgeri u kraju", LocalTime.of(8,0,0), LocalTime.of(22,0,0), KitchenType.SERBIAN, address);
-//            restaurantRepository.save(restaurant);
+//            tableRepository.save(new TableEntity(3L,
+//                    30,
+//                    true,
+//                    "Non-Smoking",
+//                    "Table 3",
+//                    restaurant2.getId()
+//            ));
 //
-//            TableEntity table1 = new TableEntity();
-//            table1.setCapacity(4);
-//            table1.setZone("indoor");
-//            table1.setTableName("Table 1");
-//            table1.setRestaurantId(restaurant.getId());
-//            tableRepository.save(table1);
+//            AppointmentEntity appointment1 = new AppointmentEntity();
+//            appointment1.setDate(LocalDateTime.now().plusDays(1));
+//            appointment1.setAvailable(false);
+//            appointment1.setTableID(1L);
 //
-//            TableEntity table2 = new TableEntity();
-//            table2.setCapacity(6);
-//            table2.setZone("outdoor");
-//            table2.setTableName("Table 2");
-//            table2.setRestaurantId(restaurant.getId());
-//            tableRepository.save(table2);
-//        };
-//    }
+//            AppointmentEntity appointment2 = new AppointmentEntity();
+//            appointment2.setDate(LocalDateTime.now().plusDays(7));
+//            appointment2.setAvailable(true);
+//            appointment2.setTableID(2L);
+//
+//            appointmentRepository.save(appointment1);
+//            appointmentRepository.save(appointment2);
+        };
+    }
 }

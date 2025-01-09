@@ -1,20 +1,20 @@
 package com.example.restaurant_reservation.service.implementations;
 
-import com.example.restaurant_reservation.domain.Restaurant;
+import com.example.restaurant_reservation.domain.AppointmentEntity;
 import com.example.restaurant_reservation.domain.TableEntity;
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
 import com.example.restaurant_reservation.mapper.TableMapper;
+import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
 import com.example.restaurant_reservation.service.TableService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_reservation.dto.AppointmentDTO;
-import com.example.restaurant_reservation.domain.AppointmentEntity;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +23,7 @@ public class TableServiceImpl implements TableService {
 
     private TableRepository tableRepository;
     private TableMapper tableMapper;
+    private AppointmentRepository appointmentRepository;
 
     @Override
     public List<TableDTO> getTablesForRestaurant(Long restaurantId) {
@@ -34,12 +35,11 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public List<AppointmentDTO> getAppointmentForTable(Long tableId) {
-        Optional<TableEntity> optionalTable = tableRepository.findById(tableId);
+        Optional<List<AppointmentEntity>> appointmentEntity = appointmentRepository.findByTableID(tableId);
 
-        if (optionalTable.isPresent()) {
-            TableEntity table = optionalTable.get();
+        if (appointmentEntity.isPresent()) {
 
-            List<AppointmentEntity> appointments = table.getAppointments();
+            List<AppointmentEntity> appointments = appointmentEntity.get();
 
             return appointments.stream()
                     .map(appointment -> new AppointmentDTO(
@@ -50,6 +50,19 @@ public class TableServiceImpl implements TableService {
         } else {
             throw new EntityNotFoundException("Table with ID " + tableId + " not found.");
         }
+    }
+
+    @Override
+    public AppointmentEntity getAppointmentByLocalDateTime(Long tableId, LocalDateTime localDateTime) {
+        Optional<List<AppointmentEntity>> appointmentEntity = appointmentRepository.findByTableID(tableId);
+        if (appointmentEntity.isPresent()) {
+            List<AppointmentEntity> appointments = appointmentEntity.get();
+            return appointments.stream()
+                    .filter(appointment -> appointment.getDate().equals(localDateTime))
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
     }
 
     @Override

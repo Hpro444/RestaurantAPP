@@ -35,17 +35,14 @@ public class ReservationController {
     public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO, @RequestHeader("Authorization") String authorization) {
         try {
             Long createdReservationId = reservationService.makeReservationForCustomer(reservationDTO.getCustomerId(), reservationDTO.getTableId(), String.valueOf(reservationDTO.getReservationTime()), reservationDTO.getDescription());
-
             Claims claims = tokenService.parseToken(authorization);
             String email = claims.get("email", String.class);
             String username = claims.get("username", String.class);
-
             String manager_email = reservationService.getManagerEmailByReservationId(createdReservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(createdReservationId);
 
             notificationService.sendReservationConfirmationUser(email, username, reservationDTO.getReservationTime());
             notificationService.sendReservationConfirmationManager(manager_email, username, restaurant_name, reservationDTO.getReservationTime());
-
             return ResponseEntity.ok("Reservation created successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null); // or return a custom error message

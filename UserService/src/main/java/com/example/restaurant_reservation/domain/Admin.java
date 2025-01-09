@@ -19,7 +19,7 @@ import java.sql.Date;
 public class Admin extends User {
     private int somethingForAdmin;
     public Admin(String firstName, String lastName, String username, String password, String email, Date birthDate, Address address, Status status, Role role, int somethingForAdmin) {
-        super(firstName, lastName, username, password, email, birthDate, address, status, role);
+        super(firstName, lastName, username, password, email, birthDate,0, address, status, role);
         this.somethingForAdmin = somethingForAdmin;
     }
 }

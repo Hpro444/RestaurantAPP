@@ -8,15 +8,12 @@ import com.example.restaurant_reservation.mapper.ReservationMapper;
 import com.example.restaurant_reservation.repository.ReservationRepository;
 import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
-import com.example.restaurant_reservation.security.service.TokenService;
 import com.example.restaurant_reservation.service.ReservationService;
-import io.jsonwebtoken.Claims;
+import com.example.restaurant_reservation.service.TableService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,12 +24,13 @@ public class ReservationServiceImpl implements ReservationService {
     private ReservationRepository reservationRepository;
     private TableRepository tableRepository;
     private RestaurantRepository restaurantRepository;
+    private TableService tableService;
 
     private ReservationMapper reservationMapper;
 
 
     @Override
-    public Long makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate,String description) {
+    public Long makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate, String description) {
         LocalDateTime reservationTime = LocalDateTime.parse(reservationDate);
         Optional<TableEntity> tableEntity = tableRepository.findById(tableEntityId);
 
@@ -42,7 +40,7 @@ public class ReservationServiceImpl implements ReservationService {
             reservation.setTable(tableEntity.get());
             reservation.setReservationTime(reservationTime);
             reservation.setDescription(description);
-            tableEntity.get().getAppointmentByLocalDateTime(reservationTime).setAvailable(false);
+            tableService.getAppointmentByLocalDateTime(tableEntityId, reservationTime).setAvailable(false);
             reservationRepository.save(reservation);
             return reservation.getId();
         }
@@ -57,12 +55,12 @@ public class ReservationServiceImpl implements ReservationService {
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
 
 
-            LocalDateTime currentTime = LocalDateTime.now();
-            LocalDateTime reservationTime = reservation.getReservationTime();
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime reservationTime = reservation.getReservationTime();
 
-            if (reservationTime.isBefore(currentTime.plusHours(3))) {
-                throw new IllegalStateException("Reservations cannot be canceled within 3 hours of the reservation time.");
-            }
+        if (reservationTime.isBefore(currentTime.plusHours(3))) {
+            throw new IllegalStateException("Reservations cannot be canceled within 3 hours of the reservation time.");
+        }
 
         reservationRepository.delete(reservation);
     }

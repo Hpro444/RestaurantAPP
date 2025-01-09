@@ -24,7 +24,7 @@ class UserServiceTest {
     @Test
     void login_ShouldReturnToken_WhenValidCredentials() {
         User person = new Admin(
-                "John", "Doe", "johndoe", "password", "john@example.com",
+                "John", "Doe", "johndoe", "password", "hpro444@gmail.com",
                 new Date(System.currentTimeMillis()), new Address(), Status.ACTIVE, Role.ADMIN, 5
         );
         userRepository.save(person);

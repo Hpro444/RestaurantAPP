@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @Entity
 @Table(name = "tables")
 @Getter
@@ -17,21 +14,15 @@ import java.util.List;
 @AllArgsConstructor
 public class TableEntity extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private int capacity;
     private boolean isMergeable;
     private String zone; // smoking, non-smoking, indoor, outdoor
     private String tableName;
 
-    @Column(nullable = false)
     private Long restaurantId;
 
-    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AppointmentEntity> appointments;
-
-    public AppointmentEntity getAppointmentByLocalDateTime(LocalDateTime localDateTime) {
-        return appointments.stream()
-                .filter(appointment -> appointment.getDate().equals(localDateTime))
-                .findFirst()
-                .orElse(null);
-    }
 }

@@ -44,24 +44,31 @@ public class SecurityAspect {
                 }
             }
         }
-        //If token is not presents return UNAUTHORIZED response
+
         if (token == null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No token found in the request.");
         }
-        //Try to parse token
-        Claims claims = tokenService.parseToken(token);
-        //If fails return UNAUTHORIZED response
+
+        Claims claims;
+        try {
+            claims = tokenService.parseToken(token);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token parsing failed.");
+        }
+
         if (claims == null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token.");
         }
-        //Check user role and proceed if user has appropriate role for specified route
+
         CheckSecurity checkSecurity = method.getAnnotation(CheckSecurity.class);
         String role = claims.get("role", String.class);
-        if (Arrays.asList(checkSecurity.roles()).contains(role)) {
+
+        if (Arrays.asList(checkSecurity.roles()).contains(role) || Arrays.asList(checkSecurity.roles()).isEmpty()) {
             return joinPoint.proceed();
         }
-        //Return FORBIDDEN if user hasn't appropriate role for specified route
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access forbidden.");
     }
+
 
 }

@@ -27,7 +27,7 @@ public class Customer extends User {
     private List<Long> reservationIds = new ArrayList<>(); // List of reservation IDs
 
     public Customer(String firstName, String lastName, String username, String password, String email, Date birthDate, Address address, Status status, Role role, int numberOfReservations) {
-        super(firstName, lastName, username, password, email, birthDate, address, status, role);
+        super(firstName, lastName, username, password, email, birthDate, 0,address, status, role);
         this.numberOfReservations = numberOfReservations;
     }
 

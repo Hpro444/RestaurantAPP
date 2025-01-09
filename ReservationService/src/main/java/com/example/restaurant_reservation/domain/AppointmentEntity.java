@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private Long id;
 
     @Column(name = "date", nullable = false)
@@ -26,7 +26,5 @@ public class AppointmentEntity {
     @Column(name = "is_available", nullable = false)
     private boolean isAvailable;
 
-    @ManyToOne
-    @JoinColumn(name = "table_id", nullable = false)
-    private TableEntity table;
+    private Long tableID;
 }

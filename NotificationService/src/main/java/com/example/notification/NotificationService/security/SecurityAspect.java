@@ -63,7 +63,7 @@ public class SecurityAspect {
         CheckSecurity checkSecurity = method.getAnnotation(CheckSecurity.class);
         String role = claims.get("role", String.class);
 
-        if (Arrays.asList(checkSecurity.roles()).contains(role)) {
+        if (Arrays.asList(checkSecurity.roles()).contains(role) || Arrays.asList(checkSecurity.roles()).isEmpty()) {
             return joinPoint.proceed();
         }
 
