@@ -5,7 +5,7 @@ import com.example.restaurant_reservation.dto.ReservationDTO;
 
 public interface ReservationService {
     ReservationDTO makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate);
-    void cancelReservationForCustomer(Long reservationId, String token);
+    void cancelReservationForCustomer(Long reservationId);
 
-    Reservation findById(Long id);
+    ReservationDTO getReservationById(Long id);
 }

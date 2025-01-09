@@ -23,68 +23,44 @@ public class ReservationServiceImpl implements ReservationService {
 
     private ReservationMapper reservationMapper;
 
-    private TokenService tokenService;
 
-//    @Override
-//    public ReservationDTO makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate) {
-//        Customer customer = customerRepository.findById(customerId)
-//                .orElseThrow(() -> new RuntimeException("Customer not found"));
-//        TableEntity tableEntity = tableRepository.findById(tableEntityId)
-//                .orElseThrow(() -> new RuntimeException("Table not found"));
-//
-//        LocalDateTime reservationTime;
-//        try {
-//            reservationTime = LocalDateTime.parse(reservationDate);
-//        } catch (DateTimeParseException e) {
-//            throw new IllegalArgumentException("Invalid date-time format. Please use ISO 8601 format, e.g., 2025-01-02T14:30:00.");
-//        }
-//
-//        Reservation reservation = new Reservation();
-//        reservation.setCustomer(customer);
-//        reservation.setTable(tableEntity);
-//        reservation.setReservationTime(reservationTime);
-//
-//        customer.getReservations().add(reservation);
-//        reservationRepository.save(reservation);
-//
-//        return reservationMapper.getDTOFromDomain(reservation);
-//    }
-
-    // TODO: ...
     @Override
     public ReservationDTO makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate) {
-        return null;
+
+        // Validate the reservation date and time
+        LocalDateTime reservationTime = LocalDateTime.parse(reservationDate);
+
+        // Create a new ReservationDTO
+        ReservationDTO reservation = new ReservationDTO();
+        reservation.setCustomerId(customerId);
+        reservation.setTableId(tableEntityId);
+        reservation.setReservationTime(reservationTime);
+
+        return reservation;
     }
 
     @Override
-    public void cancelReservationForCustomer(Long reservationId, String token) {
-        String role = getRoleFromToken(token);
+    public void cancelReservationForCustomer(Long reservationId) {
 
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
 
-        if (!"ROLE_MANAGER".equals(role)) {
+
             LocalDateTime currentTime = LocalDateTime.now();
             LocalDateTime reservationTime = reservation.getReservationTime();
 
             if (reservationTime.isBefore(currentTime.plusHours(3))) {
                 throw new IllegalStateException("Reservations cannot be canceled within 3 hours of the reservation time.");
             }
-        }
 
         reservationRepository.delete(reservation);
     }
 
     @Override
-    public Reservation findById(Long id) {
-        return null;
+    public ReservationDTO getReservationById(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reservation not found"));
+        return reservationMapper.getDTOFromDomain(reservation);
     }
 
-    private String getRoleFromToken(String token) {
-        Claims claims = tokenService.parseToken(token);
-        if (claims == null) {
-            throw new RuntimeException("Unauthorized: Invalid token");
-        }
-        return claims.get("role", String.class);
-    }
 }

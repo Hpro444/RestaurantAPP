@@ -9,19 +9,21 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name="tables")
+@Table(name = "tables")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TableEntity extends BaseEntity{
+public class TableEntity extends BaseEntity {
+
     private int capacity;
     private boolean isMergeable;
-    private String zone;    // smoking, non smoking, indoor, outdoor
+    private String zone; // smoking, non-smoking, indoor, outdoor
     private String tableName;
 
     @Column(nullable = false)
-//    @Index(name = "idx_restaurant_id") // JPA annotation for index
     private Long restaurantId;
 
+    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AppointmentEntity> appointments;
 }

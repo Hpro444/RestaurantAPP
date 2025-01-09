@@ -25,18 +25,8 @@ public class CustomerController {
         }
     }
 
-//    @GetMapping("/restaurants")
-//    public ResponseEntity<List<RestaurantDTO>> getAllRestaurants() {
-//        try {
-//            List<RestaurantDTO> restaurants = customerService.findAllRestaurants();
-//            return ResponseEntity.ok(restaurants);
-//        } catch (Exception e) {
-//            return ResponseEntity.internalServerError().build();
-//        }
-//    }
-
     @PutMapping("/{customerId}")
-    public ResponseEntity<CustomerDTO> updateCustomer(@RequestBody CustomerDTO customerDTO, @PathVariable Long customerId) {
+    public ResponseEntity<CustomerDTO> updateCustomerProfile(@RequestBody CustomerDTO customerDTO, @PathVariable Long customerId) {
         try {
             CustomerDTO updatedCustomer = customerService.updateCustomerProfile(customerDTO, customerId);
             return ResponseEntity.ok(updatedCustomer);
@@ -45,13 +35,22 @@ public class CustomerController {
         }
     }
 
-//    @GetMapping("/{customerId}/reservations")
-//    public ResponseEntity<List<ReservationDTO>> getAllReservations(@PathVariable Long customerId) {
-//        try {
-//            List<ReservationDTO> reservations = customerService.getReservationsForCustomer(customerId);
-//            return ResponseEntity.ok(reservations);
-//        } catch (Exception e) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @GetMapping("/{id}/reservations")
+    public ResponseEntity<List<Long>> getCustomerReservations(@PathVariable Long id) {
+        List<Long> reservationIds = customerService.getReservationIdsForCustomer(id);
+        return ResponseEntity.ok(reservationIds);
+    }
+
+    @PostMapping("/{id}/reservations/{reservationId}")
+    public ResponseEntity<Void> addReservationToCustomer(@PathVariable Long id, @PathVariable Long reservationId) {
+        customerService.addReservationForCustomer(id, reservationId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}/reservations/{reservationId}")
+    public ResponseEntity<Void> removeReservationFromCustomer(@PathVariable Long id, @PathVariable Long reservationId) {
+        customerService.removeReservationForCustomer(id, reservationId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

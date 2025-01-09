@@ -1,5 +1,6 @@
 package com.example.restaurant_reservation.controller;
 
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
 import com.example.restaurant_reservation.service.TableService;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,14 @@ public class TableController {
         if (tables.isEmpty())
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(tables);
+    }
+
+    @GetMapping("/appointment/{tableId}")
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentForTable(@PathVariable Long tableId) {
+        List<AppointmentDTO> appointment = tableService.getAppointmentForTable(tableId);
+        if (appointment == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(appointment);
     }
 }
 

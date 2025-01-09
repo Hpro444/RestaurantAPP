@@ -5,16 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
+import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TableDTO {
-    private int capacity;
-    private boolean isMergeable;
-    private String zone;
-    private String tableName;
-    private List<AppointmentDTO> availableAppointments;
+public class AppointmentDTO {
+    private LocalDateTime date;
+    private boolean isAvailable;
 }

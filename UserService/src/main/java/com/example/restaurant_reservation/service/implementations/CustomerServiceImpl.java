@@ -15,12 +15,10 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
+
     private CustomerRepository customerRepository;
 
     private CustomerMapper customerMapper;
-
-    private TokenService tokenService;
-
 
     @Override
     public List<CustomerDTO> findAllCustomers() {
@@ -44,28 +42,28 @@ public class CustomerServiceImpl implements CustomerService {
         return dto;
     }
 
-//    @Override
-//    public List<RestaurantDTO> findAllRestaurants() {
-//        return restaurantRepository.findAll().stream()
-//                .map(restaurant -> restaurantMapper.getDTOFromDomain(restaurant))
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public RestaurantDTO findRestaurantById(Long id) {
-//        return restaurantRepository.findById(id)
-//                .map(restaurant -> restaurantMapper.getDTOFromDomain(restaurant))
-//                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
-//    }
-//
-//    @Override
-//    public List<ReservationDTO> getReservationsForCustomer(Long customerId) {
-//        return customerRepository.findById(customerId)
-//                .map(Customer::getReservations)
-//                .orElseThrow(() -> new RuntimeException("Customer not found"))
-//                .stream()
-//                .map(reservation -> reservationMapper.getDTOFromDomain(reservation))
-//                .collect(Collectors.toList());
-//    }
+    @Override
+    public List<Long> getReservationIdsForCustomer(Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        return customer.getReservationIds();
+    }
+
+    @Override
+    public void addReservationForCustomer(Long customerId, Long reservationId) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        customer.getReservationIds().add(reservationId);
+        customerRepository.save(customer);
+    }
+
+    @Override
+    public void removeReservationForCustomer(Long customerId, Long reservationId) {     // TODO: add the check if the reservation time is less than 3h
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        customer.getReservationIds().remove(reservationId);
+        customerRepository.save(customer);
+    }
+
 
 }
