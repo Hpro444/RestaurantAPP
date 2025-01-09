@@ -1,9 +1,6 @@
 package com.example.restaurant_reservation.runner;
 
-import com.example.restaurant_reservation.domain.Address;
-import com.example.restaurant_reservation.domain.KitchenType;
-import com.example.restaurant_reservation.domain.Restaurant;
-import com.example.restaurant_reservation.domain.TableEntity;
+import com.example.restaurant_reservation.domain.*;
 import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
@@ -12,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @AllArgsConstructor
@@ -52,34 +50,27 @@ public class AppRunner {
             TableEntity table1 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
             tableRepository.save(table1);
 
-//            tableRepository.save(new TableEntity(2L,
-//                    20,
-//                    false,
-//                    "Outdoor",
-//                    "Table 2",
-//                    restaurant1.getId()
-//            ));
-//
-//            tableRepository.save(new TableEntity(3L,
-//                    30,
-//                    true,
-//                    "Non-Smoking",
-//                    "Table 3",
-//                    restaurant2.getId()
-//            ));
-//
-//            AppointmentEntity appointment1 = new AppointmentEntity();
-//            appointment1.setDate(LocalDateTime.now().plusDays(1));
-//            appointment1.setAvailable(false);
-//            appointment1.setTableID(1L);
-//
-//            AppointmentEntity appointment2 = new AppointmentEntity();
-//            appointment2.setDate(LocalDateTime.now().plusDays(7));
-//            appointment2.setAvailable(true);
-//            appointment2.setTableID(2L);
-//
-//            appointmentRepository.save(appointment1);
-//            appointmentRepository.save(appointment2);
+
+            TableEntity table2 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
+            tableRepository.save(table2);
+            TableEntity table3 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
+            tableRepository.save(table3);
+            TableEntity table4 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
+            tableRepository.save(table4);
+
+
+            AppointmentEntity appointment1 = new AppointmentEntity();
+            appointment1.setDate(LocalDateTime.now().plusDays(1));
+            appointment1.setAvailable(false);
+            appointment1.setTableID(1L);
+
+            AppointmentEntity appointment2 = new AppointmentEntity();
+            appointment2.setDate(LocalDateTime.now().plusDays(7));
+            appointment2.setAvailable(true);
+            appointment2.setTableID(2L);
+
+            appointmentRepository.save(appointment1);
+            appointmentRepository.save(appointment2);
         };
     }
 }

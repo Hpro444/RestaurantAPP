@@ -35,9 +35,12 @@ public class ReservationController {
     public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO, @RequestHeader("Authorization") String authorization) {
         try {
             Long createdReservationId = reservationService.makeReservationForCustomer(reservationDTO.getCustomerId(), reservationDTO.getTableId(), String.valueOf(reservationDTO.getReservationTime()), reservationDTO.getDescription());
+            authorization = authorization.replace("Bearer ", "");
             Claims claims = tokenService.parseToken(authorization);
+            System.out.println(claims);
             String email = claims.get("email", String.class);
             String username = claims.get("username", String.class);
+
             String manager_email = reservationService.getManagerEmailByReservationId(createdReservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(createdReservationId);
 
@@ -52,6 +55,7 @@ public class ReservationController {
     @DeleteMapping("/{reservationId}")
     @CheckSecurity
     public ResponseEntity<String> cancelReservation(@PathVariable Long reservationId, @RequestHeader("Authorization") String authorization) {
+        authorization = authorization.replace("Bearer ", "");
         Claims claims = tokenService.parseToken(authorization);
         String role = claims.get("role", String.class);
 

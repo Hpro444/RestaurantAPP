@@ -17,8 +17,8 @@ public class AppRunner {
     @Bean
     CommandLineRunner loadData() {
         return args -> {
-            String[] types = {"Activation Email", "Password Change", "Reservation Confirmation","Reservation Confirmation Manager",
-                    "Reservation Cancellation Client", "Reminder Reservation"};
+            String[] types = {"Activation Email", "Password Change", "Reservation Confirmation Client","Reservation Confirmation Manager",
+                    "Reservation Cancellation", "Reminder Reservation"};
 
             Arrays.stream(types)
                     .forEach(type -> addNotificationType(notificationTypeRepository, type));
@@ -40,7 +40,7 @@ public class AppRunner {
             case "Activation Email" -> "Greetings %name %surname, Your account has been activated";
             case "Password Change" ->
                     "Your password has been changed successfully. Please log in with your new credentials";
-            case "Reservation Confirmation" ->
+            case "Reservation Confirmation Client" ->
                     "Good day %name! As your dedicated reservation manager, I'm delighted to confirm that your booking for %date at %time is now finalized. Please feel free to reach out if you have any further requests or questions.";
             case "Reservation Confirmation Manager" ->
                     "ALERT! New reservation incoming! Prepare for invasion by hungry customer %name, descending upon your restaurant %restaurant at %date and %time.";

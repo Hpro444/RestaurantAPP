@@ -21,7 +21,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Async
     public void sendReservationConfirmationUser(String email,String name, LocalDateTime dateTime) {
         NotificationRequest request = new NotificationRequest();
-        request.setType("Reservation Confirmation");
+        request.setType("Reservation Confirmation Client");
         HashMap<String, String> data = new HashMap<>();
 
         data.put("name", name);
@@ -37,7 +37,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Async
     public void sendReservationConfirmationManager(String email, String name,String restaurant, LocalDateTime dateTime) {
         NotificationRequest request = new NotificationRequest();
-        request.setType("Reservation Confirmation");
+        request.setType("Reservation Confirmation Manager");
         HashMap<String, String> data = new HashMap<>();
 
         data.put("name", name);

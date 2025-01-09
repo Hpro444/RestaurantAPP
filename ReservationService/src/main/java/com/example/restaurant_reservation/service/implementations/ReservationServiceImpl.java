@@ -33,15 +33,17 @@ public class ReservationServiceImpl implements ReservationService {
     public Long makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate, String description) {
         LocalDateTime reservationTime = LocalDateTime.parse(reservationDate);
         Optional<TableEntity> tableEntity = tableRepository.findById(tableEntityId);
-
         if (tableEntity.isPresent()) {
             Reservation reservation = new Reservation();
             reservation.setCustomerId(customerId);
             reservation.setTable(tableEntity.get());
             reservation.setReservationTime(reservationTime);
             reservation.setDescription(description);
-            tableService.getAppointmentByLocalDateTime(tableEntityId, reservationTime).setAvailable(false);
+//            tableService.getAppointmentByLocalDateTime(tableEntityId, reservationTime).setAvailable(false);
+
             reservationRepository.save(reservation);
+            System.out.println("HJHEwhd[ahdwahd awd ajd awh da d");
+
             return reservation.getId();
         }
 
