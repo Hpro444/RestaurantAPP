@@ -7,7 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="restaurant_reservation" />
+        <module name="ReservationService" />
+        <module name="UserService" />
         <module name="NotificationService" />
       </profile>
     </annotationProcessing>
@@ -15,7 +16,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="NotificationService" options="-parameters" />
-      <module name="restaurant_reservation" options="-parameters" />
+      <module name="ReservationService" options="-parameters" />
+      <module name="UserService" options="-parameters" />
     </option>
   </component>
 </project>
