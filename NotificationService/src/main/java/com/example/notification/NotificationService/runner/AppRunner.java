@@ -17,8 +17,8 @@ public class AppRunner {
     @Bean
     CommandLineRunner loadData() {
         return args -> {
-            String[] types = {"Activation Email", "Password Change", "Reservation Confirmation",
-                    "Reservation Cancellation Client", "Reservation Cancellation Manager", "Reminder Reservation"};
+            String[] types = {"Activation Email", "Password Change", "Reservation Confirmation","Reservation Confirmation Manager",
+                    "Reservation Cancellation Client", "Reminder Reservation"};
 
             Arrays.stream(types)
                     .forEach(type -> addNotificationType(notificationTypeRepository, type));
@@ -36,23 +36,18 @@ public class AppRunner {
     }
 
     private static String getTemplate(String type) {
-        switch (type) {
-            case "Activation Email":
-                return "Greetings %name %surname, Your account has been activated";
-            case "Password Change":
-                return "Your password has been changed successfully. Please log in with your new credentials";
-            case "Reservation Confirmation":
-                return "Good day %name! As your dedicated reservation manager, I'm delighted to confirm that your booking for %date at %time is now finalized. Please feel free to reach out if you have any further requests or questions.";
-            case "Reservation Confirmation Manager":
-                return "ALERT! New reservation incoming! Prepare for invasion by hungry customer %name, descending upon your restaurant %restaurant at %date and %time.";
-            case "Reservation Cancellation Client":
-                return "Your reservation has been cancelled successfully.";
-            case "Reservation Cancellation Manager":
-                return "A client's reservation has been cancelled at your restaurant.";
-            case "Reminder Reservation":
-                return "Your reservation is in one hour. Please arrive on time.";
-            default:
-                return "";
-        }
+        return switch (type) {
+            case "Activation Email" -> "Greetings %name %surname, Your account has been activated";
+            case "Password Change" ->
+                    "Your password has been changed successfully. Please log in with your new credentials";
+            case "Reservation Confirmation" ->
+                    "Good day %name! As your dedicated reservation manager, I'm delighted to confirm that your booking for %date at %time is now finalized. Please feel free to reach out if you have any further requests or questions.";
+            case "Reservation Confirmation Manager" ->
+                    "ALERT! New reservation incoming! Prepare for invasion by hungry customer %name, descending upon your restaurant %restaurant at %date and %time.";
+            case "Reservation Cancellation" ->
+                    "Reservation for %restaurant at %date and %time has been cancelled successfully.";
+            case "Reminder Reservation" -> "Your reservation is in one hour. Please arrive on time.";
+            default -> "";
+        };
     }
 }

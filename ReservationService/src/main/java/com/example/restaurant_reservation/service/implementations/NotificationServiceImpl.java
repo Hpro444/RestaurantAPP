@@ -49,4 +49,21 @@ public class NotificationServiceImpl implements NotificationService {
         request.setEmail(email);
         rabbitTemplate.convertAndSend("notification-queue", request);
     }
+
+    @Override
+    @Async
+
+    public void sendCancellationNotification(String restaurant, LocalDateTime dateTime, String email) {
+        NotificationRequest request = new NotificationRequest();
+        request.setType("Reservation Cancellation");
+        HashMap<String, String> data = new HashMap<>();
+
+        data.put("time",dateTime.toLocalTime().toString());
+        data.put("date",dateTime.toLocalDate().toString());
+        data.put("restaurant",restaurant);
+
+        request.setParams(data);
+        request.setEmail(email);
+        rabbitTemplate.convertAndSend("notification-queue", request);
+    }
 }

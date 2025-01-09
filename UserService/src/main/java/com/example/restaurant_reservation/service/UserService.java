@@ -8,4 +8,5 @@ public interface UserService {
     /// register();
     String login (LoginDTO loginDTO);
     void register(UserDTO userDTO);
+    String getEmail(Long id);
 }

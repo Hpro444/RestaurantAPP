@@ -1,14 +1,12 @@
 package com.example.restaurant_reservation.controller;
 
+import com.example.restaurant_reservation.domain.TableEntity;
 import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
 import com.example.restaurant_reservation.service.TableService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +31,18 @@ public class TableController {
         if (appointment == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(appointment);
+    }
+
+    @PostMapping("/{restaurantId}")
+    public ResponseEntity<TableDTO> createTable(@RequestBody Long restaurantId, @RequestBody TableDTO tableDTO) {
+        try {
+            TableDTO newTable = tableService.addTableToRestaurant(restaurantId, tableDTO);
+            return ResponseEntity.ok(newTable);
+        }
+        catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
     }
 }
 

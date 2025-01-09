@@ -23,6 +23,7 @@ public class User extends BaseEntity{
     private String password;
     private String email;
     private Date birthDate;
+    private Integer numberOfOrders;
 
     @Embedded
     private Address address;

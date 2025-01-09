@@ -51,4 +51,10 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
+    @Override
+    public String getEmail(Long id) {
+        return userRepository.findById(id).map(User::getEmail).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
 }
