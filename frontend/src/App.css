@@ -1,0 +1,126 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+
+
+/*NEW THINGS FOR OUR APP !!!*/
+
+/* Navigation bar styles */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+.navbar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffefd5; /* Peach color */
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navbar button:hover {
+  background-color: #ffd4a6; /* Slightly darker peach */
+}
+
+/* Main content styles */
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+.welcome h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.welcome p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.restaurant-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/*Table header*/
+.restaurant-table th {
+  background-color: #ffefd5; /* Light peach color for restaurant app */
+  color: #333; /* Darker text for contrast */
+  font-weight: bold;
+  padding: 12px;
+  border: 1px solid #ddd; /* Adds borders to the header */
+}
+
+.restaurant-table td {
+  padding: 10px;
+  border: 1px solid #ddd; /* Adds borders to the cells */
+  background-color: #f9f9f9; /* Light grey background for data rows */
+  color: #555; /* Slightly darker text for readability */
+}
+
+.restaurant-table tr:nth-child(even) td {
+  background-color: #f2f2f2; /* Slightly darker grey for alternate rows */
+}
+
+.restaurant-table tbody tr:hover {
+  background-color: #eaeaea; /* Highlight row on hover */
+  cursor: pointer; /* Changes the cursor to indicate interaction */
+}
+
+.restaurant-table th:first-child,
+.restaurant-table td:first-child {
+  text-align: center; /* Center-align the first column */
+}

@@ -5,13 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="This is a IntelliJ IDEA project settings file (`.idea` directory) with some code changes. Here's a breakdown of the changes:&#10;&#10;**Project Settings**&#10;&#10;The `.idea` directory contains various configuration files that control how IntelliJ IDEA handles your project.&#10;&#10;* `component.xml`: This file defines the components used in the project, including TypeScript and database integration.&#10;&#9;+ The `servers` section is empty, indicating no external servers are configured for this project.&#10;&#9;+ The `TypeScriptGeneratedFilesManager` component is enabled.&#10;* `misc.xml`: Not modified&#10;* `workspacedefaults.xml`: Not modified&#10;&#10;**Project Files**&#10;&#10;The following files in the project directory have been modified:&#10;&#10;1. **project.xml**: This file contains various settings for the project.&#10;&#10;Changes:&#10;&#10;* The `LAST_COMMIT_MESSAGE` option has been updated to reflect a new commit message.&#10;&#9;+ Before: &quot;Delete now works&quot;&#10;&#9;+ After: &quot;It looks like you've made a series of changes to your Reservation Service application. I'll try to summarize and explain what I see. **Changes:** 1. Renaming `Reservation` to `Appointment` 2. Introducing an `AppointmentID` field in the `ReservationDTO` class 3. Updating various methods in the `ReservationRepository` interface to use `Appointment` instead of `Reservation` 4. Updating the `ReservationService` classes to use `Appointment` and remove `Reservation` references **Implications:** 1. The application has been refactored to treat appointments as first-class entities, distinct from reservations. 2. The system now uses an `ID` field to uniquely identify each appointment, rather than relying on a composite key (customer ID + table ID). 3. The repository interface and data access methods have been updated to reflect the new entity model.&quot;&#10;* The `localTasksCounter` option has been incremented from 7 to 8.&#10;&#10;2. **ReservationService/src/main/java/com/example/restaurant_reservation/runner/AppRunner.java**: This Java file has undergone some changes.&#10;&#10;Changes:&#10;&#10;* Lines 47-51 have been modified to save tables with different parameters.&#10;&#9;+ Before:&#10;```java&#10;TableEntity table1 = new TableEntity(10, true, &quot;Indoor&quot;, &quot;Table 1&quot;, 1L);&#10;tableRepository.save(table1);&#10;&#10;TableEntity table2 = new TableEntity(10, true, &quot;Indoor&quot;, &quot;Table 1&quot;, 1L);&#10;tableRepository.save(table2);&#10;```&#10;&#9;+ After:">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/ApiGatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/GatewayCorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/RestaurantReservationApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/controllers/CustomerControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/repositories/UserRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/services/CustomerServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/services/ReservationServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/services/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/main/java/com/example/restaurant_reservation/EurekaServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/test/java/com/example/restaurant_reservation/RestaurantReservationApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/test/java/com/example/restaurant_reservation/controllers/CustomerControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/test/java/com/example/restaurant_reservation/repositories/UserRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/test/java/com/example/restaurant_reservation/services/CustomerServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/test/java/com/example/restaurant_reservation/services/ReservationServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService/src/test/java/com/example/restaurant_reservation/services/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/api.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/AdminPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/CustomerPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ManagerPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ProtectedRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/TODO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/runner/AppRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/runner/AppRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/todo" beforeDir="false" />
     </list>
     <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="Changes by Windows11" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,39 +100,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.NotificationTest.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ReservationServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RestaurantReservationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/subin/IdeaProjects/RestaurantAPP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.NotificationTest.executor": "Run",
+    "Node.js.App.jsx.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.EurekaServiceApplication.executor": "Run",
+    "Spring Boot.NotificationServiceApplication.executor": "Run",
+    "Spring Boot.ReservationServiceApplication.executor": "Run",
+    "Spring Boot.RestaurantReservationApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Run",
+    "git-widget-placeholder": "andrija",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Windows11/Desktop/raf/Semestar 5/Softverske komponente/RestaurantAPP",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP" />
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\EurekaService" />
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\Api_gateway" />
       <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\ReservationService\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\frontend\src\pages" />
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\frontend\src" />
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\Api_gateway" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -82,7 +157,21 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ReservationServiceApplication">
+  <component name="RunManager">
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Api_gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ApiGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="EurekaService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.EurekaServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="NotificationService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notification.NotificationService.NotificationServiceApplication" />
@@ -91,7 +180,7 @@
       </method>
     </configuration>
     <configuration name="ReservationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="restaurant_reservation" />
+      <module name="ReservationService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ReservationServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />

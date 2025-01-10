@@ -9,16 +9,24 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ReservationService" />
         <module name="restaurant_reservation" />
+        <module name="Api_gateway" />
         <module name="NotificationService" />
         <module name="UserService" />
+        <module name="EurekaService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="UserService (1)" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Api_gateway" options="-parameters" />
+      <module name="EurekaService" options="-parameters" />
       <module name="NotificationService" options="-parameters" />
       <module name="ReservationService" options="-parameters" />
       <module name="UserService" options="-parameters" />
+      <module name="UserService (1)" options="-parameters" />
       <module name="restaurant_reservation" options="-parameters" />
     </option>
   </component>

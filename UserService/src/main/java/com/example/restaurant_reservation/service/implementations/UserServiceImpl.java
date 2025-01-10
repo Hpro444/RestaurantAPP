@@ -13,6 +13,9 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
+
 @Service
 @Transactional  // Ensures all database operations within this service class are wrapped in a transaction. If any operation fails, changes are ROLLED back.
 @AllArgsConstructor
@@ -24,14 +27,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(LoginDTO loginDto) {
         User user = userRepository.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword()).orElse(null);
-        if(user != null){
+        if(user != null) {
             Claims claims = Jwts.claims();
             claims.put("role", user.getRole());
             claims.put("username", user.getUsername());
             claims.put("email", user.getEmail());
+            claims.setExpiration(new Date(System.currentTimeMillis() + 3600000)); // 1 hour
             return tokenService.generate(claims);
         }
-        return "User does not exist";
+        else {
+            throw new RuntimeException("Invalid username or password");
+        }
     }
 
     @Override

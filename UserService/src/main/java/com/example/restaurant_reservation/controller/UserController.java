@@ -15,13 +15,13 @@ public class UserController {
 
     private UserService userService;
 
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<String> registerUser(@RequestBody UserDTO userDTO) {
         userService.register(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     }
 
-    @PostMapping
+    @PostMapping("/auth/login")
     public ResponseEntity<String> loginUser(@RequestBody LoginDTO loginDTO){
         return new ResponseEntity<>(userService.login(loginDTO), HttpStatus.OK);
     }
@@ -29,4 +29,6 @@ public class UserController {
     public ResponseEntity<String> getEmail(@PathVariable Long user_id){
         return new ResponseEntity<>(userService.getEmail(user_id), HttpStatus.OK);
     }
+
+
 }
