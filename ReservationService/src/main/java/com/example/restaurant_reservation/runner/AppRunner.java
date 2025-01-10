@@ -47,10 +47,9 @@ public class AppRunner {
 
             restaurantRepository.save(restaurant1);
             restaurantRepository.save(restaurant2);
+
             TableEntity table1 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
             tableRepository.save(table1);
-
-
             TableEntity table2 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
             tableRepository.save(table2);
             TableEntity table3 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
