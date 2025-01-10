@@ -61,13 +61,13 @@ public class AppRunner {
 
             AppointmentEntity appointment1 = new AppointmentEntity();
             appointment1.setDate(LocalDateTime.now().plusDays(1));
-            appointment1.setAvailable(false);
-            appointment1.setTableID(1L);
+            appointment1.setAvailable(true);
+            appointment1.setTable(table1);
 
             AppointmentEntity appointment2 = new AppointmentEntity();
             appointment2.setDate(LocalDateTime.now().plusDays(7));
             appointment2.setAvailable(true);
-            appointment2.setTableID(2L);
+            appointment2.setTable(table2);
 
             appointmentRepository.save(appointment1);
             appointmentRepository.save(appointment2);

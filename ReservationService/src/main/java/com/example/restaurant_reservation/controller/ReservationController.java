@@ -1,10 +1,14 @@
 package com.example.restaurant_reservation.controller;
 
+import com.example.restaurant_reservation.domain.AppointmentEntity;
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.ReservationDTO;
+import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.security.service.TokenService;
 import com.example.restaurant_reservation.service.NotificationService;
 import com.example.restaurant_reservation.service.ReservationService;
+import com.example.restaurant_reservation.service.TableService;
 import com.example.restaurant_reservation.service.UserService;
 import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
@@ -22,6 +26,8 @@ public class ReservationController {
     private final TokenService tokenService;
     private final NotificationService notificationService;
     private final UserService userService;
+    private final TableService tableService;
+    private final AppointmentRepository appointmentRepository;
 
     @GetMapping("/{reservationId}")
     @CheckSecurity
@@ -34,18 +40,21 @@ public class ReservationController {
     @CheckSecurity
     public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO, @RequestHeader("Authorization") String authorization) {
         try {
-            Long createdReservationId = reservationService.makeReservationForCustomer(reservationDTO.getCustomerId(), reservationDTO.getTableId(), String.valueOf(reservationDTO.getReservationTime()), reservationDTO.getDescription());
+            Long createdReservationId = reservationService.makeReservationForCustomer(reservationDTO.getCustomerId(), reservationDTO.getTableId(), reservationDTO.getAppointmentID(), reservationDTO.getDescription());
             authorization = authorization.replace("Bearer ", "");
             Claims claims = tokenService.parseToken(authorization);
-            System.out.println(claims);
+
             String email = claims.get("email", String.class);
             String username = claims.get("username", String.class);
 
             String manager_email = reservationService.getManagerEmailByReservationId(createdReservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(createdReservationId);
 
-            notificationService.sendReservationConfirmationUser(email, username, reservationDTO.getReservationTime());
-            notificationService.sendReservationConfirmationManager(manager_email, username, restaurant_name, reservationDTO.getReservationTime());
+            AppointmentEntity appointment = appointmentRepository.findById(reservationDTO.getAppointmentID()).orElseThrow(RuntimeException::new);
+
+            notificationService.sendReservationConfirmationUser(email, username, appointment.getDate());
+            notificationService.sendReservationConfirmationManager(manager_email, username, restaurant_name, appointment.getDate());
+
             return ResponseEntity.ok("Reservation created successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null); // or return a custom error message
@@ -73,7 +82,10 @@ public class ReservationController {
             String email = userService.getEmailForUser(reservation.getCustomerId());
             String restaurant_name = reservationService.getRestaurantNameByReservationId(reservationId);
 
-            notificationService.sendCancellationNotification(restaurant_name, reservation.getReservationTime(), email);
+            AppointmentEntity appointment = appointmentRepository.findById(reservation.getAppointmentID()).orElseThrow(RuntimeException::new);
+
+
+            notificationService.sendCancellationNotification(restaurant_name,appointment.getDate(), email);
 
             return ResponseEntity.ok("Reservation cancelled");
         } catch (Exception e) {
@@ -88,9 +100,13 @@ public class ReservationController {
 
             String email = reservationService.getManagerEmailByReservationId(reservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(reservationId);
+            AppointmentEntity appointment = appointmentRepository.findById(reservation.getAppointmentID()).orElseThrow(RuntimeException::new);
 
-            notificationService.sendCancellationNotification(restaurant_name, reservation.getReservationTime(), email);
+
+            notificationService.sendCancellationNotification(restaurant_name,appointment.getDate(), email);
+
             reservationService.cancelReservationForCustomer(reservationId);
+
 
             return ResponseEntity.ok("Reservation cancelled");
 

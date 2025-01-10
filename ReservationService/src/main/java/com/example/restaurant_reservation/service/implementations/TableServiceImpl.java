@@ -35,16 +35,18 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public List<AppointmentDTO> getAppointmentForTable(Long tableId) {
-        Optional<List<AppointmentEntity>> appointmentEntity = appointmentRepository.findByTableID(tableId);
+        TableEntity tableEntity = tableRepository.findById(tableId).orElseThrow(EntityNotFoundException::new);
+        Optional<List<AppointmentEntity>> appointmentEntity = appointmentRepository.findByTable(tableEntity);
 
         if (appointmentEntity.isPresent()) {
 
             List<AppointmentEntity> appointments = appointmentEntity.get();
 
-            return appointments.stream()
+            return appointments.stream().filter(AppointmentEntity::isAvailable)
                     .map(appointment -> new AppointmentDTO(
+                            appointment.getId(),
                             appointment.getDate(),
-                            appointment.isAvailable()
+                            true
                     ))
                     .collect(Collectors.toList());
         } else {
@@ -52,9 +54,12 @@ public class TableServiceImpl implements TableService {
         }
     }
 
+
+
     @Override
     public AppointmentEntity getAppointmentByLocalDateTime(Long tableId, LocalDateTime localDateTime) {
-        Optional<List<AppointmentEntity>> appointmentEntity = appointmentRepository.findByTableID(tableId);
+        TableEntity tableEntity = tableRepository.findById(tableId).orElseThrow(EntityNotFoundException::new);
+        Optional<List<AppointmentEntity>> appointmentEntity = appointmentRepository.findByTable(tableEntity);
         if (appointmentEntity.isPresent()) {
             List<AppointmentEntity> appointments = appointmentEntity.get();
             return appointments.stream()

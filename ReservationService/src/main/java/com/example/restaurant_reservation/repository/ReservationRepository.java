@@ -15,17 +15,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findReservationsByCustomerId(Long customerId);
 
     // Fetch reservations for a restaurant within a date range
-    @Query("""
-        SELECT r FROM Reservation r
-        JOIN r.table t
-        WHERE t.restaurantId = :restaurantId
-        AND r.reservationTime BETWEEN :startDate AND :endDate
-    """)
-    List<Reservation> findReservationsByRestaurantIdAndDateRange(
-            @Param("restaurantId") Long restaurantId,
-            @Param("startDate") LocalDateTime startDate,
-            @Param("endDate") LocalDateTime endDate
-    );
+    @Query("SELECT r FROM Reservation r WHERE r.table.restaurantId = :restaurantId AND r.appointment.date BETWEEN :startDate AND :endDate")
+    List<Reservation> findReservationsByRestaurantIdAndDateRange(@Param("restaurantId") Long restaurantId,
+                                                                 @Param("startDate") LocalDateTime startDate,
+                                                                 @Param("endDate") LocalDateTime endDate);
+
 
     // Fetch all reservations for a specific restaurant
     @Query("""

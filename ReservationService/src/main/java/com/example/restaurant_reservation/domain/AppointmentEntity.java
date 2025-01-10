@@ -16,11 +16,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AppointmentEntity extends BaseEntity {
 
-    @Column(name = "date", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime date;
 
     @Column(name = "is_available", nullable = false)
     private boolean isAvailable;
 
-    private Long tableID;
+    @ManyToOne
+    @JoinColumn(name = "table_id", nullable = false)
+    private TableEntity table;
 }

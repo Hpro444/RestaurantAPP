@@ -15,10 +15,15 @@ import lombok.Setter;
 public class TableEntity extends BaseEntity {
 
     private int capacity;
+
+    @Column(name = "is_mergeable", nullable = false)
     private boolean isMergeable;
-    private String zone; // smoking, non-smoking, indoor, outdoor
+
+    private String zone;
+
+    @Column(name = "table_name", nullable = false)
     private String tableName;
 
+    @Column(name = "restaurant_id", nullable = false)
     private Long restaurantId;
-
 }

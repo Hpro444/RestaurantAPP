@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentDTO {
+    private Long id;
     private LocalDateTime date;
     private boolean isAvailable;
 }

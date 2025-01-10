@@ -1,28 +1,27 @@
 package com.example.restaurant_reservation.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name="reservations")
+@Table(name = "reservations")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reservation extends BaseEntity{
-    private String description;
-    private LocalDateTime reservationTime;
+public class Reservation extends BaseEntity {
 
-    // Storing CustomerId instead of the full Customer object (like before)
+    private String description;
     private Long customerId;
 
     @ManyToOne
+    @JoinColumn(name = "table_id", nullable = false)
     private TableEntity table;
+
+    @ManyToOne
+    @JoinColumn(name = "appointment_id", nullable = false)
+    private AppointmentEntity appointment;
 }

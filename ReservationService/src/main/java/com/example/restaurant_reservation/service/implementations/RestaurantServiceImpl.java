@@ -62,7 +62,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         restaurant.setDescription(restaurantDTO.getDescription());
         restaurant.setKitchenType(restaurantDTO.getKitchenType());
         restaurant.setManagerId(restaurant.getManagerId());
-        restaurant.setManager_email(restaurant.getManager_email());
+        restaurant.setManagerEmail(restaurant.getManagerEmail());
         restaurant.setOpeningTime(restaurantDTO.getOpeningTime());
         restaurant.setClosingTime(restaurantDTO.getClosingTime());
 

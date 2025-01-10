@@ -1,10 +1,13 @@
 package com.example.restaurant_reservation.service.implementations;
 
+import com.example.restaurant_reservation.domain.AppointmentEntity;
 import com.example.restaurant_reservation.domain.Reservation;
 import com.example.restaurant_reservation.domain.Restaurant;
 import com.example.restaurant_reservation.domain.TableEntity;
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.ReservationDTO;
 import com.example.restaurant_reservation.mapper.ReservationMapper;
+import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.repository.ReservationRepository;
 import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
@@ -25,22 +28,23 @@ public class ReservationServiceImpl implements ReservationService {
     private TableRepository tableRepository;
     private RestaurantRepository restaurantRepository;
     private TableService tableService;
+    private AppointmentRepository appointmentRepository;
 
     private ReservationMapper reservationMapper;
 
 
     @Override
-    public Long makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate, String description) {
-        LocalDateTime reservationTime = LocalDateTime.parse(reservationDate);
+    public Long makeReservationForCustomer(Long customerId, Long tableEntityId, Long appointmentId, String description) {
         Optional<TableEntity> tableEntity = tableRepository.findById(tableEntityId);
         if (tableEntity.isPresent()) {
             Reservation reservation = new Reservation();
             reservation.setCustomerId(customerId);
             reservation.setTable(tableEntity.get());
-            reservation.setReservationTime(reservationTime);
+            AppointmentEntity appointmentEntity = appointmentRepository.findById(appointmentId).orElseThrow(RuntimeException::new);
+            reservation.setAppointment(appointmentEntity);
             reservation.setDescription(description);
-            //TODO HERE SOMETHING
-//            tableService.getAppointmentByLocalDateTime(tableEntityId, reservationTime).setAvailable(false);
+            AppointmentEntity appointment = appointmentRepository.findById(appointmentId).orElseThrow(RuntimeException::new);
+            appointment.setAvailable(false);
 
             reservationRepository.save(reservation);
 
@@ -58,11 +62,13 @@ public class ReservationServiceImpl implements ReservationService {
 
 
         LocalDateTime currentTime = LocalDateTime.now();
-        LocalDateTime reservationTime = reservation.getReservationTime();
+        AppointmentEntity appointment = reservation.getAppointment();
 
+        LocalDateTime reservationTime = appointment.getDate();
         if (reservationTime.isBefore(currentTime.plusHours(3))) {
             throw new IllegalStateException("Reservations cannot be canceled within 3 hours of the reservation time.");
         }
+        appointment.setAvailable(true);
 
         reservationRepository.delete(reservation);
     }
@@ -81,7 +87,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         Restaurant restaurant = restaurantRepository.findById(reservation.getTable().getRestaurantId()).orElseThrow(() -> new RuntimeException("Restaurant not found"));
 
-        return restaurant.getManager_email();
+        return restaurant.getManagerEmail();
     }
 
     @Override

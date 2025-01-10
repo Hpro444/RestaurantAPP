@@ -1,12 +1,13 @@
 package com.example.restaurant_reservation.service;
 
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.ReservationDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ReservationService {
-    Long makeReservationForCustomer(Long customerId, Long tableEntityId, String reservationDate,String description);
+    Long makeReservationForCustomer(Long customerId, Long tableEntityId, Long appointmentId, String description);
     void cancelReservationForCustomer(Long reservationId);
     ReservationDTO getReservationById(Long id);
     List<ReservationDTO> getReservationsByCustomer(Long customerId);

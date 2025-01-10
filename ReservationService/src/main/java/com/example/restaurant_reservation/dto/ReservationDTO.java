@@ -13,6 +13,6 @@ public class ReservationDTO {
     private Long id;
     private Long customerId;
     private Long tableId;
-    private LocalDateTime reservationTime;
+    private Long appointmentID;
     private String description;
 }
