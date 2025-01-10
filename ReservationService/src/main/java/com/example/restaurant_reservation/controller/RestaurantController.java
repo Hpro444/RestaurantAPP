@@ -57,7 +57,7 @@ public class RestaurantController {
 
     @GetMapping("/{id}/benefits")
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})
-    public ResponseEntity<List<BenefitDTO>> getBenefitsForRestaurant(@PathVariable long id) {
+    public ResponseEntity<List<BenefitDTO>> getBenefitsForRestaurant(@RequestHeader("Authorization") String authorization, @PathVariable long id) {
         try {
             List<BenefitDTO> list = restaurantService.getAllBenefitsForRestaurant(id);
             return ResponseEntity.ok(list);
@@ -68,7 +68,7 @@ public class RestaurantController {
 
     @PostMapping("/{id}/benefits")
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})
-    public ResponseEntity<String> addBenefitToRestaurant(@PathVariable long id, @RequestBody BenefitDTO benefitDTO) {
+    public ResponseEntity<String> addBenefitToRestaurant(@RequestHeader("Authorization") String authorization, @PathVariable long id, @RequestBody BenefitDTO benefitDTO) {
         try {
             restaurantService.addBenefitToRestaurant(id, benefitDTO);
             return ResponseEntity.ok("Benefit added successfully");
@@ -79,7 +79,7 @@ public class RestaurantController {
 
     @DeleteMapping("/{id}/benefits/{benefit_id}")
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})
-    public ResponseEntity<String> removeBenefitFromRestaurant(@PathVariable long id, @PathVariable long benefit_id) {
+    public ResponseEntity<String> removeBenefitFromRestaurant(@RequestHeader("Authorization") String authorization, @PathVariable long id, @PathVariable long benefit_id) {
         try {
             restaurantService.removeBenefitFromRestaurant(benefit_id);
             return ResponseEntity.ok("Benefit removed successfully");

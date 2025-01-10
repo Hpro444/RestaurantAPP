@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface BenefitRepository extends JpaRepository<Benefit, Long> {
     Optional<List<Benefit>> getBenefitsByRestaurantId(Long restaurantId);
+
+    Optional<List<Benefit>> getBenefitsByRestaurantIdAndNumberOfNeededReservations(Long restaurantId, Integer number_of_needed_reservations);
 }

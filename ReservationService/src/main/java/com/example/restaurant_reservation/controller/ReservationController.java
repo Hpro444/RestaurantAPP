@@ -1,7 +1,6 @@
 package com.example.restaurant_reservation.controller;
 
 import com.example.restaurant_reservation.domain.AppointmentEntity;
-import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.ReservationDTO;
 import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.security.CheckSecurity;
@@ -46,14 +45,13 @@ public class ReservationController {
 
             String email = claims.get("email", String.class);
             String username = claims.get("username", String.class);
-
+            Long id = claims.get("user_id", Long.class);
             String manager_email = reservationService.getManagerEmailByReservationId(createdReservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(createdReservationId);
 
             AppointmentEntity appointment = appointmentRepository.findById(reservationDTO.getAppointmentID()).orElseThrow(RuntimeException::new);
-
-            notificationService.sendReservationConfirmationUser(email, username, appointment.getDate());
-            notificationService.sendReservationConfirmationManager(manager_email, username, restaurant_name, appointment.getDate());
+            notificationService.sendReservationConfirmationUser(email, username, appointment.getDate(), id, createdReservationId);
+            notificationService.sendReservationConfirmationManager(manager_email, username, restaurant_name, appointment.getDate(), id, createdReservationId);
 
             return ResponseEntity.ok("Reservation created successfully");
         } catch (Exception e) {
@@ -85,7 +83,7 @@ public class ReservationController {
             AppointmentEntity appointment = appointmentRepository.findById(reservation.getAppointmentID()).orElseThrow(RuntimeException::new);
 
 
-            notificationService.sendCancellationNotification(restaurant_name,appointment.getDate(), email);
+            notificationService.sendCancellationNotification(restaurant_name, appointment.getDate(), email);
 
             return ResponseEntity.ok("Reservation cancelled");
         } catch (Exception e) {
@@ -103,7 +101,7 @@ public class ReservationController {
             AppointmentEntity appointment = appointmentRepository.findById(reservation.getAppointmentID()).orElseThrow(RuntimeException::new);
 
 
-            notificationService.sendCancellationNotification(restaurant_name,appointment.getDate(), email);
+            notificationService.sendCancellationNotification(restaurant_name, appointment.getDate(), email);
 
             reservationService.cancelReservationForCustomer(reservationId);
 

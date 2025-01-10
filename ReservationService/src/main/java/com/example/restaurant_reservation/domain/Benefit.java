@@ -13,6 +13,6 @@ import lombok.*;
 @Getter
 public class Benefit extends BaseEntity {
     String description;
-    int number_of_needed_reservations;
+    int numberOfNeededReservations;
     Long restaurantId;
 }

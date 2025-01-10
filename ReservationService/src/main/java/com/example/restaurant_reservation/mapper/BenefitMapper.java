@@ -12,7 +12,7 @@ public class BenefitMapper {
         Benefit benefit = new Benefit();
         benefit.setDescription(dto.getDescription());
         benefit.setRestaurantId(dto.getRestaurantId());
-        benefit.setNumber_of_needed_reservations(dto.getNumber_of_needed_reservations());
+        benefit.setNumberOfNeededReservations(dto.getNumber_of_needed_reservations());
         return benefit;
     }
 
@@ -20,7 +20,7 @@ public class BenefitMapper {
         BenefitDTO dto = new BenefitDTO();
         dto.setDescription(item.getDescription());
         dto.setRestaurantId(item.getRestaurantId());
-        dto.setNumber_of_needed_reservations(item.getNumber_of_needed_reservations());
+        dto.setNumber_of_needed_reservations(item.getNumberOfNeededReservations());
         return dto;
     }
 }
