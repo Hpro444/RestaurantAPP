@@ -4,6 +4,7 @@ import com.example.restaurant_reservation.domain.AppointmentEntity;
 import com.example.restaurant_reservation.domain.TableEntity;
 import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
+import com.example.restaurant_reservation.mapper.AppointmentMapper;
 import com.example.restaurant_reservation.mapper.TableMapper;
 import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
@@ -24,6 +25,7 @@ public class TableServiceImpl implements TableService {
     private TableRepository tableRepository;
     private TableMapper tableMapper;
     private AppointmentRepository appointmentRepository;
+    private AppointmentMapper appointmentMapper;
 
     @Override
     public List<TableDTO> getTablesForRestaurant(Long restaurantId) {
@@ -43,17 +45,12 @@ public class TableServiceImpl implements TableService {
             List<AppointmentEntity> appointments = appointmentEntity.get();
 
             return appointments.stream().filter(AppointmentEntity::isAvailable)
-                    .map(appointment -> new AppointmentDTO(
-                            appointment.getId(),
-                            appointment.getDate(),
-                            true
-                    ))
+                    .map(appointment -> appointmentMapper.getDTOFromDomain(appointment))
                     .collect(Collectors.toList());
         } else {
             throw new EntityNotFoundException("Table with ID " + tableId + " not found.");
         }
     }
-
 
 
     @Override
@@ -71,13 +68,10 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public TableDTO addTableToRestaurant(Long restaurantId, TableDTO tableDTO) {
+    public void addTableToRestaurant(TableDTO tableDTO) {
         TableEntity table = tableMapper.getDomainFromDTO(tableDTO);
-        table.setRestaurantId(restaurantId);
+        tableRepository.save(table);
 
-        table = tableRepository.save(table);
-
-        return tableMapper.getDTOFromDomain(table);
     }
 
     @Override
@@ -125,6 +119,12 @@ public class TableServiceImpl implements TableService {
         return filteredTables.stream()
                 .map(tableMapper::getDTOFromDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void addAppointmentToTable(AppointmentDTO appointmentDTO) {
+        AppointmentEntity appointmentEntity = appointmentMapper.getDomainFromDTO(appointmentDTO);
+        appointmentRepository.save(appointmentEntity);
     }
 
 

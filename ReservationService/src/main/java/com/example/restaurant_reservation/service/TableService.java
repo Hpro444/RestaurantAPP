@@ -15,7 +15,7 @@ public interface TableService {
 
     AppointmentEntity getAppointmentByLocalDateTime(Long tableId, LocalDateTime localDateTime);
 
-    TableDTO addTableToRestaurant(Long restaurantId, TableDTO tableDTO);
+    void addTableToRestaurant(TableDTO tableDTO);
 
     List<TableDTO> getAllTablesByRestaurant(Long restaurantId);
 
@@ -25,4 +25,5 @@ public interface TableService {
 
     List<TableDTO> getAvailableTables(Long restaurantId, String zone, int capacity, LocalDateTime dateTime);
 
+    void addAppointmentToTable(AppointmentDTO appointmentDTO);
 }

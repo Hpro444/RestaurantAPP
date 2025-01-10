@@ -15,6 +15,7 @@ public class TableMapper {
         tableEntity.setZone(tableDTO.getZone());
         tableEntity.setTableName(tableDTO.getTableName());
         tableEntity.setMergeable(tableDTO.isMergeable());
+        tableEntity.setRestaurantId(tableDTO.getRestaurantId());
 
         return tableEntity;
     }
@@ -25,7 +26,7 @@ public class TableMapper {
         tableDTO.setZone(table.getZone());
         tableDTO.setCapacity(table.getCapacity());
         tableDTO.setMergeable(table.isMergeable());
-
+        tableDTO.setRestaurantId(table.getRestaurantId());
         return tableDTO;
     }
 }

@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,5 +14,5 @@ public class TableDTO {
     private boolean isMergeable;
     private String zone;
     private String tableName;
-    private List<AppointmentDTO> availableAppointments;
+    private Long restaurantId;
 }

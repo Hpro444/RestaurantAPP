@@ -50,11 +50,11 @@ public class AppRunner {
 
             TableEntity table1 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
             tableRepository.save(table1);
-            TableEntity table2 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
+            TableEntity table2 = new TableEntity(10, true, "Indoor", "Table 2", 1L);
             tableRepository.save(table2);
-            TableEntity table3 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
+            TableEntity table3 = new TableEntity(10, true, "Indoor", "Table 3", 1L);
             tableRepository.save(table3);
-            TableEntity table4 = new TableEntity(10, true, "Indoor", "Table 1", 1L);
+            TableEntity table4 = new TableEntity(10, true, "Indoor", "Table 4", 1L);
             tableRepository.save(table4);
 
 

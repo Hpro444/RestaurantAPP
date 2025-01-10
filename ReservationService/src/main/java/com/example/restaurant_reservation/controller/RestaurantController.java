@@ -31,17 +31,27 @@ public class RestaurantController {
     }
 
     @PostMapping
-    @CheckSecurity
-    public ResponseEntity<RestaurantDTO> createRestaurant(@RequestHeader("Authorization") String authorization, @RequestBody RestaurantDTO restaurantDTO) {
-        RestaurantDTO createdRestaurant = restaurantService.addRestaurant(restaurantDTO);
-        return ResponseEntity.ok(createdRestaurant);
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<String> createRestaurant(@RequestHeader("Authorization") String authorization, @RequestBody RestaurantDTO restaurantDTO) {
+        try {
+            restaurantService.addRestaurant(restaurantDTO);
+            return ResponseEntity.ok("Restaurant created successfully");
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
-    @CheckSecurity
-    public ResponseEntity<RestaurantDTO> updateRestaurant(@RequestHeader("Authorization") String authorization, @PathVariable long id, @RequestBody RestaurantDTO restaurantDTO) {
-        RestaurantDTO updatedRestaurant = restaurantService.updateRestaurant(id, restaurantDTO);
-        return ResponseEntity.ok(updatedRestaurant);
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<String> updateRestaurant(@RequestHeader("Authorization") String authorization, @PathVariable long id, @RequestBody RestaurantDTO restaurantDTO) {
+        try {
+            restaurantService.updateRestaurant(id, restaurantDTO);
+            return ResponseEntity.ok("Restaurant created successfully");
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }

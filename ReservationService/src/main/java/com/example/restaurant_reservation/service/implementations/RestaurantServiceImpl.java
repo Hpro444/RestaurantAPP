@@ -44,16 +44,13 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public RestaurantDTO addRestaurant(RestaurantDTO restaurantDTO) {
+    public void addRestaurant(RestaurantDTO restaurantDTO) {
         Restaurant restaurant = restaurantMapper.getDomainFromDTO(restaurantDTO);
-
-        restaurant = restaurantRepository.save(restaurant);
-
-        return restaurantMapper.getDTOFromDomain(restaurant);
+        restaurantRepository.save(restaurant);
     }
 
     @Override
-    public RestaurantDTO updateRestaurant(Long id, RestaurantDTO restaurantDTO) {
+    public void updateRestaurant(Long id, RestaurantDTO restaurantDTO) {
         Restaurant restaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Restaurant with ID " + id + " not found."));
 
@@ -66,9 +63,8 @@ public class RestaurantServiceImpl implements RestaurantService {
         restaurant.setOpeningTime(restaurantDTO.getOpeningTime());
         restaurant.setClosingTime(restaurantDTO.getClosingTime());
 
-        restaurant = restaurantRepository.save(restaurant);
+        restaurantRepository.save(restaurant);
 
-        return restaurantMapper.getDTOFromDomain(restaurant);
     }
 
 }

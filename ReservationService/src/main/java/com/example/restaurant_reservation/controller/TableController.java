@@ -35,16 +35,26 @@ public class TableController {
         return ResponseEntity.ok(appointment);
     }
 
-    @PostMapping("/{restaurantId}")
-    @CheckSecurity
-    public ResponseEntity<TableDTO> createTable(@RequestHeader("Authorization") String authorization, @RequestBody Long restaurantId, @RequestBody TableDTO tableDTO) {
+    @PostMapping
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<String> createTable(@RequestHeader("Authorization") String authorization, @RequestBody TableDTO tableDTO) {
         try {
-            TableDTO newTable = tableService.addTableToRestaurant(restaurantId, tableDTO);
-            return ResponseEntity.ok(newTable);
+            tableService.addTableToRestaurant(tableDTO);
+            return ResponseEntity.ok("Table created successfully");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body("Table creation failed");
         }
+    }
 
+    @PostMapping("/appointment")
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<String> addAppointmentToTable(@RequestHeader("Authorization") String authorization, @RequestBody AppointmentDTO appointmentDTO) {
+        try {
+            tableService.addAppointmentToTable(appointmentDTO);
+            return ResponseEntity.ok("Appointment added successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
 
