@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="Fixed all controllers">
-      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/Benefit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/BenefitDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/BenefitMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/BenefitRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/RestaurantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/TableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/TableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/RestaurantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/RestaurantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/RestaurantServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/RestaurantService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/RestaurantService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/TableService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/TableService.class" afterDir="false" />
+    <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="&#10;**New Features**&#10;&#10;* Added new endpoints to the API for managing benefits:&#10;&#9;+ `/benefits`: GET all benefits for a restaurant, POST create a new benefit&#10;&#9;+ `/benefits/{id}`: DELETE remove a benefit from a restaurant&#10;* Created `BenefitDTO` class to represent benefit data in JSON format&#10;* Implemented `BenefitMapper` class to convert between `BenefitDTO` and `Benefit` domain objects&#10;&#10;**Changes to Existing Features**&#10;&#10;* Updated the `BenefitsController` class to include new endpoints for managing benefits&#10;* Modified the `BenefitRepository` interface to include methods for creating, reading, updating, and deleting benefits&#10;&#10;**New Dependencies**&#10;&#10;* Introduced new dependencies for handling JSON data (Jackson) and mapping between domain objects (Lombok)&#10;&#10;**Other Changes**&#10;&#10;* Updated `pom.xml` file to include new dependencies&#10;* Added Javadoc comments to explain the purpose of each class and method">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="Changes by Windows11" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +145,7 @@
       <workItem from="1736457637726" duration="39000" />
       <workItem from="1736458623319" duration="2720000" />
       <workItem from="1736462147456" duration="594000" />
-      <workItem from="1736509672815" duration="13781000" />
+      <workItem from="1736509672815" duration="13913000" />
     </task>
     <task id="LOCAL-00001" summary="New stuff">
       <option name="closed" value="true" />
@@ -237,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736525049960</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="&#10;**New Features**&#10;&#10;* Added new endpoints to the API for managing benefits:&#10;&#9;+ `/benefits`: GET all benefits for a restaurant, POST create a new benefit&#10;&#9;+ `/benefits/{id}`: DELETE remove a benefit from a restaurant&#10;* Created `BenefitDTO` class to represent benefit data in JSON format&#10;* Implemented `BenefitMapper` class to convert between `BenefitDTO` and `Benefit` domain objects&#10;&#10;**Changes to Existing Features**&#10;&#10;* Updated the `BenefitsController` class to include new endpoints for managing benefits&#10;* Modified the `BenefitRepository` interface to include methods for creating, reading, updating, and deleting benefits&#10;&#10;**New Dependencies**&#10;&#10;* Introduced new dependencies for handling JSON data (Jackson) and mapping between domain objects (Lombok)&#10;&#10;**Other Changes**&#10;&#10;* Updated `pom.xml` file to include new dependencies&#10;* Added Javadoc comments to explain the purpose of each class and method">
+      <option name="closed" value="true" />
+      <created>1736530214862</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736530214862</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +249,8 @@
     <MESSAGE value="This is a IntelliJ IDEA project settings file (`.idea` directory) with some code changes. Here's a breakdown of the changes:&#10;&#10;**Project Settings**&#10;&#10;The `.idea` directory contains various configuration files that control how IntelliJ IDEA handles your project.&#10;&#10;* `component.xml`: This file defines the components used in the project, including TypeScript and database integration.&#10;&#9;+ The `servers` section is empty, indicating no external servers are configured for this project.&#10;&#9;+ The `TypeScriptGeneratedFilesManager` component is enabled.&#10;* `misc.xml`: Not modified&#10;* `workspacedefaults.xml`: Not modified&#10;&#10;**Project Files**&#10;&#10;The following files in the project directory have been modified:&#10;&#10;1. **project.xml**: This file contains various settings for the project.&#10;&#10;Changes:&#10;&#10;* The `LAST_COMMIT_MESSAGE` option has been updated to reflect a new commit message.&#10;&#9;+ Before: &quot;Delete now works&quot;&#10;&#9;+ After: &quot;It looks like you've made a series of changes to your Reservation Service application. I'll try to summarize and explain what I see. **Changes:** 1. Renaming `Reservation` to `Appointment` 2. Introducing an `AppointmentID` field in the `ReservationDTO` class 3. Updating various methods in the `ReservationRepository` interface to use `Appointment` instead of `Reservation` 4. Updating the `ReservationService` classes to use `Appointment` and remove `Reservation` references **Implications:** 1. The application has been refactored to treat appointments as first-class entities, distinct from reservations. 2. The system now uses an `ID` field to uniquely identify each appointment, rather than relying on a composite key (customer ID + table ID). 3. The repository interface and data access methods have been updated to reflect the new entity model.&quot;&#10;* The `localTasksCounter` option has been incremented from 7 to 8.&#10;&#10;2. **ReservationService/src/main/java/com/example/restaurant_reservation/runner/AppRunner.java**: This Java file has undergone some changes.&#10;&#10;Changes:&#10;&#10;* Lines 47-51 have been modified to save tables with different parameters.&#10;&#9;+ Before:&#10;```java&#10;TableEntity table1 = new TableEntity(10, true, &quot;Indoor&quot;, &quot;Table 1&quot;, 1L);&#10;tableRepository.save(table1);&#10;&#10;TableEntity table2 = new TableEntity(10, true, &quot;Indoor&quot;, &quot;Table 1&quot;, 1L);&#10;tableRepository.save(table2);&#10;```&#10;&#9;+ After:" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="Fixed all controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed all controllers" />
+    <MESSAGE value="&#10;**New Features**&#10;&#10;* Added new endpoints to the API for managing benefits:&#10;&#9;+ `/benefits`: GET all benefits for a restaurant, POST create a new benefit&#10;&#9;+ `/benefits/{id}`: DELETE remove a benefit from a restaurant&#10;* Created `BenefitDTO` class to represent benefit data in JSON format&#10;* Implemented `BenefitMapper` class to convert between `BenefitDTO` and `Benefit` domain objects&#10;&#10;**Changes to Existing Features**&#10;&#10;* Updated the `BenefitsController` class to include new endpoints for managing benefits&#10;* Modified the `BenefitRepository` interface to include methods for creating, reading, updating, and deleting benefits&#10;&#10;**New Dependencies**&#10;&#10;* Introduced new dependencies for handling JSON data (Jackson) and mapping between domain objects (Lombok)&#10;&#10;**Other Changes**&#10;&#10;* Updated `pom.xml` file to include new dependencies&#10;* Added Javadoc comments to explain the purpose of each class and method" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;**New Features**&#10;&#10;* Added new endpoints to the API for managing benefits:&#10;&#9;+ `/benefits`: GET all benefits for a restaurant, POST create a new benefit&#10;&#9;+ `/benefits/{id}`: DELETE remove a benefit from a restaurant&#10;* Created `BenefitDTO` class to represent benefit data in JSON format&#10;* Implemented `BenefitMapper` class to convert between `BenefitDTO` and `Benefit` domain objects&#10;&#10;**Changes to Existing Features**&#10;&#10;* Updated the `BenefitsController` class to include new endpoints for managing benefits&#10;* Modified the `BenefitRepository` interface to include methods for creating, reading, updating, and deleting benefits&#10;&#10;**New Dependencies**&#10;&#10;* Introduced new dependencies for handling JSON data (Jackson) and mapping between domain objects (Lombok)&#10;&#10;**Other Changes**&#10;&#10;* Updated `pom.xml` file to include new dependencies&#10;* Added Javadoc comments to explain the purpose of each class and method" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
