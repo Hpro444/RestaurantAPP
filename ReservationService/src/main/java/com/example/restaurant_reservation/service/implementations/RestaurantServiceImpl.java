@@ -1,10 +1,14 @@
 package com.example.restaurant_reservation.service.implementations;
 
+import com.example.restaurant_reservation.domain.Benefit;
 import com.example.restaurant_reservation.domain.Restaurant;
+import com.example.restaurant_reservation.dto.BenefitDTO;
 import com.example.restaurant_reservation.dto.RestaurantDTO;
+import com.example.restaurant_reservation.mapper.BenefitMapper;
 import com.example.restaurant_reservation.mapper.ReservationMapper;
 import com.example.restaurant_reservation.mapper.RestaurantMapper;
 import com.example.restaurant_reservation.mapper.TableMapper;
+import com.example.restaurant_reservation.repository.BenefitRepository;
 import com.example.restaurant_reservation.repository.ReservationRepository;
 import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
@@ -27,6 +31,8 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantMapper restaurantMapper;
     private final ReservationMapper reservationMapper;
     private final TableMapper tableMapper;
+    private final BenefitRepository benefitRepository;
+    private final BenefitMapper benefitMapper;
 
 
     @Override
@@ -65,6 +71,23 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         restaurantRepository.save(restaurant);
 
+    }
+
+    @Override
+    public List<BenefitDTO> getAllBenefitsForRestaurant(Long restaurantId) {
+        List<Benefit> benefits = benefitRepository.getBenefitsByRestaurantId(restaurantId).orElseThrow(() -> new EntityNotFoundException("Benefit with ID " + restaurantId + " not found."));
+        return benefits.stream().map(benefitMapper::getDTOFromDomain).toList();
+    }
+
+    @Override
+    public void addBenefitToRestaurant(long id, BenefitDTO benefitDTO) {
+        Benefit benefit = benefitMapper.getDomainFromDTO(benefitDTO);
+        benefitRepository.save(benefit);
+    }
+
+    @Override
+    public void removeBenefitFromRestaurant(long benefitId) {
+        benefitRepository.deleteById(benefitId);
     }
 
 }

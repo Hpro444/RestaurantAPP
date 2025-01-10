@@ -1,5 +1,6 @@
 package com.example.restaurant_reservation.controller;
 
+import com.example.restaurant_reservation.dto.BenefitDTO;
 import com.example.restaurant_reservation.dto.RestaurantDTO;
 import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.service.RestaurantService;
@@ -51,6 +52,39 @@ public class RestaurantController {
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/{id}/benefits")
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<List<BenefitDTO>> getBenefitsForRestaurant(@PathVariable long id) {
+        try {
+            List<BenefitDTO> list = restaurantService.getAllBenefitsForRestaurant(id);
+            return ResponseEntity.ok(list);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @PostMapping("/{id}/benefits")
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<String> addBenefitToRestaurant(@PathVariable long id, @RequestBody BenefitDTO benefitDTO) {
+        try {
+            restaurantService.addBenefitToRestaurant(id, benefitDTO);
+            return ResponseEntity.ok("Benefit added successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Benefit not added");
+        }
+    }
+
+    @DeleteMapping("/{id}/benefits/{benefit_id}")
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<String> removeBenefitFromRestaurant(@PathVariable long id, @PathVariable long benefit_id) {
+        try {
+            restaurantService.removeBenefitFromRestaurant(benefit_id);
+            return ResponseEntity.ok("Benefit removed successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Benefit not removed");
         }
     }
 
