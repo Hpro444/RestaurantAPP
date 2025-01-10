@@ -84,12 +84,13 @@ public class ReservationController {
     public ResponseEntity<String> cancelReservationUser(Long reservationId) {
         try {
             ReservationDTO reservation = reservationService.getReservationById(reservationId);
-            reservationService.cancelReservationForCustomer(reservationId);
+            System.out.println(reservation);
 
             String email = reservationService.getManagerEmailByReservationId(reservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(reservationId);
 
             notificationService.sendCancellationNotification(restaurant_name, reservation.getReservationTime(), email);
+            reservationService.cancelReservationForCustomer(reservationId);
 
             return ResponseEntity.ok("Reservation cancelled");
 

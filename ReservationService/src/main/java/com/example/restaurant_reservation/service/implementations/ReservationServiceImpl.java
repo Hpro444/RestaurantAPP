@@ -39,10 +39,10 @@ public class ReservationServiceImpl implements ReservationService {
             reservation.setTable(tableEntity.get());
             reservation.setReservationTime(reservationTime);
             reservation.setDescription(description);
+            //TODO HERE SOMETHING
 //            tableService.getAppointmentByLocalDateTime(tableEntityId, reservationTime).setAvailable(false);
 
             reservationRepository.save(reservation);
-            System.out.println("HJHEwhd[ahdwahd awd ajd awh da d");
 
             return reservation.getId();
         }
