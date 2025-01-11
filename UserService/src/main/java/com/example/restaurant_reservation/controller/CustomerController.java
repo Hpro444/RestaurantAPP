@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomerController {
 
     private CustomerService customerService;
-
+    
     @GetMapping()
     @CheckSecurity(roles = {"ADMIN"})
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(@RequestHeader("Authorization") String authorization) {

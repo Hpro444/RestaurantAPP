@@ -3,6 +3,7 @@ package com.example.restaurant_reservation.service;
 import com.example.restaurant_reservation.dto.CustomerDTO;
 import com.example.restaurant_reservation.dto.LoginDTO;
 import com.example.restaurant_reservation.dto.ManagerDTO;
+import com.example.restaurant_reservation.dto.UserDTO;
 
 public interface UserService {
 
@@ -16,5 +17,7 @@ public interface UserService {
     String getEmail(Long id);
 
     String activateUser(Long id, String code);
+
+    UserDTO findUserById(Long id);
 
 }

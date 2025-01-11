@@ -3,6 +3,7 @@ package com.example.restaurant_reservation.controller;
 import com.example.restaurant_reservation.dto.CustomerDTO;
 import com.example.restaurant_reservation.dto.LoginDTO;
 import com.example.restaurant_reservation.dto.ManagerDTO;
+import com.example.restaurant_reservation.dto.UserDTO;
 import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.security.service.TokenService;
 import com.example.restaurant_reservation.service.UserService;
@@ -64,6 +65,18 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.OK).body(message);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/{user_id}")
+    @CheckSecurity
+    public ResponseEntity<UserDTO> getCustomerById(@RequestHeader("Authorization") String authorization, @PathVariable Long user_id) {
+        try {
+            UserDTO customer = userService.findUserById(user_id);
+            return ResponseEntity.ok(customer);
+        } catch (Exception e) {
+            System.out.println("ERRROROROROROROR" + e.getMessage());
+            return ResponseEntity.status(500).build(); // Use status(500) for internal server errors
         }
     }
 }

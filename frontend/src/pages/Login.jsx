@@ -1,5 +1,5 @@
-import  { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import api from '../api.jsx';
 import {jwtDecode} from "jwt-decode"; // Axios instance
 
@@ -36,8 +36,8 @@ function Login() {
             const decodedToken = jwtDecode(token);
             console.log('Decoded Token:', decodedToken);
 
-            // Extract and save userId to localStorage
-            const userId = decodedToken.userId; // Replace 'id' with the correct field from your token
+            // Extract and save user_id to localStorage
+            const userId = decodedToken.user_id; // Replace 'id' with the correct field from your token
             if (!userId) {
                 setError('Invalid token: User ID not found.');
                 console.error('User ID Missing in Token:', decodedToken);

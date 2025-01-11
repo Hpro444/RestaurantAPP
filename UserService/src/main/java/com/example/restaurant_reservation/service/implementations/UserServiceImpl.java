@@ -7,7 +7,9 @@ import com.example.restaurant_reservation.domain.User;
 import com.example.restaurant_reservation.dto.CustomerDTO;
 import com.example.restaurant_reservation.dto.LoginDTO;
 import com.example.restaurant_reservation.dto.ManagerDTO;
+import com.example.restaurant_reservation.dto.UserDTO;
 import com.example.restaurant_reservation.mapper.AddressMapper;
+import com.example.restaurant_reservation.mapper.UserMapper;
 import com.example.restaurant_reservation.repository.UserRepository;
 import com.example.restaurant_reservation.security.service.TokenService;
 import com.example.restaurant_reservation.service.NotificationService;
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
     private final TokenService tokenService;
     private final AddressMapper addressMapper;
     private final NotificationService notificationService;
+    private final UserMapper userMapper;
 
 
     public static String generateRandomString(int length) {
@@ -136,5 +139,11 @@ public class UserServiceImpl implements UserService {
         return "ACTIVATED";
     }
 
+    @Override
+    public UserDTO findUserById(Long id) {
+        User customer = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        return userMapper.getDTOFromDomain(customer);
+    }
 
 }

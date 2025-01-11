@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="new stuff">
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/CorsConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/GatewayCorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/GatewayCorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api_gateway/src/main/java/com/example/restaurant_reservation/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api_gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Api_gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/repositories/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Api_gateway/src/test/java/com/example/restaurant_reservation/repositories/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/AppRunnerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/RestaurantReservationApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/controllers/CustomerControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/repositories/PersonRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/services/CustomerServiceImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/services/ReservationServiceImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/test/java/com/example/restaurant_reservation/services/UserServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/runner/AppRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/runner/AppRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProfilePage.jsx" afterDir="false" />
+    </list>
+    <list id="86874a7e-befe-4113-82f2-3222a27f345b" name="Changes by subin" comment="">
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" afterDir="false" />
     </list>
     <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="Changes by Windows11" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +67,16 @@
     &quot;accountId&quot;: &quot;c6e9f0d2-d55e-4e35-b0f0-730e84373187&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java">
+      <ranges>
+        <range start1="9" end1="9" start2="9" end2="10" changelist="9f5f8e2d-262c-443f-8ca9-4486361c1c11" />
+        <range start1="10" end1="10" start2="11" end2="12" changelist="86874a7e-befe-4113-82f2-3222a27f345b" />
+        <range start1="32" end1="32" start2="34" end2="35" changelist="86874a7e-befe-4113-82f2-3222a27f345b" />
+        <range start1="138" end1="138" start2="141" end2="147" changelist="86874a7e-befe-4113-82f2-3222a27f345b" />
+      </ranges>
+    </file>
+  </component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -64,6 +103,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.EurekaServiceApplication.executor": "Run",
     "Spring Boot.NotificationServiceApplication.executor": "Run",
     "Spring Boot.ReservationServiceApplication.executor": "Run",
@@ -71,7 +111,7 @@
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/subin/Downloads/RestaurantAPP-andrija",
+    "last_opened_file_path": "C:/Users/Windows11/Desktop/raf/Semestar 5/Softverske komponente/RestaurantAPP/UserService/src/main/java/com/example/restaurant_reservation/repository",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,6 +128,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\UserService\src\main\java\com\example\restaurant_reservation\repository" />
       <recent name="C:\Users\subin\IdeaProjects\RestaurantAPP\RestaurantAPP\UserService\src\main\java\com\example\restaurant_reservation" />
       <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\ReservationService\src" />
     </key>
@@ -107,7 +148,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ReservationServiceApplication">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Api_gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ApiGatewayApplication" />
@@ -123,7 +164,7 @@
       </method>
     </configuration>
     <configuration name="ReservationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="restaurant_reservation" />
+      <module name="ReservationService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ReservationServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
