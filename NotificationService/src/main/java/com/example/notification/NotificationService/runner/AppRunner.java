@@ -39,8 +39,9 @@ public class AppRunner {
 
     private static String getTemplate(String type) {
         return switch (type) {
-            case "Activation Email" -> "Greetings %name %surname, Your account has been activated";
-
+            case "Activation Email" -> "Dear %username%,\n\n"
+                    + "Thank you for creating an account with us! To complete the registration process and start enjoying all our features, please click on the following link to activate your account:\n\n"
+                    + "Activation Code: **%code**\n\n";
             case "Password Change" ->
                     "Your password has been changed successfully. Please log in with your new credentials";
 

@@ -19,4 +19,5 @@ public class UserDTO {
     private String lastName;
     private String role; // CUSTOMER, MANAGER, ADMIN
     private Date birthDate;
+    private AddressDTO address;
 }

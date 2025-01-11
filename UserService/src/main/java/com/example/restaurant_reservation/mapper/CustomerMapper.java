@@ -8,13 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class CustomerMapper {
+    private final AddressMapper addressMapper;
 
     public CustomerDTO getDTOFromDomain(Customer customer) {
         CustomerDTO dto = new CustomerDTO();
         dto.setFirstName(customer.getFirstName());
         dto.setLastName(customer.getLastName());
-        dto.setNumberOfReservations(customer.getNumberOfReservations());
-
+        dto.setEmail(customer.getEmail());
+        dto.setAddress(addressMapper.getDTOFromDomain(customer.getAddress()));
+        dto.setBirthDate(customer.getBirthDate());
         return dto;
     }
 }

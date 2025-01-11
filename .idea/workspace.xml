@@ -5,26 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="&#10;**New Features**&#10;&#10;* Added new endpoints to the API for managing benefits:&#10;&#9;+ `/benefits`: GET all benefits for a restaurant, POST create a new benefit&#10;&#9;+ `/benefits/{id}`: DELETE remove a benefit from a restaurant&#10;* Created `BenefitDTO` class to represent benefit data in JSON format&#10;* Implemented `BenefitMapper` class to convert between `BenefitDTO` and `Benefit` domain objects&#10;&#10;**Changes to Existing Features**&#10;&#10;* Updated the `BenefitsController` class to include new endpoints for managing benefits&#10;* Modified the `BenefitRepository` interface to include methods for creating, reading, updating, and deleting benefits">
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/config/RabbitConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/AddressDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/NotificationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/UpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/mapper/AddressMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/NotificationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/RestaurantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/Benefit.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/domain/Benefit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/BenefitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/BenefitMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/BenefitRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/repository/BenefitRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/security/service/impl/TokenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/security/service/impl/TokenServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/NotificationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/ReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/ReservationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/RestaurantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/RestaurantController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/domain/TableEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/domain/TableEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/dto/AppointmentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/dto/AppointmentDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/security/service/impl/TokenServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/security/service/impl/TokenServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/NotificationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/NotificationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/RestaurantService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/RestaurantService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/NotificationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/NotificationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/RestaurantServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/RestaurantServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/UserServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/CustomerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/ManagerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/ManagerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/mapper/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/mapper/CustomerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/repository/AdminRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/repository/CustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/repository/ManagerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/runner/AppRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/runner/AppRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/security/SecurityAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/security/SecurityAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/ManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/ManagerServiceImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/service/implementations/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/com/example/restaurant_reservation/RestaurantReservationApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/com/example/restaurant_reservation/controllers/CustomerControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/com/example/restaurant_reservation/repositories/UserRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/com/example/restaurant_reservation/services/CustomerServiceImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/com/example/restaurant_reservation/services/ReservationServiceImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/test/java/com/example/restaurant_reservation/services/UserServiceTest.java" beforeDir="false" />
     </list>
     <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="Changes by Windows11" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +111,7 @@
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/subin/IdeaProjects/RestaurantAPP",
+    "last_opened_file_path": "C:/Users/subin/IdeaProjects/RestaurantAPP/RestaurantAPP/UserService/src/main/java/com/example/restaurant_reservation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,7 +127,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\subin\IdeaProjects\RestaurantAPP\RestaurantAPP\UserService\src\main\java\com\example\restaurant_reservation" />
       <recent name="C:\Users\Windows11\Desktop\raf\Semestar 5\Softverske komponente\RestaurantAPP\ReservationService\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.restaurant_reservation.dto" />
+      <recent name="com.example.restaurant_reservation.service.implementations" />
+      <recent name="com.example.restaurant_reservation.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -118,7 +146,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ReservationServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration name="UserServiceTest.login_ShouldReturnToken_WhenValidCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="UserService" />
       <extension name="coverage">
@@ -187,6 +215,7 @@
       <workItem from="1736458623319" duration="2720000" />
       <workItem from="1736462147456" duration="594000" />
       <workItem from="1736509672815" duration="17133000" />
+      <workItem from="1736598498297" duration="9084000" />
     </task>
     <task id="LOCAL-00001" summary="New stuff">
       <option name="closed" value="true" />

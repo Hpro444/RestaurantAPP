@@ -15,7 +15,7 @@ import java.net.http.HttpResponse;
 public class UserServiceImp implements UserService {
 
     @Override
-    public  String getEmailForUser(Long userId) throws IOException, InterruptedException {
+    public String getEmailForUser(Long userId) throws IOException, InterruptedException {
         String url = "http://your-server-url/get_email/" + userId;
 
         HttpResponse<String> response;

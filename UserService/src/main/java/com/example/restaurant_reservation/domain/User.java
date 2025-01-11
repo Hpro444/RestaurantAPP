@@ -9,26 +9,28 @@ import lombok.Setter;
 import java.sql.Date;
 
 @Entity
-@Table(name="user_table")
+@Table(name = "user_table")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity{
+public class User extends BaseEntity {
     private String firstName;
     private String lastName;
     private String username;
     private String password;
     private String email;
     private Date birthDate;
-    private Integer numberOfOrders;
+    private boolean blocked;
+
+    private String one_time_registration_code;
+
 
     @Embedded
     private Address address;
-    @Enumerated(value = EnumType.STRING)
-    private Status status;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
 }

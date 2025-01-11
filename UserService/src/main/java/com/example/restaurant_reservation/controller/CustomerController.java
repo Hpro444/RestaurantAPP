@@ -1,6 +1,8 @@
 package com.example.restaurant_reservation.controller;
 
 import com.example.restaurant_reservation.dto.CustomerDTO;
+import com.example.restaurant_reservation.dto.UpdateDTO;
+import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +18,8 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping()
-    public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
+    @CheckSecurity(roles = {"ADMIN"})
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers(@RequestHeader("Authorization") String authorization) {
         try {
             List<CustomerDTO> customers = customerService.findAllCustomers();
             return ResponseEntity.ok(customers);
@@ -26,31 +29,14 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<CustomerDTO> updateCustomerProfile(@RequestBody CustomerDTO customerDTO, @PathVariable Long customerId) {
+    @CheckSecurity
+    public ResponseEntity<String> updateCustomerProfile(@RequestHeader("Authorization") String authorization, @RequestBody UpdateDTO customerDTO, @PathVariable Long customerId) {
         try {
-            CustomerDTO updatedCustomer = customerService.updateCustomerProfile(customerDTO, customerId);
-            return ResponseEntity.ok(updatedCustomer);
+            customerService.updateCustomerProfile(customerDTO, customerId);
+            return ResponseEntity.ok("Successfully updated customer profile");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-    }
-
-    @GetMapping("/{id}/reservations")
-    public ResponseEntity<List<Long>> getCustomerReservations(@PathVariable Long id) {
-        List<Long> reservationIds = customerService.getReservationIdsForCustomer(id);
-        return ResponseEntity.ok(reservationIds);
-    }
-
-    @PostMapping("/{id}/reservations/{reservationId}")
-    public ResponseEntity<Void> addReservationToCustomer(@PathVariable Long id, @PathVariable Long reservationId) {
-        customerService.addReservationForCustomer(id, reservationId);
-        return ResponseEntity.ok().build();
-    }
-
-    @DeleteMapping("/{id}/reservations/{reservationId}")
-    public ResponseEntity<Void> removeReservationFromCustomer(@PathVariable Long id, @PathVariable Long reservationId) {
-        customerService.removeReservationForCustomer(id, reservationId);
-        return ResponseEntity.noContent().build();
     }
 
 }

@@ -12,7 +12,12 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ManagerDTO {
+    private String username;
+    private String password;
+    private String email;
     private String firstName;
     private String lastName;
+    private Date birthDate;
+    private AddressDTO address;
     private Date dateOfStartWorking;
 }

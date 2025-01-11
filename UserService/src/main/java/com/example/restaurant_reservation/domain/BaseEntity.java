@@ -19,7 +19,5 @@ public class BaseEntity {
 
     @Column(nullable = false)
     private boolean deleted;
-
-    @Column(nullable = false)
-    private boolean disabled;
+    
 }
