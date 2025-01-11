@@ -9,5 +9,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsernameAndPassword(String username, String password);   // may or may not contain a value (null check in that orElseNull lambda)
+
     Boolean existsByUsername(String username);
+
+    Optional<User> findByUsername(String username);
 }

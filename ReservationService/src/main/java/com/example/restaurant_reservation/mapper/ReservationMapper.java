@@ -11,7 +11,7 @@ public class ReservationMapper {
 
     public ReservationDTO getDTOFromDomain(Reservation reservation) {
         ReservationDTO dto = new ReservationDTO();
-        dto.setId(reservation.getId());
+//        dto.setId(reservation.getId());
         dto.setCustomerId(reservation.getCustomerId());
         dto.setTableId(reservation.getTable().getId());
         dto.setAppointmentID(reservation.getAppointment().getId());

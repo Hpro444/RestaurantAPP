@@ -20,4 +20,7 @@ public interface UserService {
 
     UserDTO findUserById(Long id);
 
+    void banUser(String userName);
+
+    void unBanUser(String userName);
 }

@@ -75,8 +75,29 @@ public class UserController {
             UserDTO customer = userService.findUserById(user_id);
             return ResponseEntity.ok(customer);
         } catch (Exception e) {
-            System.out.println("ERRROROROROROROR" + e.getMessage());
             return ResponseEntity.status(500).build(); // Use status(500) for internal server errors
+        }
+    }
+
+    @PostMapping("/ban")
+    @CheckSecurity(roles = {"ADMIN"})
+    public ResponseEntity<String> banUser(@RequestHeader("Authorization") String authorization, @RequestBody String userName) {
+        try {
+            userService.banUser(userName);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/unban")
+    @CheckSecurity(roles = {"ADMIN"})
+    public ResponseEntity<String> unBanUser(@RequestHeader("Authorization") String authorization, @RequestBody String userName) {
+        try {
+            userService.unBanUser(userName);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 }

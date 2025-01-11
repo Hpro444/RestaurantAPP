@@ -3,6 +3,7 @@ package com.example.restaurant_reservation.service.implementations;
 import com.example.restaurant_reservation.domain.AppointmentEntity;
 import com.example.restaurant_reservation.domain.TableEntity;
 import com.example.restaurant_reservation.dto.AppointmentDTO;
+import com.example.restaurant_reservation.dto.FilterDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
 import com.example.restaurant_reservation.mapper.AppointmentMapper;
 import com.example.restaurant_reservation.mapper.TableMapper;
@@ -125,6 +126,11 @@ public class TableServiceImpl implements TableService {
     public void addAppointmentToTable(AppointmentDTO appointmentDTO) {
         AppointmentEntity appointmentEntity = appointmentMapper.getDomainFromDTO(appointmentDTO);
         appointmentRepository.save(appointmentEntity);
+    }
+
+    @Override
+    public List<AppointmentDTO> getFilteredAppointment(FilterDTO filterDTO) {
+        return List.of();
     }
 
 

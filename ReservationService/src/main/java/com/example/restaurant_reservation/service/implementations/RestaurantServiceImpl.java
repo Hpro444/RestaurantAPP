@@ -69,7 +69,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         restaurant.setOpeningTime(restaurantDTO.getOpeningTime());
         restaurant.setClosingTime(restaurantDTO.getClosingTime());
 
-        restaurantRepository.save(restaurant);
+//        restaurantRepository.save(restaurant);
 
     }
 

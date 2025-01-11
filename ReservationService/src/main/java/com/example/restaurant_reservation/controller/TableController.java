@@ -1,6 +1,7 @@
 package com.example.restaurant_reservation.controller;
 
 import com.example.restaurant_reservation.dto.AppointmentDTO;
+import com.example.restaurant_reservation.dto.FilterDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
 import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.service.TableService;
@@ -33,6 +34,13 @@ public class TableController {
         if (appointment == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(appointment);
+    }
+
+
+    @GetMapping("/appointment/filter")
+    @CheckSecurity
+    public ResponseEntity<List<AppointmentDTO>> getFilteredAppointment(@RequestHeader("Authorization") String authorization, FilterDTO filterDTO) {
+
     }
 
     @PostMapping

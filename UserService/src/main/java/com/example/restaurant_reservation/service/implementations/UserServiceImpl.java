@@ -55,6 +55,9 @@ public class UserServiceImpl implements UserService {
         if (!user.getOne_time_registration_code().isEmpty())
             throw new RuntimeException("Please activate your account first");
 
+        if (user.isBlocked())
+            throw new RuntimeException("Your account has been permanently banned from our application due to repeated policy violations. Please do not attempt to call a wizard to unban you.");
+
         Claims claims = Jwts.claims();
         claims.put("role", user.getRole());
         claims.put("username", user.getUsername());
@@ -146,4 +149,13 @@ public class UserServiceImpl implements UserService {
         return userMapper.getDTOFromDomain(customer);
     }
 
+    public void banUser(String userName) {
+        User user = userRepository.findByUsername(userName).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setBlocked(true);
+    }
+
+    public void unBanUser(String userName) {
+        User user = userRepository.findByUsername(userName).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setBlocked(false);
+    }
 }
