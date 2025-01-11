@@ -97,4 +97,14 @@ public class NotificationServiceImpl implements NotificationService {
         request.setEmail(email);
         rabbitTemplate.convertAndSend("notification-queue", request);
     }
+
+    @Override
+    public void sendReminderNotification(String email) {
+        NotificationRequest request = new NotificationRequest();
+        request.setParams(new HashMap<>());
+        request.setType("Reminder Reservation");
+        request.setEmail(email);
+        
+        rabbitTemplate.convertAndSend("notification-queue", request);
+    }
 }

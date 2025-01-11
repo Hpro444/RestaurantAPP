@@ -8,4 +8,6 @@ public interface NotificationService {
     void sendReservationConfirmationManager(String email, String name, String restaurant, LocalDateTime dateTime, Long user_id, Long restaurant_id);
 
     void sendCancellationNotification(String restaurant, LocalDateTime dateTime, String email);
+
+    void sendReminderNotification(String email);
 }
