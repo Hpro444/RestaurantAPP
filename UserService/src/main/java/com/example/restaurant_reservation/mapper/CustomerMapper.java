@@ -13,7 +13,11 @@ public class CustomerMapper {
         CustomerDTO dto = new CustomerDTO();
         dto.setFirstName(customer.getFirstName());
         dto.setLastName(customer.getLastName());
-        dto.setNumberOfReservations(customer.getNumberOfReservations());
+        dto.setUsername(customer.getUsername());
+        dto.setPassword(customer.getPassword());
+        dto.setEmail(customer.getEmail());
+        dto.setBirthDate(customer.getBirthDate());
+//        dto.setNumberOfReservations(customer.getNumberOfReservations());
 
         return dto;
     }

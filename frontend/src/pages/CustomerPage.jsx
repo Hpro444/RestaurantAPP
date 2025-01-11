@@ -1,38 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CustomerPage.css';
+import api from '../api.jsx';
 
-const fakeRestaurants = [
-    {
-        managerId: 1,
-        manager_email: "manager1@example.com",
-        name: "The Gourmet Spot",
-        description: "A fine dining experience.",
-        openingTime: "09:00",
-        closingTime: "22:00",
-        kitchenType: "Italian",
-        address: "123 Gourmet Lane, Food City"
-    },
-    {
-        managerId: 2,
-        manager_email: "manager2@example.com",
-        name: "Sushi Palace",
-        description: "Fresh sushi and sashimi.",
-        openingTime: "11:00",
-        closingTime: "23:00",
-        kitchenType: "Japanese",
-        address: "456 Sushi Street, Ocean City"
-    },
-    {
-        managerId: 3,
-        manager_email: "manager3@example.com",
-        name: "Taco Fiesta",
-        description: "Authentic Mexican tacos.",
-        openingTime: "10:00",
-        closingTime: "21:00",
-        kitchenType: "Mexican",
-        address: "789 Taco Ave, Fiesta Town"
-    }
-];
+// const fakeRestaurants = [
+//     {
+//         managerId: 1,
+//         manager_email: "manager1@example.com",
+//         name: "The Gourmet Spot",
+//         description: "A fine dining experience.",
+//         openingTime: "09:00",
+//         closingTime: "22:00",
+//         kitchenType: "Italian",
+//         address: "123 Gourmet Lane, Food City"
+//     },
+//     {
+//         managerId: 2,
+//         manager_email: "manager2@example.com",
+//         name: "Sushi Palace",
+//         description: "Fresh sushi and sashimi.",
+//         openingTime: "11:00",
+//         closingTime: "23:00",
+//         kitchenType: "Japanese",
+//         address: "456 Sushi Street, Ocean City"
+//     },
+//     {
+//         managerId: 3,
+//         manager_email: "manager3@example.com",
+//         name: "Taco Fiesta",
+//         description: "Authentic Mexican tacos.",
+//         openingTime: "10:00",
+//         closingTime: "21:00",
+//         kitchenType: "Mexican",
+//         address: "789 Taco Ave, Fiesta Town"
+//     }
+// ];
 
 const fakeReservations = [
     {
@@ -61,31 +63,85 @@ const fakeReservations = [
     }
 ];
 
-const fakeProfile = {
-    firstName: "John",
-    lastName: "Doe",
-    email: "johndoe@example.com",
-    username: "johndoe",
-    role: "CUSTOMER",
-    status: "ACTIVE"
-};
-
 function CustomerPage() {
     const [currentPage, setCurrentPage] = useState("main");
+    const [restaurants, setRestaurants] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate(); // Use navigate for routing to ProfilePage
+
+    useEffect(() => {
+        if (currentPage === "restaurants") {
+            fetchRestaurants();
+        }
+    }, [currentPage]);
+
+    const fetchRestaurants = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const token = localStorage.getItem('jwtToken'); // Retrieve JWT token
+            const response = await api.get('/reservation-service/restaurant', {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setRestaurants(response.data); // Set fetched restaurants
+        } catch (err) {
+            console.error("Error fetching restaurants:", err);
+            setError("Failed to load restaurants. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const renderPage = () => {
         switch (currentPage) {
             case "main":
                 return (
                     <div className="main-dashboard">
-                        <h1>Welcome, {fakeProfile.firstName}!</h1>
-                        {/*<p>We have <strong>{fakeRestaurants.length}</strong> restaurants available for you.</p>*/}
-                        {/*<p>You currently have <strong>{fakeReservations.length}</strong> reservations in the system.</p>*/}
-                        <p>We have <strong> a lot of </strong> restaurants available for you.</p>
-                        <p>You currently have <strong> a lot of</strong> reservations in the system.</p>
+                        <h1>Welcome!</h1>
+                        <p>We have <strong>a lot of</strong> restaurants available for you.</p>
+                        <p>You currently have <strong>a lot of</strong> reservations in the system.</p>
                     </div>
                 );
+
+            // case "restaurants":
+            //     return (
+            //         <div className="centered-content">
+            //             <h2>Available Restaurants</h2>
+            //             <table>
+            //                 <thead>
+            //                 <tr>
+            //                     <th>Name</th>
+            //                     <th>Description</th>
+            //                     <th>Kitchen Type</th>
+            //                     <th>Address</th>
+            //                     <th>Opening Time</th>
+            //                     <th>Closing Time</th>
+            //                 </tr>
+            //                 </thead>
+            //                 <tbody>
+            //                 {fakeRestaurants.map((restaurant, index) => (
+            //                     <tr key={index}>
+            //                         <td>{restaurant.name}</td>
+            //                         <td>{restaurant.description}</td>
+            //                         <td>{restaurant.kitchenType}</td>
+            //                         <td>{restaurant.address}</td>
+            //                         <td>{restaurant.openingTime}</td>
+            //                         <td>{restaurant.closingTime}</td>
+            //                     </tr>
+            //                 ))}
+            //                 </tbody>
+            //             </table>
+            //         </div>
+            //     );
+
             case "restaurants":
+                if (loading) {
+                    return <div>Loading restaurants...</div>;
+                }
+                if (error) {
+                    return <div className="error-message">{error}</div>;
+                }
                 return (
                     <div className="centered-content">
                         <h2>Available Restaurants</h2>
@@ -101,12 +157,16 @@ function CustomerPage() {
                             </tr>
                             </thead>
                             <tbody>
-                            {fakeRestaurants.map((restaurant, index) => (
-                                <tr key={index}>
+                            {restaurants.map((restaurant) => (
+                                <tr key={restaurant.managerId || restaurant.id}>
                                     <td>{restaurant.name}</td>
                                     <td>{restaurant.description}</td>
                                     <td>{restaurant.kitchenType}</td>
-                                    <td>{restaurant.address}</td>
+                                    <td>
+                                        {typeof restaurant.address === "object"
+                                            ? `${restaurant.address.street}, ${restaurant.address.city}, ${restaurant.address.state} ${restaurant.address.zip}`
+                                            : restaurant.address}
+                                    </td>
                                     <td>{restaurant.openingTime}</td>
                                     <td>{restaurant.closingTime}</td>
                                 </tr>
@@ -115,6 +175,7 @@ function CustomerPage() {
                         </table>
                     </div>
                 );
+
             case "reservations":
                 return (
                     <div className="centered-content">
@@ -141,18 +202,6 @@ function CustomerPage() {
                         </table>
                     </div>
                 );
-            case "profile": // Add the Profile page here
-                return (
-                    <div className="centered-content">
-                        <h2>Your Profile</h2>
-                        <p><strong>First Name:</strong> {fakeProfile.firstName}</p>
-                        <p><strong>Last Name:</strong> {fakeProfile.lastName}</p>
-                        <p><strong>Email:</strong> {fakeProfile.email}</p>
-                        <p><strong>Username:</strong> {fakeProfile.username}</p>
-                        <p><strong>Role:</strong> {fakeProfile.role}</p>
-                        <p><strong>Status:</strong> {fakeProfile.status}</p>
-                    </div>
-                );
             default:
                 return null;
         }
@@ -166,7 +215,12 @@ function CustomerPage() {
                     <button onClick={() => setCurrentPage("restaurants")}>Restaurants</button>
                     <button onClick={() => setCurrentPage("reservations")}>Reservations</button>
                 </div>
-                <button className="profile-button" onClick={() => setCurrentPage("profile")}>Profile</button>
+                <button
+                    className="profile-button"
+                    onClick={() => navigate('/profile')} // Navigate to ProfilePage
+                >
+                    Profile
+                </button>
             </header>
             <div className="content">{renderPage()}</div>
         </div>

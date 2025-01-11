@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
             claims.put("role", user.getRole());
             claims.put("username", user.getUsername());
             claims.put("email", user.getEmail());
+            claims.put("userId", user.getId());
             claims.setExpiration(new Date(System.currentTimeMillis() + 3600000)); // 1 hour
             return tokenService.generate(claims);
         }

@@ -8,6 +8,7 @@ import java.util.List;
 public interface CustomerService {
 
     // Customer profile operations
+    CustomerDTO findCustomerById(Long id);
     List<CustomerDTO> findAllCustomers();
     CustomerDTO updateCustomerProfile(CustomerDTO customerDTO, Long customerId);
 

@@ -15,6 +15,16 @@ public class CustomerController {
 
     private CustomerService customerService;
 
+    @GetMapping("/{customerId}")
+    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long customerId) {
+        try {
+            CustomerDTO customer = customerService.findCustomerById(customerId);
+            return ResponseEntity.ok(customer);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build(); // Use status(500) for internal server errors
+        }
+    }
+
     @GetMapping()
     public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
         try {

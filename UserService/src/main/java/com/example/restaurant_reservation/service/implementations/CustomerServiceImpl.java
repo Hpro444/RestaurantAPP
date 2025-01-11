@@ -21,6 +21,13 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerMapper customerMapper;
 
     @Override
+    public CustomerDTO findCustomerById(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        return customerMapper.getDTOFromDomain(customer);
+    }
+
+    @Override
     public List<CustomerDTO> findAllCustomers() {
         return customerRepository.findAll().stream()
                 .map(customer -> customerMapper.getDTOFromDomain(customer))
