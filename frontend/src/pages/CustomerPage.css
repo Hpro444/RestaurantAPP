@@ -1,0 +1,111 @@
+/* General body styling for a more website-like feel */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ffefd5, #ffe4b5); /* Subtle gradient */
+    color: #333;
+}
+
+/* Header navigation bar */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffefd5; /* Peach background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header .profile-button {
+    background-color: #646cff; /* Accent color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.header .profile-button:hover {
+    background-color: #5156c7; /* Darker accent for hover */
+}
+
+.header button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #ffd4a6; /* Button peach color */
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.header button:hover {
+    background-color: #ffc299; /* Slightly darker peach for hover */
+}
+
+/* Main content area */
+.content {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    max-width: 1200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow */
+    text-align: center;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background-color: #ffd4a6; /* Peach color for table header */
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+
+/* Welcome section */
+.welcome h1 {
+    font-size: 3rem;
+    color: #646cff;
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    font-size: 1.2rem;
+    color: #555;
+}

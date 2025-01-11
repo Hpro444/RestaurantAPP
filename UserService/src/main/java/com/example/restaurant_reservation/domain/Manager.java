@@ -17,4 +17,10 @@ import java.sql.Date;
 @AllArgsConstructor
 public class Manager extends User {
     private Date dateOfStartWorking;
+
+    public Manager(Date dateOfStartWorking, String firstName, String lastName, String username, String password,
+                   String email, Date birthDate, Address address, Status status, Role role) {
+        super(firstName, lastName, username, password, email, birthDate, 0, address, status, role);
+        this.dateOfStartWorking = dateOfStartWorking;
+    }
 }
