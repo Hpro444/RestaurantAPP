@@ -126,7 +126,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         // Get all appointments for each table and flatten into a single list
         List<AppointmentEntity> appointmentEntityList = tableEntities.stream()
-                .flatMap(tableEntity -> appointmentRepository.findByTable(tableEntity).orElse(Collections.emptyList()).stream())
+                .flatMap(tableEntity -> appointmentRepository.findByTable(tableEntity).orElse(Collections.emptyList()).stream().filter(AppointmentEntity::isAvailable))
                 .toList();
 
         // Filter appointments by date if specified in the filter DTO
