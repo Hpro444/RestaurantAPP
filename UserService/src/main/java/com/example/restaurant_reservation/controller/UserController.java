@@ -20,7 +20,7 @@ public class UserController {
     private final UserService userService;
     private final TokenService tokenService;
 
-    @PostMapping("/register/customer")
+    @PostMapping("/auth/register/customer")
     public ResponseEntity<String> registerCustomer(@RequestBody CustomerDTO customerDTO) {
         try {
             String token = userService.registerCostumer(customerDTO);
@@ -30,7 +30,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/register/manager")
+    @PostMapping("/auth/register/manager")
     public ResponseEntity<String> registerManager(@RequestBody ManagerDTO managerDTO) {
         try {
             String token = userService.registerManager(managerDTO);
@@ -40,7 +40,7 @@ public class UserController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/auth/login")
     public ResponseEntity<String> loginUser(@RequestBody LoginDTO loginDTO) {
         return new ResponseEntity<>(userService.login(loginDTO), HttpStatus.OK);
     }
@@ -65,9 +65,5 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-
-
     }
-
-
 }

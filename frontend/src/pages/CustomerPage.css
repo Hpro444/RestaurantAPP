@@ -1,0 +1,132 @@
+/* General body styling (shared across pages) */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ffefd5, #ffe4b5); /* Subtle gradient */
+    color: #333;
+}
+
+/* Specific to CustomerPage */
+.customer-page {
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header navigation bar for CustomerPage */
+.customer-page .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffefd5; /* Peach background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000;
+}
+
+/* Left navigation buttons */
+.customer-page .nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Profile button (right-aligned) */
+.customer-page .profile-button {
+    background-color: #646cff; /* Accent color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.customer-page .profile-button:hover {
+    background-color: #5156c7; /* Darker accent for hover */
+}
+
+/* Navigation buttons */
+.customer-page .header button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #ffd4a6; /* Button peach color */
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.customer-page .header button:hover {
+    background-color: #ffc299; /* Slightly darker peach for hover */
+}
+
+/* Content area (centered) */
+.customer-page .content {
+    flex-grow: 1; /* Take remaining vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 80px; /* Space for the fixed header */
+}
+
+/* Centered content container */
+.customer-page .centered-content {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+}
+
+/* Table styling (for restaurants and reservations) */
+.customer-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.customer-page table th {
+    background-color: #ffd4a6; /* Peach color for table header */
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.customer-page table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+.customer-page table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+.customer-page table tbody tr:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+
+/* Main dashboard (Home page content) */
+.customer-page .main-dashboard h1 {
+    font-size: 2.5rem;
+    color: #646cff;
+    margin-bottom: 0.5rem;
+}
+
+.customer-page .main-dashboard p {
+    font-size: 1.2rem;
+    color: #333;
+}

@@ -1,0 +1,28 @@
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.profile-container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.profile-error, .profile-loading {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff4d4d;
+}
