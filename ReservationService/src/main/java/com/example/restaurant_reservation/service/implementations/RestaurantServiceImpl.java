@@ -1,15 +1,16 @@
 package com.example.restaurant_reservation.service.implementations;
 
-import com.example.restaurant_reservation.domain.Benefit;
-import com.example.restaurant_reservation.domain.Restaurant;
+import com.example.restaurant_reservation.domain.*;
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.BenefitDTO;
+import com.example.restaurant_reservation.dto.FilterDTO;
 import com.example.restaurant_reservation.dto.RestaurantDTO;
+import com.example.restaurant_reservation.mapper.AddressMapper;
+import com.example.restaurant_reservation.mapper.AppointmentMapper;
 import com.example.restaurant_reservation.mapper.BenefitMapper;
-import com.example.restaurant_reservation.mapper.ReservationMapper;
 import com.example.restaurant_reservation.mapper.RestaurantMapper;
-import com.example.restaurant_reservation.mapper.TableMapper;
+import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.repository.BenefitRepository;
-import com.example.restaurant_reservation.repository.ReservationRepository;
 import com.example.restaurant_reservation.repository.RestaurantRepository;
 import com.example.restaurant_reservation.repository.TableRepository;
 import com.example.restaurant_reservation.service.RestaurantService;
@@ -17,6 +18,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,14 +27,14 @@ import java.util.stream.Collectors;
 public class RestaurantServiceImpl implements RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
-    private final ReservationRepository reservationRepository;
     private final TableRepository tableRepository;
+    private final AppointmentRepository appointmentRepository;
 
     private final RestaurantMapper restaurantMapper;
-    private final ReservationMapper reservationMapper;
-    private final TableMapper tableMapper;
     private final BenefitRepository benefitRepository;
     private final BenefitMapper benefitMapper;
+    private final AddressMapper addressMapper;
+    private final AppointmentMapper appointmentMapper;
 
 
     @Override
@@ -88,6 +90,76 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public void removeBenefitFromRestaurant(long benefitId) {
         benefitRepository.deleteById(benefitId);
+    }
+
+    @Override
+    public List<AppointmentDTO> getAllAppointmentsByFilter(FilterDTO filterDTO) {
+
+        // Retrieve all restaurants from the database
+        List<Restaurant> restaurants = restaurantRepository.findAll();
+
+        // Filter restaurants by kitchen type if specified in the filter DTO
+        if (filterDTO.getKitchenType() != null) {
+            restaurants = restaurants.stream()
+                    .filter(restaurant -> restaurant.getKitchenType().equals(KitchenType.valueOf(filterDTO.getKitchenType())))
+                    .toList();
+        }
+
+        // Filter restaurants by address if specified in the filter DTO
+        if (filterDTO.getAddress() != null) {
+            restaurants = restaurants.stream()
+                    .filter(restaurant -> restaurant.getAddress().equals(addressMapper.getDomainFromDTO(filterDTO.getAddress())))
+                    .toList();
+        }
+
+        // Get all tables for each restaurant and flatten into a single list
+        List<TableEntity> tableEntities = restaurants.stream()
+                .flatMap(restaurant -> tableRepository.findAllByRestaurantId(restaurant.getId()).stream())
+                .toList();
+
+        // Filter tables by capacity if specified in the filter DTO
+        if (filterDTO.getCapacity() != 0) {
+            tableEntities = tableEntities.stream()
+                    .filter(table -> table.getCapacity() == filterDTO.getCapacity())
+                    .toList();
+        }
+
+        // Get all appointments for each table and flatten into a single list
+        List<AppointmentEntity> appointmentEntityList = tableEntities.stream()
+                .flatMap(tableEntity -> appointmentRepository.findByTable(tableEntity).orElse(Collections.emptyList()).stream())
+                .toList();
+
+        // Filter appointments by date if specified in the filter DTO
+        if (filterDTO.getDate() != null) {
+            appointmentEntityList = appointmentEntityList.stream()
+                    .filter(appointment -> appointment.getDate().toLocalDate().equals(filterDTO.getDate()))
+                    .toList();
+        }
+
+        // Filter appointments by start and end time if specified in the filter DTO
+        if (filterDTO.getStartTime() != null && filterDTO.getEndTime() != null) {
+            appointmentEntityList = appointmentEntityList.stream()
+                    .filter(appointment -> appointment.getDate().toLocalTime().isAfter(filterDTO.getStartTime()) && appointment.getDate().toLocalTime().isBefore(filterDTO.getEndTime()))
+                    .toList();
+        }
+
+        if (filterDTO.getStartTime() != null && filterDTO.getEndTime() == null) {
+            appointmentEntityList = appointmentEntityList.stream()
+                    .filter(appointment -> appointment.getDate().toLocalTime().equals(filterDTO.getStartTime()))
+                    .toList();
+        }
+
+        if (filterDTO.getStartTime() == null && filterDTO.getEndTime() != null) {
+            appointmentEntityList = appointmentEntityList.stream()
+                    .filter(appointment -> appointment.getDate().toLocalTime().isBefore(filterDTO.getEndTime()))
+                    .toList();
+        }
+
+
+        // Map appointment entities to DTOs and return as a list
+        return appointmentEntityList.stream()
+                .map(appointmentMapper::getDTOFromDomain)
+                .toList();
     }
 
 }

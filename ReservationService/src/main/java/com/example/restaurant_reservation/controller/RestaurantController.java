@@ -1,6 +1,8 @@
 package com.example.restaurant_reservation.controller;
 
+import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.BenefitDTO;
+import com.example.restaurant_reservation.dto.FilterDTO;
 import com.example.restaurant_reservation.dto.RestaurantDTO;
 import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.service.RestaurantService;
@@ -85,6 +87,16 @@ public class RestaurantController {
             return ResponseEntity.ok("Benefit removed successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Benefit not removed");
+        }
+    }
+
+    @GetMapping("/filter-appointments")
+    @CheckSecurity
+    public ResponseEntity<List<AppointmentDTO>> getFilteredAppointment(@RequestHeader("Authorization") String authorization, FilterDTO filterDTO) {
+        try {
+            return ResponseEntity.ok().body(restaurantService.getAllAppointmentsByFilter(filterDTO));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
         }
     }
 

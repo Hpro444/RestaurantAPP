@@ -2,7 +2,6 @@ package com.example.restaurant_reservation.service;
 
 import com.example.restaurant_reservation.domain.AppointmentEntity;
 import com.example.restaurant_reservation.dto.AppointmentDTO;
-import com.example.restaurant_reservation.dto.FilterDTO;
 import com.example.restaurant_reservation.dto.TableDTO;
 
 import java.time.LocalDateTime;
@@ -28,5 +27,4 @@ public interface TableService {
 
     void addAppointmentToTable(AppointmentDTO appointmentDTO);
 
-    List<AppointmentDTO> getFilteredAppointment(FilterDTO filterDTO);
 }
