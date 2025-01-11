@@ -1,28 +1,57 @@
 .profile-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background: #fff;
-    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.profile-container h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.profile-container p {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 10px 0;
-}
-
-.profile-error, .profile-loading {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.profile-frame {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-frame h2 {
     text-align: center;
-    font-size: 1.2rem;
-    color: #ff4d4d;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-edit-mode div,
+.profile-view-mode p {
+    margin-bottom: 15px;
+}
+
+.profile-edit-mode label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.profile-edit-mode input[readonly] {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border: 1px solid #ced4da;
+    pointer-events: none; /* Prevent cursor change */
+}
+
+button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.cancel-button {
+    background-color: #dc3545;
+}
+
+button:hover {
+    opacity: 0.9;
 }
