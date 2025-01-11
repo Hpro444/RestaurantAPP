@@ -1,7 +1,7 @@
 
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import Login from './Login.jsx'; // Import the Login component
+import Login from './pages/Login.jsx'; // Import the Login component
 import CustomerPage from './pages/CustomerPage.jsx';
 import ManagerPage from './pages/ManagerPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';

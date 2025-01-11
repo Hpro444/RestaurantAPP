@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from './api.jsx';
+import api from '../api.jsx';
 import {jwtDecode} from "jwt-decode"; // Axios instance
 
 function Login() {
@@ -65,27 +65,61 @@ function Login() {
     };
 
 
+    // return (
+    //     <div className="login-page">
+    //         <h2>Login</h2>
+    //         <form onSubmit={handleLogin}>
+    //             <input
+    //                 type="text" // Changed to 'text' to match 'username'
+    //                 placeholder="Username"
+    //                 value={email}
+    //                 onChange={(e) => setEmail(e.target.value)}
+    //                 required
+    //             />
+    //             <input
+    //                 type="password"
+    //                 placeholder="Password"
+    //                 value={password}
+    //                 onChange={(e) => setPassword(e.target.value)}
+    //                 required
+    //             />
+    //             <button type="submit">Login</button>
+    //         </form>
+    //         {error && <p className="error">{error}</p>}
+    //     </div>
+    // );
+
     return (
-        <div className="login-page">
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="text" // Changed to 'text' to match 'username'
-                    placeholder="Username"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login</button>
-            </form>
-            {error && <p className="error">{error}</p>}
+        <div className="login-container">
+            <div className="login-card">
+                <h2>Login</h2>
+                <form onSubmit={handleLogin}>
+                    <div className="input-group">
+                        <label htmlFor="email">Username</label>
+                        <input
+                            id="email"
+                            type="text"
+                            placeholder="Enter your username"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="login-button">Login</button>
+                </form>
+                {error && <p className="error-message">{error}</p>}
+            </div>
         </div>
     );
 }

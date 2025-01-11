@@ -71,13 +71,23 @@ const fakeProfile = {
 };
 
 function CustomerPage() {
-    const [currentPage, setCurrentPage] = useState("restaurants");
+    const [currentPage, setCurrentPage] = useState("main");
 
     const renderPage = () => {
         switch (currentPage) {
+            case "main":
+                return (
+                    <div className="main-dashboard">
+                        <h1>Welcome, {fakeProfile.firstName}!</h1>
+                        {/*<p>We have <strong>{fakeRestaurants.length}</strong> restaurants available for you.</p>*/}
+                        {/*<p>You currently have <strong>{fakeReservations.length}</strong> reservations in the system.</p>*/}
+                        <p>We have <strong> a lot of </strong> restaurants available for you.</p>
+                        <p>You currently have <strong> a lot of</strong> reservations in the system.</p>
+                    </div>
+                );
             case "restaurants":
                 return (
-                    <div>
+                    <div className="centered-content">
                         <h2>Available Restaurants</h2>
                         <table>
                             <thead>
@@ -107,7 +117,7 @@ function CustomerPage() {
                 );
             case "reservations":
                 return (
-                    <div>
+                    <div className="centered-content">
                         <h2>Your Reservations</h2>
                         <table>
                             <thead>
@@ -131,9 +141,9 @@ function CustomerPage() {
                         </table>
                     </div>
                 );
-            case "profile":
+            case "profile": // Add the Profile page here
                 return (
-                    <div>
+                    <div className="centered-content">
                         <h2>Your Profile</h2>
                         <p><strong>First Name:</strong> {fakeProfile.firstName}</p>
                         <p><strong>Last Name:</strong> {fakeProfile.lastName}</p>
@@ -144,20 +154,19 @@ function CustomerPage() {
                     </div>
                 );
             default:
-                return <p>Select a page to view.</p>;
+                return null;
         }
     };
 
     return (
-        <div>
+        <div className="customer-page">
             <header className="header">
                 <div className="nav-buttons">
+                    <button onClick={() => setCurrentPage("main")}>Home</button>
                     <button onClick={() => setCurrentPage("restaurants")}>Restaurants</button>
                     <button onClick={() => setCurrentPage("reservations")}>Reservations</button>
                 </div>
-                <button className="profile-button" onClick={() => setCurrentPage("profile")}>
-                    Profile
-                </button>
+                <button className="profile-button" onClick={() => setCurrentPage("profile")}>Profile</button>
             </header>
             <div className="content">{renderPage()}</div>
         </div>

@@ -1,4 +1,4 @@
-/* General body styling for a more website-like feel */
+/* General body styling (shared across pages) */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -6,25 +6,36 @@ body {
     color: #333;
 }
 
-/* Header navigation bar */
-.header {
+/* Specific to CustomerPage */
+.customer-page {
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header navigation bar for CustomerPage */
+.customer-page .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #ffefd5; /* Peach background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
-    position: sticky;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed; /* Fixed at the top */
     top: 0;
+    left: 0;
+    width: 100%; /* Full width */
     z-index: 1000;
 }
 
-.header .nav-buttons {
+/* Left navigation buttons */
+.customer-page .nav-buttons {
     display: flex;
     gap: 10px;
 }
 
-.header .profile-button {
+/* Profile button (right-aligned) */
+.customer-page .profile-button {
     background-color: #646cff; /* Accent color */
     color: white;
     border: none;
@@ -34,11 +45,12 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.header .profile-button:hover {
+.customer-page .profile-button:hover {
     background-color: #5156c7; /* Darker accent for hover */
 }
 
-.header button {
+/* Navigation buttons */
+.customer-page .header button {
     padding: 10px 20px;
     font-size: 14px;
     background-color: #ffd4a6; /* Button peach color */
@@ -49,23 +61,32 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.header button:hover {
+.customer-page .header button:hover {
     background-color: #ffc299; /* Slightly darker peach for hover */
 }
 
-/* Main content area */
-.content {
-    margin: 20px auto;
+/* Content area (centered) */
+.customer-page .content {
+    flex-grow: 1; /* Take remaining vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    background-color: white;
-    max-width: 1200px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow */
-    text-align: center;
+    margin-top: 80px; /* Space for the fixed header */
 }
 
-/* Table styling */
-table {
+/* Centered content container */
+.customer-page .centered-content {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+}
+
+/* Table styling (for restaurants and reservations) */
+.customer-page table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -74,7 +95,7 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-table th {
+.customer-page table th {
     background-color: #ffd4a6; /* Peach color for table header */
     color: #333;
     font-weight: bold;
@@ -82,30 +103,30 @@ table th {
     border: 1px solid #ddd;
 }
 
-table td {
+.customer-page table td {
     padding: 10px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     color: #555;
 }
 
-table tr:nth-child(even) td {
+.customer-page table tr:nth-child(even) td {
     background-color: #f2f2f2;
 }
 
-table tbody tr:hover {
+.customer-page table tbody tr:hover {
     background-color: #eaeaea;
     cursor: pointer;
 }
 
-/* Welcome section */
-.welcome h1 {
-    font-size: 3rem;
+/* Main dashboard (Home page content) */
+.customer-page .main-dashboard h1 {
+    font-size: 2.5rem;
     color: #646cff;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
-.welcome p {
+.customer-page .main-dashboard p {
     font-size: 1.2rem;
-    color: #555;
+    color: #333;
 }
