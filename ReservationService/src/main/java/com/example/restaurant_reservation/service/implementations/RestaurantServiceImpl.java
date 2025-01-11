@@ -71,7 +71,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         restaurant.setOpeningTime(restaurantDTO.getOpeningTime());
         restaurant.setClosingTime(restaurantDTO.getClosingTime());
 
-//        restaurantRepository.save(restaurant);
+        restaurantRepository.save(restaurant);
 
     }
 
@@ -162,4 +162,19 @@ public class RestaurantServiceImpl implements RestaurantService {
                 .toList();
     }
 
+
+    @Override
+    public RestaurantDTO getRestaurantByTableId(Long tableId) {
+        TableEntity tableEntity = tableRepository.findById(tableId).orElseThrow(() -> new EntityNotFoundException("Table with ID " + tableId + " not found."));
+        Restaurant restaurant = restaurantRepository.findById(tableEntity.getId()).orElseThrow(() -> new EntityNotFoundException("Restaurant with ID " + tableId + " not found."));
+        return restaurantMapper.getDTOFromDomain(restaurant);
+    }
+
+
+    @Override
+    public List<RestaurantDTO> getAllRestaurantsByManagerId(Long managerId) {
+        return restaurantRepository.findAllByManagerId(managerId).orElseThrow(RuntimeException::new).stream()
+                .map(restaurantMapper::getDTOFromDomain)
+                .collect(Collectors.toList());
+    }
 }

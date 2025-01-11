@@ -1,40 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import './CustomerPage.css';
 import api from '../api.jsx';
-
-// const fakeRestaurants = [
-//     {
-//         managerId: 1,
-//         manager_email: "manager1@example.com",
-//         name: "The Gourmet Spot",
-//         description: "A fine dining experience.",
-//         openingTime: "09:00",
-//         closingTime: "22:00",
-//         kitchenType: "Italian",
-//         address: "123 Gourmet Lane, Food City"
-//     },
-//     {
-//         managerId: 2,
-//         manager_email: "manager2@example.com",
-//         name: "Sushi Palace",
-//         description: "Fresh sushi and sashimi.",
-//         openingTime: "11:00",
-//         closingTime: "23:00",
-//         kitchenType: "Japanese",
-//         address: "456 Sushi Street, Ocean City"
-//     },
-//     {
-//         managerId: 3,
-//         manager_email: "manager3@example.com",
-//         name: "Taco Fiesta",
-//         description: "Authentic Mexican tacos.",
-//         openingTime: "10:00",
-//         closingTime: "21:00",
-//         kitchenType: "Mexican",
-//         address: "789 Taco Ave, Fiesta Town"
-//     }
-// ];
+import ReservationPage from './ReservationPage';
 
 const fakeReservations = [
     {
@@ -82,7 +50,7 @@ function CustomerPage() {
         try {
             const token = localStorage.getItem('jwtToken'); // Retrieve JWT token
             const response = await api.get('/reservation-service/restaurant', {
-                headers: { Authorization: `Bearer ${token}` },
+                headers: {Authorization: `Bearer ${token}`},
             });
             setRestaurants(response.data); // Set fetched restaurants
         } catch (err) {
@@ -103,37 +71,6 @@ function CustomerPage() {
                         <p>You currently have <strong>a lot of</strong> reservations in the system.</p>
                     </div>
                 );
-
-            // case "restaurants":
-            //     return (
-            //         <div className="centered-content">
-            //             <h2>Available Restaurants</h2>
-            //             <table>
-            //                 <thead>
-            //                 <tr>
-            //                     <th>Name</th>
-            //                     <th>Description</th>
-            //                     <th>Kitchen Type</th>
-            //                     <th>Address</th>
-            //                     <th>Opening Time</th>
-            //                     <th>Closing Time</th>
-            //                 </tr>
-            //                 </thead>
-            //                 <tbody>
-            //                 {fakeRestaurants.map((restaurant, index) => (
-            //                     <tr key={index}>
-            //                         <td>{restaurant.name}</td>
-            //                         <td>{restaurant.description}</td>
-            //                         <td>{restaurant.kitchenType}</td>
-            //                         <td>{restaurant.address}</td>
-            //                         <td>{restaurant.openingTime}</td>
-            //                         <td>{restaurant.closingTime}</td>
-            //                     </tr>
-            //                 ))}
-            //                 </tbody>
-            //             </table>
-            //         </div>
-            //     );
 
             case "restaurants":
                 if (loading) {
@@ -177,31 +114,32 @@ function CustomerPage() {
                 );
 
             case "reservations":
-                return (
-                    <div className="centered-content">
-                        <h2>Your Reservations</h2>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Restaurant</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Guests</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {fakeReservations.map((reservation, index) => (
-                                <tr key={index}>
-                                    <td>{reservation.restaurantName}</td>
-                                    <td>{reservation.date}</td>
-                                    <td>{reservation.time}</td>
-                                    <td>{reservation.guests}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    </div>
-                );
+                return <ReservationPage/>;
+            // return (
+            //     <div className="centered-content">
+            //         <h2>Your Reservations</h2>
+            //         <table>
+            //             <thead>
+            //             <tr>
+            //                 <th>Restaurant</th>
+            //                 <th>Date</th>
+            //                 <th>Time</th>
+            //                 <th>Guests</th>
+            //             </tr>
+            //             </thead>
+            //             <tbody>
+            //             {fakeReservations.map((reservation, index) => (
+            //                 <tr key={index}>
+            //                     <td>{reservation.restaurantName}</td>
+            //                     <td>{reservation.date}</td>
+            //                     <td>{reservation.time}</td>
+            //                     <td>{reservation.guests}</td>
+            //                 </tr>
+            //             ))}
+            //             </tbody>
+            //         </table>
+            //     </div>
+            // );
             default:
                 return null;
         }

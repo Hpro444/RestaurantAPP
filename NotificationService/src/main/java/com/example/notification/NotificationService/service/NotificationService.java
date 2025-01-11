@@ -1,12 +1,19 @@
 package com.example.notification.NotificationService.service;
 
-import com.example.notification.NotificationService.entities.*;
-import com.example.notification.NotificationService.repository.*;
+import com.example.notification.NotificationService.dto.NotificationDTO;
+import com.example.notification.NotificationService.dto.NotificationTypeDTO;
+import com.example.notification.NotificationService.entities.Notification;
+import com.example.notification.NotificationService.entities.NotificationType;
+import com.example.notification.NotificationService.mapper.NotificationMapper;
+import com.example.notification.NotificationService.mapper.NotificationTypeMapper;
+import com.example.notification.NotificationService.repository.NotificationRepository;
+import com.example.notification.NotificationService.repository.NotificationTypeRepository;
 import com.example.notification.NotificationService.utils.EmailSender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
+
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -21,17 +28,19 @@ public class NotificationService {
 
     private final NotificationTypeRepository notificationTypeRepository;
     private final NotificationRepository notificationRepository;
-    private EmailSender emailSender;
+    private final EmailSender emailSender;
+    private final NotificationTypeMapper notificationTypeMapper;
+    private final NotificationMapper notificationMapper;
 
-    public List<Notification> getAllNotifications() {
-        return notificationRepository.findAll();
+    public List<NotificationDTO> getAllNotifications() {
+        return notificationRepository.findAll().stream().map(notificationMapper::getDTOFromDomain).toList();
     }
 
-    public List<NotificationType> getAllNotificationTypes() {
-        return notificationTypeRepository.findAll();
+    public List<NotificationTypeDTO> getAllNotificationTypes() {
+        return notificationTypeRepository.findAll().stream().map(notificationTypeMapper::getDTOFromDomain).toList();
     }
 
-    public Notification sendNotification(String type, Map<String, String> params, String email) {
+    public void sendNotification(String type, Map<String, String> params, String email) {
         NotificationType notificationType = notificationTypeRepository.findByName(type)
                 .orElseThrow(() -> new RuntimeException("Notification type not found"));
         String content = formatNotification(notificationType.getTemplate(), params);
@@ -41,33 +50,32 @@ public class NotificationService {
         notification.setContent(content);
         notification.setSentAt(LocalDateTime.now());
         try {
-            emailSender.sendEmail( email, "Notification: " + type, notification.getContent());
+            emailSender.sendEmail(email, "Notification: " + type, notification.getContent());
         } catch (MessagingException | IOException e) {
             throw new RuntimeException(e);
         }
-        return notificationRepository.save(notification);
     }
 
-    public NotificationType addNotificationType(NotificationType newNotificationType) {
-        return notificationTypeRepository.save(newNotificationType);
+    public void addNotificationType(NotificationTypeDTO newNotificationType) {
+        notificationTypeRepository.save(notificationTypeMapper.getDomainFromDTO(newNotificationType));
     }
 
-    public Notification updateNotification(Long id, Notification updatedNotification) {
-        Notification existingNotification = notificationRepository.findById(id).orElse(null);
-        if (existingNotification != null) {
-            existingNotification.setEmail(updatedNotification.getEmail());
-            existingNotification.setType(updatedNotification.getType());
-            existingNotification.setContent(updatedNotification.getContent());
-            return notificationRepository.save(existingNotification);
-        } else {
-            throw new RuntimeException("Notification not found");
-        }
-    }
-
-    public String deleteNotification(Long id) {
-        notificationRepository.deleteById(id);
-        return "Notification deleted successfully";
-    }
+//    public Notification updateNotification(Long id, Notification updatedNotification) {
+//        Notification existingNotification = notificationRepository.findById(id).orElse(null);
+//        if (existingNotification != null) {
+//            existingNotification.setEmail(updatedNotification.getEmail());
+//            existingNotification.setType(updatedNotification.getType());
+//            existingNotification.setContent(updatedNotification.getContent());
+//            return notificationRepository.save(existingNotification);
+//        } else {
+//            throw new RuntimeException("Notification not found");
+//        }
+//    }
+//
+//    public String deleteNotification(Long id) {
+//        notificationRepository.deleteById(id);
+//        return "Notification deleted successfully";
+//    }
 
     private String formatNotification(String template, Map<String, String> params) {
         for (Map.Entry<String, String> param : params.entrySet()) {
@@ -76,36 +84,38 @@ public class NotificationService {
         return template;
     }
 
-    public NotificationType getNotificationType(Long id) {
-        return notificationTypeRepository.findById(id).orElseThrow(() -> new RuntimeException("Notification type not found"));
-    }
+//    public NotificationType getNotificationType(Long id) {
+//        return notificationTypeRepository.findById(id).orElseThrow(() -> new RuntimeException("Notification type not found"));
+//    }
 
-    public List<Notification> getNotificationsByType(String type) {
-        return notificationRepository.findByType(type);
+    public List<NotificationDTO> getNotificationsByType(String type) {
+        return notificationRepository.findByType(type).stream().map(notificationMapper::getDTOFromDomain).toList();
     }
 
     public String deleteNotificationType(Long id) {
         notificationTypeRepository.deleteById(id);
         return "Notification type deleted successfully";
     }
-    public NotificationType updateNotificationType(Long id, NotificationType updatedNotificationType) {
+
+    public void updateNotificationType(Long id, NotificationTypeDTO updatedNotificationType) {
         NotificationType existingNotificationType = notificationTypeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Notification type not found"));
 
         existingNotificationType.setName(updatedNotificationType.getName());
         existingNotificationType.setTemplate(updatedNotificationType.getTemplate());
 
-        return notificationTypeRepository.save(existingNotificationType);
+        notificationTypeRepository.save(existingNotificationType);
     }
 
-    public List<Notification> searchNotificationsByEmail(String email) {
-        return notificationRepository.findByEmail(email);
+    public List<NotificationDTO> searchNotificationsByEmail(String email) {
+        return notificationRepository.findByEmail(email).stream().map(notificationMapper::getDTOFromDomain).toList();
     }
 
-    public List<Notification> searchNotificationsBySentAt(LocalDateTime sentAt) {
-        return notificationRepository.findBySentAt(sentAt);
+    public List<NotificationDTO> searchNotificationsBySentAt(LocalDateTime sentAt) {
+        return notificationRepository.findBySentAt(sentAt).stream().map(notificationMapper::getDTOFromDomain).toList();
     }
-    public List<Notification> searchNotificationsBySentAtBetween(LocalDateTime from, LocalDateTime to) {
-        return notificationRepository.findBySentAtBetween(from, to);
+
+    public List<NotificationDTO> searchNotificationsBySentAtBetween(LocalDateTime from, LocalDateTime to) {
+        return notificationRepository.findBySentAtBetween(from, to).stream().map(notificationMapper::getDTOFromDomain).toList();
     }
 }

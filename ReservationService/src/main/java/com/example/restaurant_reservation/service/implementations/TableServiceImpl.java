@@ -127,5 +127,11 @@ public class TableServiceImpl implements TableService {
         appointmentRepository.save(appointmentEntity);
     }
 
+    @Override
+    public AppointmentDTO getAppointmentById(Long appointmentId) {
+        AppointmentEntity appointmentEntity = appointmentRepository.findById(appointmentId).orElseThrow(EntityNotFoundException::new);
+        return appointmentMapper.getDTOFromDomain(appointmentEntity);
+    }
+
 
 }

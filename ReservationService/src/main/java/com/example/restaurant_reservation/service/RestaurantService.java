@@ -25,4 +25,8 @@ public interface RestaurantService {
     void removeBenefitFromRestaurant(long benefitId);
 
     List<AppointmentDTO> getAllAppointmentsByFilter(FilterDTO filterDTO);
+
+    RestaurantDTO getRestaurantByTableId(Long tableId);
+
+    List<RestaurantDTO> getAllRestaurantsByManagerId(Long managerId);
 }

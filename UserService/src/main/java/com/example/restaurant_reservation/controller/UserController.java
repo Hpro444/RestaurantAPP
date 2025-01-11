@@ -58,10 +58,15 @@ public class UserController {
             authorization = authorization.replace("Bearer ", "");
             Claims claims = tokenService.parseToken(authorization);
             Long user_id = claims.get("user_id", Long.class);
+
+            System.out.println("DEBUGIC");
+            System.out.println(claims.get("user_id"));
+            System.out.println(claims.get("email"));
+
             if (user_id == null)
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Token");
 
-            String message = userService.activateUser(user_id, code);
+            String message = userService.activateUser(user_id, code.trim());
             return ResponseEntity.status(HttpStatus.OK).body(message);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

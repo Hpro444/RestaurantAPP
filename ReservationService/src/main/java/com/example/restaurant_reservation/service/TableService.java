@@ -27,4 +27,6 @@ public interface TableService {
 
     void addAppointmentToTable(AppointmentDTO appointmentDTO);
 
+    AppointmentDTO getAppointmentById(Long appointmentId);
+
 }

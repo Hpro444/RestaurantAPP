@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerMapper customerMapper;
 
     private final AddressMapper addressMapper;
-    
+
 
     @Override
     public List<CustomerDTO> findAllCustomers() {
@@ -41,6 +41,8 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setEmail(customer.getEmail());
         customer.setAddress(addressMapper.getDomainFromDTO(customerDTO.getAddress()));
         customer.setBirthDate(customerDTO.getBirthDate());
+
+        userRepository.save(customer);
 
     }
 

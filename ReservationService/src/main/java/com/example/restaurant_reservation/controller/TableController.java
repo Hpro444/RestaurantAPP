@@ -26,7 +26,7 @@ public class TableController {
         return ResponseEntity.ok(tables);
     }
 
-    @GetMapping("/appointment/{tableId}")
+    @GetMapping("/appointments/{tableId}")
     @CheckSecurity
     public ResponseEntity<List<AppointmentDTO>> getAppointmentForTable(@RequestHeader("Authorization") String authorization, @PathVariable Long tableId) {
         List<AppointmentDTO> appointment = tableService.getAppointmentForTable(tableId);
@@ -35,6 +35,14 @@ public class TableController {
         return ResponseEntity.ok(appointment);
     }
 
+    @GetMapping("/appointment/{appointment_id}")
+    @CheckSecurity
+    public ResponseEntity<AppointmentDTO> getAppointmentById(@RequestHeader("Authorization") String authorization, @PathVariable Long appointment_id) {
+        AppointmentDTO appointment = tableService.getAppointmentById(appointment_id);
+        if (appointment == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(appointment);
+    }
 
     @PostMapping
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})

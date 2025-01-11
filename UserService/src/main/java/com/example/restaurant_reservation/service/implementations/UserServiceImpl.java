@@ -134,8 +134,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public String activateUser(Long id, String code) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-        if (!user.getOne_time_registration_code().equals(code))
+
+        code = code.replace("\"", "");
+
+//        System.out.println("DEBUG U ACTIVATE USER");
+//        System.out.println(user.getId());
+        if (!user.getOne_time_registration_code().equals(code)) {
+//            System.out.println("NOT OKAY SOMETHING");
+//            System.out.println(code);
+//            System.out.println(user.getOne_time_registration_code());
             throw new RuntimeException("Invalid activation code");
+        }
 
         user.setOne_time_registration_code("");
 
@@ -152,10 +161,12 @@ public class UserServiceImpl implements UserService {
     public void banUser(String userName) {
         User user = userRepository.findByUsername(userName).orElseThrow(() -> new RuntimeException("User not found"));
         user.setBlocked(true);
+        userRepository.save(user);
     }
 
     public void unBanUser(String userName) {
         User user = userRepository.findByUsername(userName).orElseThrow(() -> new RuntimeException("User not found"));
         user.setBlocked(false);
+        userRepository.save(user);
     }
 }

@@ -5,7 +5,9 @@ import com.example.restaurant_reservation.dto.BenefitDTO;
 import com.example.restaurant_reservation.dto.FilterDTO;
 import com.example.restaurant_reservation.dto.RestaurantDTO;
 import com.example.restaurant_reservation.security.CheckSecurity;
+import com.example.restaurant_reservation.security.service.TokenService;
 import com.example.restaurant_reservation.service.RestaurantService;
+import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import java.util.List;
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
+    private final TokenService tokenService;
 
     @GetMapping("/{id}")
     @CheckSecurity
@@ -29,6 +32,18 @@ public class RestaurantController {
     @GetMapping
     @CheckSecurity
     public ResponseEntity<List<RestaurantDTO>> getAllRestaurants(@RequestHeader("Authorization") String authorization) {
+        List<RestaurantDTO> restaurantDTOList = restaurantService.getAllRestaurants();
+        return ResponseEntity.ok(restaurantDTOList);
+    }
+
+
+    @GetMapping("/manager-restaurants")
+    @CheckSecurity(roles = {"MANAGER"})
+    public ResponseEntity<List<RestaurantDTO>> getAllRestaurantsForManager(@RequestHeader("Authorization") String authorization) {
+        authorization = authorization.replace("Bearer ", "");
+        Claims claims = tokenService.parseToken(authorization);
+        Long id = claims.get("user_id", Long.class);
+
         List<RestaurantDTO> restaurantDTOList = restaurantService.getAllRestaurants();
         return ResponseEntity.ok(restaurantDTOList);
     }
@@ -97,6 +112,17 @@ public class RestaurantController {
             return ResponseEntity.ok().body(restaurantService.getAllAppointmentsByFilter(filterDTO));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping("/restaurant-from-table/{table_id}")
+    @CheckSecurity
+    public ResponseEntity<String> getRestaurantFromTable(@RequestHeader("Authorization") String authorization, @PathVariable Long table_id) {
+        try {
+            RestaurantDTO dto = restaurantService.getRestaurantByTableId(table_id);
+            return ResponseEntity.ok(dto.getName());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Restaurant not found");
         }
     }
 
