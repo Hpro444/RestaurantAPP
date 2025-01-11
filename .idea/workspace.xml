@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="&#10;&#10;1. **AppRunner.java**:&#10;&#9;* In the `NotificationService` project, a change was made in the `AppRunner.java` file (`NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java`). Specifically, the email template for &quot;Activation Email&quot; was modified.&#10;&#9;* The original code had: `&quot;Dear %username%,\n\n&quot;` and was replaced with: `&quot;Dear %username,\n\n&quot;` (no change). However, there is a subsequent fix in the diff output that replaces the email body content but still uses the `%username%` style for formatting. The corrected template now uses `&quot;%username&quot;` without the extra `%`.">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="new stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/NotificationService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/example/restaurant_reservation/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="Changes by Windows11" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +64,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.EurekaServiceApplication.executor": "Run",
     "Spring Boot.NotificationServiceApplication.executor": "Run",
     "Spring Boot.ReservationServiceApplication.executor": "Run",
     "Spring Boot.RestaurantReservationApplication.executor": "Run",
@@ -115,23 +107,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
-    <configuration name="UserServiceTest.login_ShouldReturnToken_WhenValidCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UserService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.restaurant_reservation.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.restaurant_reservation.services" />
-      <option name="MAIN_CLASS_NAME" value="com.example.restaurant_reservation.services.UserServiceTest" />
-      <option name="METHOD_NAME" value="login_ShouldReturnToken_WhenValidCredentials" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Api_gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurant_reservation.ApiGatewayApplication" />
@@ -160,11 +136,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.UserServiceTest.login_ShouldReturnToken_WhenValidCredentials" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -192,7 +163,7 @@
       <workItem from="1736462147456" duration="594000" />
       <workItem from="1736509672815" duration="17133000" />
       <workItem from="1736598498297" duration="9326000" />
-      <workItem from="1736608045026" duration="3667000" />
+      <workItem from="1736608045026" duration="4188000" />
     </task>
     <task id="LOCAL-00001" summary="New stuff">
       <option name="closed" value="true" />
@@ -306,7 +277,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736608022369</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="new stuff">
+      <option name="closed" value="true" />
+      <created>1736613338494</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1736613338494</updated>
+    </task>
+    <task id="LOCAL-00016" summary="new stuff">
+      <option name="closed" value="true" />
+      <created>1736613344443</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1736613344443</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +311,8 @@
     <MESSAGE value="&#10;**New Features**&#10;&#10;* Added new endpoints to the API for managing benefits:&#10;&#9;+ `/benefits`: GET all benefits for a restaurant, POST create a new benefit&#10;&#9;+ `/benefits/{id}`: DELETE remove a benefit from a restaurant&#10;* Created `BenefitDTO` class to represent benefit data in JSON format&#10;* Implemented `BenefitMapper` class to convert between `BenefitDTO` and `Benefit` domain objects&#10;&#10;**Changes to Existing Features**&#10;&#10;* Updated the `BenefitsController` class to include new endpoints for managing benefits&#10;* Modified the `BenefitRepository` interface to include methods for creating, reading, updating, and deleting benefits" />
     <MESSAGE value="User-Service fixed" />
     <MESSAGE value="&#10;&#10;1. **AppRunner.java**:&#10;&#9;* In the `NotificationService` project, a change was made in the `AppRunner.java` file (`NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java`). Specifically, the email template for &quot;Activation Email&quot; was modified.&#10;&#9;* The original code had: `&quot;Dear %username%,\n\n&quot;` and was replaced with: `&quot;Dear %username,\n\n&quot;` (no change). However, there is a subsequent fix in the diff output that replaces the email body content but still uses the `%username%` style for formatting. The corrected template now uses `&quot;%username&quot;` without the extra `%`." />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;&#10;1. **AppRunner.java**:&#10;&#9;* In the `NotificationService` project, a change was made in the `AppRunner.java` file (`NotificationService/src/main/java/com/example/notification/NotificationService/runner/AppRunner.java`). Specifically, the email template for &quot;Activation Email&quot; was modified.&#10;&#9;* The original code had: `&quot;Dear %username%,\n\n&quot;` and was replaced with: `&quot;Dear %username,\n\n&quot;` (no change). However, there is a subsequent fix in the diff output that replaces the email body content but still uses the `%username%` style for formatting. The corrected template now uses `&quot;%username&quot;` without the extra `%`." />
+    <MESSAGE value="new stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="new stuff" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
