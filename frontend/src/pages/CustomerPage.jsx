@@ -4,32 +4,32 @@ import './CustomerPage.css';
 import api from '../api.jsx';
 import ReservationPage from './ReservationPage';
 
-const fakeReservations = [
-    {
-        reservationId: 101,
-        restaurantName: "The Gourmet Spot",
-        customerName: "John Doe",
-        date: "2023-12-15",
-        time: "19:00",
-        guests: 2
-    },
-    {
-        reservationId: 102,
-        restaurantName: "Sushi Palace",
-        customerName: "Jane Smith",
-        date: "2023-12-16",
-        time: "20:30",
-        guests: 4
-    },
-    {
-        reservationId: 103,
-        restaurantName: "Taco Fiesta",
-        customerName: "Alice Brown",
-        date: "2023-12-17",
-        time: "18:00",
-        guests: 3
-    }
-];
+// const fakeReservations = [
+//     {
+//         reservationId: 101,
+//         restaurantName: "The Gourmet Spot",
+//         customerName: "John Doe",
+//         date: "2023-12-15",
+//         time: "19:00",
+//         guests: 2
+//     },
+//     {
+//         reservationId: 102,
+//         restaurantName: "Sushi Palace",
+//         customerName: "Jane Smith",
+//         date: "2023-12-16",
+//         time: "20:30",
+//         guests: 4
+//     },
+//     {
+//         reservationId: 103,
+//         restaurantName: "Taco Fiesta",
+//         customerName: "Alice Brown",
+//         date: "2023-12-17",
+//         time: "18:00",
+//         guests: 3
+//     }
+// ];
 
 function CustomerPage() {
     const [currentPage, setCurrentPage] = useState("main");
