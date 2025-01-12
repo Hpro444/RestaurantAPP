@@ -41,12 +41,14 @@ public class ReservationController {
     public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO, @RequestHeader("Authorization") String authorization) {
         try {
             Long createdReservationId = reservationService.makeReservationForCustomer(reservationDTO.getCustomerId(), reservationDTO.getTableId(), reservationDTO.getAppointmentID(), reservationDTO.getDescription());
+
             authorization = authorization.replace("Bearer ", "");
             Claims claims = tokenService.parseToken(authorization);
-
             String email = claims.get("email", String.class);
             String username = claims.get("username", String.class);
             Long id = claims.get("user_id", Long.class);
+
+            
             String manager_email = reservationService.getManagerEmailByReservationId(createdReservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(createdReservationId);
 

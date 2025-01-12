@@ -15,6 +15,9 @@ function AdminPage() {
                     <button onClick={() => navigate("/show-all-reservations")}>
                         Show All Reservations
                     </button>
+                    <button onClick={() => navigate("/notifications")}>
+                        View All Notifications
+                    </button>
                 </div>
                 <button
                     className="profile-button"
@@ -27,7 +30,10 @@ function AdminPage() {
                 <div className="main-dashboard">
                     <h1>Welcome, Admin!</h1>
                     <p>This is your administrative dashboard.</p>
-                    <p>Use the navigation buttons above to manage restaurants and reservations.</p>
+                    <p>
+                        Use the navigation buttons above to manage restaurants,
+                        reservations, and notifications.
+                    </p>
                 </div>
             </div>
         </div>

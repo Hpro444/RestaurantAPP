@@ -20,6 +20,7 @@ import ReservationPage from "./pages/ReservationPage.jsx";
 import ShowTablesPageForCustomer from "./pages/ShowTablesPageForCustomer";
 import ShowAllRestaurantsPageForAdmin from "./pages/ShowAllRestaurantsPageForAdmin";
 import AdminReservationsPage from "./pages/AdminReservationsPage.jsx";
+import AdminNotificationsPage from "./pages/AdminNotificationsPage.jsx";
 
 
 function EntryPage() {
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/admin" element={<AdminPage/>}/>
                 <Route path="/show-all-restaurants-admin" element={<ShowAllRestaurantsPageForAdmin/>}/>
                 <Route path="/show-all-reservations" element={<AdminReservationsPage/>}/>
+                <Route path="/notifications" element={<AdminNotificationsPage />} />
 
 
                 {/* Add other routes as needed */}
