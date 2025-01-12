@@ -19,6 +19,9 @@ public interface ReservationService {
     String getManagerEmailByReservationId(Long id);
     String getRestaurantNameByReservationId(Long id);
 
+    List<ReservationDTO> getAllReservations();
+
+
 // Required by project specification
 //    void notifyReservationSuccess(Long reservationId);
 //    void notifyReservationCancellation(Long reservationId);

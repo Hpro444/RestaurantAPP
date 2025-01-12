@@ -18,6 +18,9 @@ import RestaurantReservationsPage from "./pages/RestaurantReservationsPage.jsx";
 import ShowAllRestaurantsPage from "./pages/ShowAllRestaurantsPage";
 import ReservationPage from "./pages/ReservationPage.jsx";
 import ShowTablesPageForCustomer from "./pages/ShowTablesPageForCustomer";
+import ShowAllRestaurantsPageForAdmin from "./pages/ShowAllRestaurantsPageForAdmin";
+import AdminReservationsPage from "./pages/AdminReservationsPage.jsx";
+
 
 function EntryPage() {
     const navigate = useNavigate();
@@ -42,7 +45,7 @@ function App() {
                 <Route path="/customer" element={<CustomerPage/>}/>
                 <Route path="/show-all-restaurants" element={<ShowAllRestaurantsPage/>}/>
                 <Route path="/user-reservations" element={<ReservationPage/>}/>
-                <Route path="/show-tables-customer/:id" element={<ShowTablesPageForCustomer />} />
+                <Route path="/show-tables-customer/:id" element={<ShowTablesPageForCustomer/>}/>
                 {/*<Route path="/show-tables/:restaurantId" element={<ShowTablesPage/>}/>*/}
 
                 <Route path="/manager" element={<ManagerPage/>}/>
@@ -50,13 +53,16 @@ function App() {
                 <Route path="/managed-restaurants" element={<ManagedRestaurantsPage/>}/>
                 <Route path="/edit-restaurant/:id" element={<EditRestaurantPage/>}/>
                 <Route path="/add-table/:id" element={<AddTablePage/>}/>
-                <Route path="/admin" element={<AdminPage/>}/>
                 <Route path="/profile" element={<ProfilePage/>}/>
                 <Route path="/show-tables/:id" element={<ShowTablesPage/>}/>
                 <Route path="/add-appointment/:tableId" element={<AddAppointmentPage/>}/>
                 <Route path="/make-reservation/:tableId" element={<MakeReservationPage/>}/>
-                <Route path="/restaurant-reservations/:restaurantId" element={<RestaurantReservationsPage/>}
-                />
+                <Route path="/restaurant-reservations/:restaurantId" element={<RestaurantReservationsPage/>}/>
+
+                <Route path="/admin" element={<AdminPage/>}/>
+                <Route path="/show-all-restaurants-admin" element={<ShowAllRestaurantsPageForAdmin/>}/>
+                <Route path="/show-all-reservations" element={<AdminReservationsPage/>}/>
+
 
                 {/* Add other routes as needed */}
             </Routes>

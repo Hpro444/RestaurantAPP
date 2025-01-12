@@ -176,4 +176,18 @@ public class ReservationController {
         }
     }
 
+    @GetMapping
+    @CheckSecurity(roles = {"ADMIN"})
+    public ResponseEntity<List<ReservationDTO>> getAllReservations(
+            @RequestHeader("Authorization") String authorization) {
+        try {
+            // Fetch all reservations from the service
+            List<ReservationDTO> reservations = reservationService.getAllReservations();
+            return ResponseEntity.ok(reservations);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+
 }

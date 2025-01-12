@@ -132,4 +132,12 @@ public class ReservationServiceImpl implements ReservationService {
                 .collect(Collectors.toList());
     }
 
+    public List<ReservationDTO> getAllReservations() {
+        return reservationRepository.findAll()
+                .stream()
+                .map(reservationMapper::getDTOFromDomain) // Use your mapper to convert entities to DTOs
+                .collect(Collectors.toList());
+    }
+
+
 }
