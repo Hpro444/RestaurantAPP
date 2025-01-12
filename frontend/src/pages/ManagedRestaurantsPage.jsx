@@ -61,6 +61,19 @@ function ManagedRestaurantsPage() {
                                 <th>Closing Time</th>
                             </tr>
                             </thead>
+                            {/*<tbody>*/}
+                            {/*{restaurants.map((restaurant) => (*/}
+                            {/*    <tr key={restaurant.id}>*/}
+                            {/*        <td>{restaurant.name}</td>*/}
+                            {/*        <td>{restaurant.description}</td>*/}
+                            {/*        <td>{restaurant.kitchenType}</td>*/}
+                            {/*        <td>{`${restaurant.address.street}, ${restaurant.address.city}, ${restaurant.address.state} ${restaurant.address.zip}`}</td>*/}
+                            {/*        <td>{restaurant.openingTime}</td>*/}
+                            {/*        <td>{restaurant.closingTime}</td>*/}
+                            {/*    </tr>*/}
+                            {/*))}*/}
+                            {/*</tbody>*/}
+
                             <tbody>
                             {restaurants.map((restaurant) => (
                                 <tr key={restaurant.id}>
@@ -70,9 +83,24 @@ function ManagedRestaurantsPage() {
                                     <td>{`${restaurant.address.street}, ${restaurant.address.city}, ${restaurant.address.state} ${restaurant.address.zip}`}</td>
                                     <td>{restaurant.openingTime}</td>
                                     <td>{restaurant.closingTime}</td>
+                                    <td>
+                                        <button
+                                            className="action-button edit-button"
+                                            onClick={() => navigate(`/edit-restaurant/${restaurant.id}`)}
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            className="action-button add-table-button"
+                                            onClick={() => navigate(`/add-table/${restaurant.id}`)}
+                                        >
+                                            Add Table
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>
+
                         </table>
                     </div>
                 )}

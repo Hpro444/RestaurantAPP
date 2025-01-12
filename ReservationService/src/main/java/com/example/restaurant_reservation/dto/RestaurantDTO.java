@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RestaurantDTO {
+    private Long id;
     private String name;
     private String managerEmail;
     private Long managerId;

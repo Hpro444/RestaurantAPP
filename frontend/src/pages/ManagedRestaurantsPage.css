@@ -107,3 +107,34 @@
     background-color: #eaeaea;
     cursor: pointer;
 }
+
+
+/*added for editing and adding tables*/
+
+.action-button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    background-color: #ffcc99;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #ffcc99;
+}
+
+.add-table-button {
+    background-color: #ff8c66;
+    color: white;
+}
+
+.add-table-button:hover {
+    background-color: #ff8c66;
+}

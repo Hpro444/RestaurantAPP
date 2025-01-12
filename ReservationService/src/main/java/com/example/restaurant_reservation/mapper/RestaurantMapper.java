@@ -11,6 +11,7 @@ public class RestaurantMapper {
 
     public RestaurantDTO getDTOFromDomain(Restaurant restaurant) {
         RestaurantDTO dto = new RestaurantDTO();
+        dto.setId(restaurant.getId());
         dto.setName(restaurant.getName());
         dto.setDescription(restaurant.getDescription());
         dto.setAddress(restaurant.getAddress());
@@ -28,6 +29,7 @@ public class RestaurantMapper {
 //    }
     public Restaurant getDomainFromDTO(RestaurantDTO dto) {
         Restaurant restaurant = new Restaurant();
+        restaurant.setId(dto.getId());
         restaurant.setManagerId(dto.getManagerId());
         restaurant.setName(dto.getName());
         restaurant.setManagerEmail(dto.getManagerEmail());

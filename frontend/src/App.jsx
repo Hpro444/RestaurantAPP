@@ -9,6 +9,8 @@ import RegistrationPage from './pages/RegistrationPage.jsx';
 import ActivationPage from './pages/ActivationPage.jsx';
 import AddRestaurantPage from "./pages/AddRestaurantPage.jsx";
 import ManagedRestaurantsPage from './pages/ManagedRestaurantsPage.jsx';
+import EditRestaurantPage from './pages/EditRestaurantPage.jsx';
+import AddTablePage from './pages/AddTablePage.jsx';
 
 function EntryPage() {
     const navigate = useNavigate();
@@ -34,7 +36,8 @@ function App() {
                 <Route path="/manager" element={<ManagerPage/>}/>
                 <Route path="/add-restaurant" element={<AddRestaurantPage/>}/>
                 <Route path="/managed-restaurants" element={<ManagedRestaurantsPage/>}/>
-                <Route path="/managed-restaurants" element={<ManagedRestaurantsPage/>}/>
+                <Route path="/edit-restaurant/:id" element={<EditRestaurantPage/>}/>
+                <Route path="/add-table/:id" element={<AddTablePage/>}/>
                 <Route path="/admin" element={<AdminPage/>}/>
                 <Route path="/profile" element={<ProfilePage/>}/>
                 {/* Add other routes as needed */}
