@@ -60,31 +60,58 @@ public class ReservationController {
         }
     }
 
+//    @DeleteMapping("/{reservationId}")
+//    @CheckSecurity
+//    public ResponseEntity<String> cancelReservation(@PathVariable Long reservationId, @RequestHeader("Authorization") String authorization) {
+//        authorization = authorization.replace("Bearer ", "");
+//        Claims claims = tokenService.parseToken(authorization);
+//        String role = claims.get("role", String.class);
+//
+//        if (role.equals("MANAGER"))
+//            return cancelReservationManager(reservationId);
+//        else
+//            return cancelReservationUser(reservationId);
+//    }
+
     @DeleteMapping("/{reservationId}")
     @CheckSecurity
     public ResponseEntity<String> cancelReservation(@PathVariable Long reservationId, @RequestHeader("Authorization") String authorization) {
-        authorization = authorization.replace("Bearer ", "");
-        Claims claims = tokenService.parseToken(authorization);
-        String role = claims.get("role", String.class);
+        try {
+            authorization = authorization.replace("Bearer ", "");
+            Claims claims = tokenService.parseToken(authorization);
+            String role = claims.get("role", String.class);
 
-        if (role.equals("MANAGER"))
-            return cancelReservationManager(reservationId);
-        else
-            return cancelReservationUser(reservationId);
+            System.out.println("Attempting to cancel reservation ID: " + reservationId);
+
+            if ("MANAGER".equals(role)) {
+                return cancelReservationManager(reservationId);
+            } else {
+                return cancelReservationUser(reservationId);
+            }
+        } catch (Exception e) {
+            System.err.println("Error during cancellation: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Failed to cancel reservation: " + e.getMessage());
+        }
     }
 
     public ResponseEntity<String> cancelReservationManager(Long reservationId) {
         try {
             ReservationDTO reservation = reservationService.getReservationById(reservationId);
+            System.out.println("MANAGER IS DELETING A RESERVATION " + reservation);
+//            reservation.setDeleted(true);
             reservationService.cancelReservationForCustomer(reservationId);
 
+            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             String email = userService.getEmailForUser(reservation.getCustomerId());
+            System.out.println("YYYYYYYYYYYYYYYYYYYYYYYYYYY");
             String restaurant_name = reservationService.getRestaurantNameByReservationId(reservationId);
 
+            System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZ");
             AppointmentEntity appointment = appointmentRepository.findById(reservation.getAppointmentID()).orElseThrow(RuntimeException::new);
 
-
+            System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPP");
             notificationService.sendCancellationNotification(restaurant_name, appointment.getDate(), email);
+            System.out.println("MMMMMMMMMMMMMMMMMMMMMMM");
 
             return ResponseEntity.ok("Reservation cancelled");
         } catch (Exception e) {
@@ -96,16 +123,14 @@ public class ReservationController {
         try {
             ReservationDTO reservation = reservationService.getReservationById(reservationId);
             System.out.println(reservation);
+//            reservation.setDeleted(true);
 
             String email = reservationService.getManagerEmailByReservationId(reservationId);
             String restaurant_name = reservationService.getRestaurantNameByReservationId(reservationId);
             AppointmentEntity appointment = appointmentRepository.findById(reservation.getAppointmentID()).orElseThrow(RuntimeException::new);
 
-
             notificationService.sendCancellationNotification(restaurant_name, appointment.getDate(), email);
-
             reservationService.cancelReservationForCustomer(reservationId);
-
 
             return ResponseEntity.ok("Reservation cancelled");
 

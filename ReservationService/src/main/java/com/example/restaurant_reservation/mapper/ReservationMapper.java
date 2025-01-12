@@ -11,11 +11,21 @@ public class ReservationMapper {
 
     public ReservationDTO getDTOFromDomain(Reservation reservation) {
         ReservationDTO dto = new ReservationDTO();
-//        dto.setId(reservation.getId());
+        dto.setId(reservation.getId());
         dto.setCustomerId(reservation.getCustomerId());
         dto.setTableId(reservation.getTable().getId());
         dto.setAppointmentID(reservation.getAppointment().getId());
         dto.setDescription(reservation.getDescription());
         return dto;
     }
+
+//    public ReservationDTO getDomainFromDTO(ReservationDTO dto) {
+//        Reservation reservation = new Reservation();
+//        reservation.setId(dto.getId());
+//        reservation.setCustomerId(dto.getCustomerId());
+//        reservation.setTable.(dto.getTable());
+//        reservation.setAppointmentID(dto.getAppointment().getId());
+//        reservation.setDescription(dto.getDescription());
+//        return dto;
+//    }
 }

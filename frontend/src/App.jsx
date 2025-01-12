@@ -15,7 +15,9 @@ import ShowTablesPage from './pages/ShowTablesPage.jsx';
 import AddAppointmentPage from './pages/AddAppointmentPage.jsx';
 import MakeReservationPage from './pages/MakeReservationPage.jsx';
 import RestaurantReservationsPage from "./pages/RestaurantReservationsPage.jsx";
-
+import ShowAllRestaurantsPage from "./pages/ShowAllRestaurantsPage";
+import ReservationPage from "./pages/ReservationPage.jsx";
+import ShowTablesPageForCustomer from "./pages/ShowTablesPageForCustomer";
 
 function EntryPage() {
     const navigate = useNavigate();
@@ -38,6 +40,11 @@ function App() {
                 <Route path="/register" element={<RegistrationPage/>}/>
                 <Route path="/activate" element={<ActivationPage/>}/>
                 <Route path="/customer" element={<CustomerPage/>}/>
+                <Route path="/show-all-restaurants" element={<ShowAllRestaurantsPage/>}/>
+                <Route path="/user-reservations" element={<ReservationPage/>}/>
+                <Route path="/show-tables-customer/:id" element={<ShowTablesPageForCustomer />} />
+                {/*<Route path="/show-tables/:restaurantId" element={<ShowTablesPage/>}/>*/}
+
                 <Route path="/manager" element={<ManagerPage/>}/>
                 <Route path="/add-restaurant" element={<AddRestaurantPage/>}/>
                 <Route path="/managed-restaurants" element={<ManagedRestaurantsPage/>}/>

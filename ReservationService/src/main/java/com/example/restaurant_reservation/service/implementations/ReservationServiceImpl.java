@@ -4,7 +4,6 @@ import com.example.restaurant_reservation.domain.AppointmentEntity;
 import com.example.restaurant_reservation.domain.Reservation;
 import com.example.restaurant_reservation.domain.Restaurant;
 import com.example.restaurant_reservation.domain.TableEntity;
-import com.example.restaurant_reservation.dto.AppointmentDTO;
 import com.example.restaurant_reservation.dto.ReservationDTO;
 import com.example.restaurant_reservation.mapper.ReservationMapper;
 import com.example.restaurant_reservation.repository.AppointmentRepository;
@@ -60,17 +59,24 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
 
+        reservation.setDeleted(true);
 
+        System.out.println("ARRIVING HERE.........");
         LocalDateTime currentTime = LocalDateTime.now();
         AppointmentEntity appointment = reservation.getAppointment();
 
+        System.out.println("PROCESSS 111111");
         LocalDateTime reservationTime = appointment.getDate();
         if (reservationTime.isBefore(currentTime.plusHours(3))) {
             throw new IllegalStateException("Reservations cannot be canceled within 3 hours of the reservation time.");
         }
+
+        System.out.println("PROCESSS 222222");
         appointment.setAvailable(true);
 
-        reservationRepository.delete(reservation);
+        System.out.println("CANCELLING HERE........");
+
+        reservationRepository.save(reservation);
     }
 
     @Override
@@ -103,7 +109,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<ReservationDTO> getReservationsForRestaurantByDateRange(Long restaurantId, LocalDateTime startDate, LocalDateTime endDate) {
-        return reservationRepository.findReservationsByRestaurantIdAndDateRange(restaurantId, startDate, endDate)
+        return reservationRepository.findReservationsInDateRange(restaurantId, startDate, endDate)  // TODO: changed for JPA, care
                 .stream()
                 .map(reservationMapper::getDTOFromDomain)
                 .collect(Collectors.toList());

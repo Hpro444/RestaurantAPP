@@ -27,3 +27,33 @@ table th {
     color: red;
     margin-bottom: 20px;
 }
+
+
+/*.cancel-button {*/
+/*    background-color: #e74c3c;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 5px 10px;*/
+/*    cursor: pointer;*/
+/*    border-radius: 4px;*/
+/*}*/
+
+/*.cancel-button:hover {*/
+/*    background-color: #c0392b;*/
+/*}*/
+
+/*.reservations-table th, .reservations-table td {*/
+/*    padding: 10px;*/
+/*    text-align: left;*/
+/*    border: 1px solid #ddd;*/
+/*}*/
+
+/*.reservations-table {*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.reservations-table th {*/
+/*    background-color: #f4f4f4;*/
+/*}*/

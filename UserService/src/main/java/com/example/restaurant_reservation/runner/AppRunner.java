@@ -32,7 +32,7 @@ public class AppRunner {
             User user2 = new User("Andrija", "Mililililikic", "andrijac", "password", "andrija@gmail.com", date, false, "", address, Role.CUSTOMER);
             userRepository.save(user2);
 
-            User user3 = new User("Andrija Menadzer", "prezime", "andrijam", "password", "menadzer@gmail.com", date, false, "", address, Role.MANAGER);
+            User user3 = new User("Andrija Menadzer", "prezime", "andrijam", "password", "andrija.volics22@gmail.com", date, false, "", address, Role.MANAGER);
             userRepository.save(user3);
 
         };

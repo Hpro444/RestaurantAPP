@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,12 +19,24 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
                                                                  @Param("startDate") LocalDateTime startDate,
                                                                  @Param("endDate") LocalDateTime endDate);
 
-
     // Fetch all reservations for a specific restaurant
     @Query("""
-        SELECT r FROM Reservation r
-        JOIN r.table t
-        WHERE t.restaurantId = :restaurantId
-    """)
+                SELECT r FROM Reservation r
+                JOIN r.table t
+                WHERE t.restaurantId = :restaurantId
+            """)
     List<Reservation> findReservationsByRestaurantId(@Param("restaurantId") Long restaurantId);
+
+    @Query("""
+                SELECT r 
+                FROM Reservation r 
+                WHERE r.deleted = false 
+                  AND r.table.restaurantId = :restaurantId 
+                  AND r.appointment.date BETWEEN :from AND :to
+            """)
+    List<Reservation> findReservationsInDateRange(
+            @Param("restaurantId") Long restaurantId,
+            @Param("from") LocalDateTime from,
+            @Param("to") LocalDateTime to
+    );
 }
