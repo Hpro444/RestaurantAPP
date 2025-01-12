@@ -102,6 +102,12 @@ function ManagedRestaurantsPage() {
                                         >
                                             Show Tables
                                         </button>
+                                        <button
+                                            className="action-button view-reservations-button"
+                                            onClick={() => navigate(`/restaurant-reservations/${restaurant.id}`)}
+                                        >
+                                            View Reservations
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

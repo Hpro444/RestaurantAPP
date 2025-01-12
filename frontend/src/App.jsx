@@ -12,8 +12,9 @@ import ManagedRestaurantsPage from './pages/ManagedRestaurantsPage.jsx';
 import EditRestaurantPage from './pages/EditRestaurantPage.jsx';
 import AddTablePage from './pages/AddTablePage.jsx';
 import ShowTablesPage from './pages/ShowTablesPage.jsx';
-import AddAppointmentPage from './pages/AddAppointmentPage.jsx'; // Import AddAppointmentPage
-import MakeReservationPage from './pages/MakeReservationPage.jsx'; // Import MakeReservationPage
+import AddAppointmentPage from './pages/AddAppointmentPage.jsx';
+import MakeReservationPage from './pages/MakeReservationPage.jsx';
+import RestaurantReservationsPage from "./pages/RestaurantReservationsPage.jsx";
 
 
 function EntryPage() {
@@ -47,6 +48,8 @@ function App() {
                 <Route path="/show-tables/:id" element={<ShowTablesPage/>}/>
                 <Route path="/add-appointment/:tableId" element={<AddAppointmentPage/>}/>
                 <Route path="/make-reservation/:tableId" element={<MakeReservationPage/>}/>
+                <Route path="/restaurant-reservations/:restaurantId" element={<RestaurantReservationsPage/>}
+                />
 
                 {/* Add other routes as needed */}
             </Routes>

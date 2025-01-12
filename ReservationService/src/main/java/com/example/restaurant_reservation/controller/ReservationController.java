@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -134,4 +135,20 @@ public class ReservationController {
             return ResponseEntity.badRequest().body(0);
         }
     }
+
+    @GetMapping("/restaurant/{restaurantId}")
+    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+    public ResponseEntity<List<ReservationDTO>> getReservationsForRestaurant(
+            @PathVariable Long restaurantId,
+            @RequestParam LocalDateTime from,
+            @RequestParam LocalDateTime to,
+            @RequestHeader("Authorization") String authorization) {
+        try {
+            List<ReservationDTO> reservations = reservationService.getReservationsForRestaurantByDateRange(restaurantId, from, to);
+            return ResponseEntity.ok(reservations);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
 }
