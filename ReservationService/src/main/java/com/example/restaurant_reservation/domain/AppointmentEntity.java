@@ -20,7 +20,7 @@ public class AppointmentEntity extends BaseEntity {
     private LocalDateTime date;
 
     @Column(name = "is_available", nullable = false)
-    private boolean isAvailable;
+    private boolean available;
 
     @ManyToOne
     @JoinColumn(name = "table_id", nullable = false)

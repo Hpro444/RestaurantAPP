@@ -50,7 +50,7 @@ function AddAppointmentPage() {
             const formattedDateTime = `${appointment.date}T${appointment.time}:00`; // Ensure seconds are included
             const payload = {
                 date: formattedDateTime,
-                isAvailable: true,
+                available: true,
                 tableId: parseInt(tableId), // Ensure tableId is a number
             };
             console.log("Payload:", payload); // Debug log

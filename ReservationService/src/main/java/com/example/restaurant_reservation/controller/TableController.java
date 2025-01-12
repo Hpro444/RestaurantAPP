@@ -81,6 +81,7 @@ public class TableController {
             System.out.println("Received AppointmentDTO: " + appointmentDTO);
             System.out.println(appointmentDTO.getTableId());
             System.out.println(appointmentDTO.getDate());
+            System.out.println(appointmentDTO.isAvailable());
             System.out.println("Trying to add appointment to table............");
             tableService.addAppointmentToTable(appointmentDTO);
             System.out.println("Appointment added successfully !!!!");

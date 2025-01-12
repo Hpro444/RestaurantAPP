@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentDTO {
-    //    private Long id;
+    private Long id;
 //    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") // Including 'T' for ISO-8601
     private LocalDateTime date;
-    private boolean isAvailable;
+    private boolean available;
     private Long tableId;
 }

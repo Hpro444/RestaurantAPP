@@ -13,7 +13,7 @@ public class AppointmentMapper {
 
     public AppointmentDTO getDTOFromDomain(AppointmentEntity appointmentEntity) {
         AppointmentDTO dto = new AppointmentDTO();
-//        dto.setId(appointmentEntity.getId());
+        dto.setId(appointmentEntity.getId());
         dto.setAvailable(appointmentEntity.isAvailable());
         dto.setDate(appointmentEntity.getDate());
         dto.setTableId(appointmentEntity.getTable().getId());
@@ -22,10 +22,12 @@ public class AppointmentMapper {
 
     public AppointmentEntity getDomainFromDTO(AppointmentDTO dto) {
         AppointmentEntity entity = new AppointmentEntity();
-//        entity.setId(dto.getId());
+        entity.setId(dto.getId());
+        System.out.println("DTO isAvailable: " + dto.isAvailable());
         entity.setAvailable(dto.isAvailable());
         entity.setDate(dto.getDate());
         entity.setTable(tableRepository.findById(dto.getTableId()).orElseThrow(() -> new RuntimeException("Table not found")));
+        System.out.println("Entity isAvailable: " + entity.isAvailable());
         return entity;
     }
 }
