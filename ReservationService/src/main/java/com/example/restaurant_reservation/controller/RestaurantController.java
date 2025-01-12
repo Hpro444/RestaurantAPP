@@ -42,23 +42,45 @@ public class RestaurantController {
     public ResponseEntity<List<RestaurantDTO>> getAllRestaurantsForManager(@RequestHeader("Authorization") String authorization) {
         authorization = authorization.replace("Bearer ", "");
         Claims claims = tokenService.parseToken(authorization);
-        Long id = claims.get("user_id", Long.class);
+        Long managerId = claims.get("user_id", Long.class);
 
-        List<RestaurantDTO> restaurantDTOList = restaurantService.getAllRestaurants();
+//        List<RestaurantDTO> restaurantDTOList = restaurantService.getAllRestaurants();
+        List<RestaurantDTO> restaurantDTOList = restaurantService.getAllRestaurantsByManager(managerId);
         return ResponseEntity.ok(restaurantDTOList);
     }
+
+//    @PostMapping
+//    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+//    public ResponseEntity<String> createRestaurant(@RequestHeader("Authorization") String authorization, @RequestBody RestaurantDTO restaurantDTO) {
+//        try {
+//            restaurantService.addRestaurant(restaurantDTO);
+//            return ResponseEntity.ok("Restaurant created successfully");
+//
+//        } catch (Exception e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
     @PostMapping
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})
     public ResponseEntity<String> createRestaurant(@RequestHeader("Authorization") String authorization, @RequestBody RestaurantDTO restaurantDTO) {
         try {
+            authorization = authorization.replace("Bearer ", "");
+            Claims claims = tokenService.parseToken(authorization);
+            Long managerId = claims.get("user_id", Long.class);
+            String managerEmail = claims.get("email", String.class);
+
+            // Set manager details in DTO
+            restaurantDTO.setManagerId(managerId);
+            restaurantDTO.setManagerEmail(managerEmail);
+
             restaurantService.addRestaurant(restaurantDTO);
             return ResponseEntity.ok("Restaurant created successfully");
-
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 
     @PutMapping("/{id}")
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})

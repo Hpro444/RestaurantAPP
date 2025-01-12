@@ -1,0 +1,126 @@
+/* General styling for AddRestaurantPage */
+.add-restaurant-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header styling */
+.add-restaurant-page .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffe4c4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.add-restaurant-page .nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.add-restaurant-page .header button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #ffcc99;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-restaurant-page .header button:hover {
+    background-color: #ffb380;
+}
+
+.add-restaurant-page .profile-button {
+    background-color: #ff8c66;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-restaurant-page .profile-button:hover {
+    background-color: #e6735c;
+}
+
+/* Form container styling */
+.add-restaurant-page form {
+    width: 100%;
+    max-width: 700px; /* Increased width from 600px to 700px */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Input groups */
+.add-restaurant-page form .input-group {
+    margin-bottom: 15px;
+}
+
+.add-restaurant-page form .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.add-restaurant-page form .input-group input,
+.add-restaurant-page form .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.add-restaurant-page form .input-group input:focus,
+.add-restaurant-page form .input-group select:focus {
+    border-color: #ff8c66;
+    outline: none;
+}
+
+/* Submit button */
+.add-restaurant-page form button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ff8c66;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-restaurant-page form button:hover {
+    background-color: #e6735c;
+}
+
+/* Feedback messages */
+.add-restaurant-page .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.add-restaurant-page .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}

@@ -28,5 +28,6 @@ public interface RestaurantService {
 
     RestaurantDTO getRestaurantByTableId(Long tableId);
 
-    List<RestaurantDTO> getAllRestaurantsByManagerId(Long managerId);
+    List<RestaurantDTO> getAllRestaurantsByManager(Long managerId);
+
 }

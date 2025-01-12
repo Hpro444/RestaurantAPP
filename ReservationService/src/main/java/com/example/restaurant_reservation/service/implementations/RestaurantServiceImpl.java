@@ -171,10 +171,24 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
 
+//    @Override
+//    public List<RestaurantDTO> getAllRestaurantsByManagerId(Long managerId) {
+//        return restaurantRepository.findAllByManagerId(managerId).orElseThrow(RuntimeException::new).stream()
+//                .map(restaurantMapper::getDTOFromDomain)
+//                .collect(Collectors.toList());
+//    }
+
     @Override
-    public List<RestaurantDTO> getAllRestaurantsByManagerId(Long managerId) {
-        return restaurantRepository.findAllByManagerId(managerId).orElseThrow(RuntimeException::new).stream()
-                .map(restaurantMapper::getDTOFromDomain)
+    public List<RestaurantDTO> getAllRestaurantsByManager(Long managerId) {
+        List<Restaurant> restaurants = restaurantRepository.findByManagerId(managerId);
+
+//        if (restaurants.isEmpty()) {
+//            throw new RuntimeException("No restaurants found for this manager.");
+//        }
+
+        return restaurants.stream()
+                .map(restaurantMapper::getDTOFromDomain) // Assuming you have a mapper for entity-to-DTO conversion
                 .collect(Collectors.toList());
     }
+
 }

@@ -1,0 +1,109 @@
+/* General styling for ManagedRestaurantsPage */
+.managed-restaurants-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling */
+.managed-restaurants-page .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffe4c4; /* Lighter peach for ManagedRestaurantsPage */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.managed-restaurants-page .nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.managed-restaurants-page .header button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #ffcc99;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.managed-restaurants-page .header button:hover {
+    background-color: #ffb380;
+}
+
+.managed-restaurants-page .profile-button {
+    background-color: #ff8c66;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.managed-restaurants-page .profile-button:hover {
+    background-color: #e6735c;
+}
+
+/* Content area styling */
+.managed-restaurants-page .content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+/* Centered content container */
+.managed-restaurants-page .centered-content {
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Table styling */
+.managed-restaurants-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.managed-restaurants-page table th {
+    background-color: #ffcc99;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.managed-restaurants-page table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+.managed-restaurants-page table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+.managed-restaurants-page table tbody tr:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}

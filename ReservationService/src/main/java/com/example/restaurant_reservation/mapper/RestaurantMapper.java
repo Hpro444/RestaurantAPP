@@ -22,9 +22,21 @@ public class RestaurantMapper {
         return dto;
     }
 
+    //    public Restaurant getDomainFromDTO(RestaurantDTO dto) {
+//
+//        return new Restaurant(dto.getManagerId(), dto.getName(), dto.getManagerEmail(), dto.getDescription(), dto.getOpeningTime(), dto.getClosingTime(), dto.getKitchenType(), dto.getAddress());
+//    }
     public Restaurant getDomainFromDTO(RestaurantDTO dto) {
-
-        return new Restaurant(dto.getManagerId(), dto.getName(), dto.getManagerEmail(), dto.getDescription(), dto.getOpeningTime(), dto.getClosingTime(), dto.getKitchenType(), dto.getAddress());
+        Restaurant restaurant = new Restaurant();
+        restaurant.setManagerId(dto.getManagerId());
+        restaurant.setName(dto.getName());
+        restaurant.setManagerEmail(dto.getManagerEmail());
+        restaurant.setDescription(dto.getDescription());
+        restaurant.setOpeningTime(dto.getOpeningTime());
+        restaurant.setClosingTime(dto.getClosingTime());
+        restaurant.setKitchenType(dto.getKitchenType());
+        restaurant.setAddress(dto.getAddress());
+        return restaurant;
     }
 
 }

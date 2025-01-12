@@ -12,5 +12,6 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     // This will be automatically implemented by Spring Data JPA
     Optional<Restaurant> findById(Long id);
 
-    Optional<List<Restaurant>> findAllByManagerId(Long managerId);
+//    Optional<List<Restaurant>> findAllByManagerId(Long managerId);
+    List<Restaurant> findByManagerId(Long managerId); // Custom query method
 }
