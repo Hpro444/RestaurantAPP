@@ -34,6 +34,7 @@ public class NotificationServiceImpl implements NotificationService {
         NotificationRequest request = new NotificationRequest();
 
         int reservation_count = reservationService.getReservationsByCustomer(user_id).size() + 1;
+        System.out.println("BROJ REZERVACIJA !!!!");
         System.out.println(reservation_count);
         List<Benefit> benefits = benefitRepository.getBenefitsByRestaurantIdAndNumberOfNeededReservations(restaurant_id, reservation_count).orElse(List.of());
         HashMap<String, String> data = new HashMap<>();

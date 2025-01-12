@@ -141,5 +141,9 @@ public class TableServiceImpl implements TableService {
         return appointmentMapper.getDTOFromDomain(appointmentEntity);
     }
 
+    public Long getRestaurantIdByTableId(Long tableId) {
+        // Query the database to find the restaurant ID associated with the table ID
+        return tableRepository.findRestaurantIdByTableId(tableId);
+    }
 
 }

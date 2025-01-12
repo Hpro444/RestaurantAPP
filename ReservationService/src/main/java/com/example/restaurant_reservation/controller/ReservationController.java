@@ -1,14 +1,12 @@
 package com.example.restaurant_reservation.controller;
 
 import com.example.restaurant_reservation.domain.AppointmentEntity;
+import com.example.restaurant_reservation.dto.BenefitDTO;
 import com.example.restaurant_reservation.dto.ReservationDTO;
 import com.example.restaurant_reservation.repository.AppointmentRepository;
 import com.example.restaurant_reservation.security.CheckSecurity;
 import com.example.restaurant_reservation.security.service.TokenService;
-import com.example.restaurant_reservation.service.NotificationService;
-import com.example.restaurant_reservation.service.ReservationService;
-import com.example.restaurant_reservation.service.TableService;
-import com.example.restaurant_reservation.service.UserService;
+import com.example.restaurant_reservation.service.*;
 import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +26,7 @@ public class ReservationController {
     private final UserService userService;
     private final TableService tableService;
     private final AppointmentRepository appointmentRepository;
+    private final RestaurantService restaurantService;
 
     @GetMapping("/{reservationId}")
     @CheckSecurity
@@ -38,27 +37,63 @@ public class ReservationController {
 
     @PostMapping
     @CheckSecurity
-    public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO, @RequestHeader("Authorization") String authorization) {
+    public ResponseEntity<String> createReservation(
+            @RequestBody ReservationDTO reservationDTO,
+            @RequestHeader("Authorization") String authorization) {
         try {
-            Long createdReservationId = reservationService.makeReservationForCustomer(reservationDTO.getCustomerId(), reservationDTO.getTableId(), reservationDTO.getAppointmentID(), reservationDTO.getDescription());
+            Long createdReservationId = reservationService.makeReservationForCustomer(
+                    reservationDTO.getCustomerId(),
+                    reservationDTO.getTableId(),
+                    reservationDTO.getAppointmentID(),
+                    reservationDTO.getDescription()
+            );
 
+            // Parse token to get user details
             authorization = authorization.replace("Bearer ", "");
             Claims claims = tokenService.parseToken(authorization);
+            Long customerId = claims.get("user_id", Long.class);
             String email = claims.get("email", String.class);
             String username = claims.get("username", String.class);
-            Long id = claims.get("user_id", Long.class);
 
-            
-            String manager_email = reservationService.getManagerEmailByReservationId(createdReservationId);
-            String restaurant_name = reservationService.getRestaurantNameByReservationId(createdReservationId);
+            Long restaurantId = tableService.getRestaurantIdByTableId(reservationDTO.getTableId());
 
-            AppointmentEntity appointment = appointmentRepository.findById(reservationDTO.getAppointmentID()).orElseThrow(RuntimeException::new);
-            notificationService.sendReservationConfirmationUser(email, username, appointment.getDate(), id, createdReservationId);
-            notificationService.sendReservationConfirmationManager(manager_email, username, restaurant_name, appointment.getDate(), id, createdReservationId);
+            int reservationCount = reservationService.getReservationsByCustomer(customerId).size();
 
-            return ResponseEntity.ok("Reservation created successfully");
+            List<BenefitDTO> availablePerks = restaurantService.getAllBenefitsForRestaurant(restaurantId);
+
+            // Check if the customer qualifies for any perks
+            BenefitDTO appliedPerk = null;
+            for (BenefitDTO perk : availablePerks) {
+                if (reservationCount >= perk.getNumber_of_needed_reservations()) {
+                    appliedPerk = perk;
+                    break; // I apply the first qualifying perk
+                }
+            }
+
+            // Notify user and manager about the reservation
+            String managerEmail = reservationService.getManagerEmailByReservationId(createdReservationId);
+            String restaurantName = reservationService.getRestaurantNameByReservationId(createdReservationId);
+
+            AppointmentEntity appointment = appointmentRepository
+                    .findById(reservationDTO.getAppointmentID())
+                    .orElseThrow(() -> new RuntimeException("Appointment not found"));
+
+            notificationService.sendReservationConfirmationUser(
+                    email, username, appointment.getDate(), customerId, createdReservationId
+            );
+
+            notificationService.sendReservationConfirmationManager(
+                    managerEmail, username, restaurantName, appointment.getDate(), customerId, createdReservationId
+            );
+
+            // Respond with a success message, including the applied perk if any
+            if (appliedPerk != null) {
+                return ResponseEntity.ok("Reservation created successfully with perk: " + appliedPerk.getDescription());
+            } else {
+                return ResponseEntity.ok("Reservation created successfully.");
+            }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null); // or return a custom error message
+            return ResponseEntity.badRequest().body("Failed to create reservation: " + e.getMessage());
         }
     }
 
