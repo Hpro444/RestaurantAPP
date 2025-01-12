@@ -11,6 +11,7 @@ public class TableMapper {
 
     public TableEntity getDomainFromDTO(TableDTO tableDTO) {
         TableEntity tableEntity = new TableEntity();
+        tableEntity.setId(tableDTO.getId());
         tableEntity.setCapacity(tableDTO.getCapacity());
         tableEntity.setZone(tableDTO.getZone());
         tableEntity.setTableName(tableDTO.getTableName());
@@ -22,6 +23,7 @@ public class TableMapper {
 
     public TableDTO getDTOFromDomain(TableEntity table) {
         TableDTO tableDTO = new TableDTO();
+        tableDTO.setId(table.getId());
         tableDTO.setTableName(table.getTableName());
         tableDTO.setZone(table.getZone());
         tableDTO.setCapacity(table.getCapacity());

@@ -123,7 +123,12 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void addAppointmentToTable(AppointmentDTO appointmentDTO) {
+//        AppointmentEntity appointmentEntity = appointmentMapper.getDomainFromDTO(appointmentDTO);
+        TableEntity tableEntity = tableRepository.findById(appointmentDTO.getTableId())
+                .orElseThrow(() -> new EntityNotFoundException("Table not found"));
         AppointmentEntity appointmentEntity = appointmentMapper.getDomainFromDTO(appointmentDTO);
+        appointmentEntity.setTable(tableEntity);
+
         appointmentRepository.save(appointmentEntity);
     }
 

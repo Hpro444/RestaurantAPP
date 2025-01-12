@@ -11,6 +11,10 @@ import AddRestaurantPage from "./pages/AddRestaurantPage.jsx";
 import ManagedRestaurantsPage from './pages/ManagedRestaurantsPage.jsx';
 import EditRestaurantPage from './pages/EditRestaurantPage.jsx';
 import AddTablePage from './pages/AddTablePage.jsx';
+import ShowTablesPage from './pages/ShowTablesPage.jsx';
+import AddAppointmentPage from './pages/AddAppointmentPage.jsx'; // Import AddAppointmentPage
+import MakeReservationPage from './pages/MakeReservationPage.jsx'; // Import MakeReservationPage
+
 
 function EntryPage() {
     const navigate = useNavigate();
@@ -40,6 +44,10 @@ function App() {
                 <Route path="/add-table/:id" element={<AddTablePage/>}/>
                 <Route path="/admin" element={<AdminPage/>}/>
                 <Route path="/profile" element={<ProfilePage/>}/>
+                <Route path="/show-tables/:id" element={<ShowTablesPage/>}/>
+                <Route path="/add-appointment/:tableId" element={<AddAppointmentPage/>}/>
+                <Route path="/make-reservation/:tableId" element={<MakeReservationPage/>}/>
+
                 {/* Add other routes as needed */}
             </Routes>
         </Router>

@@ -1,0 +1,72 @@
+.add-appointment-page,
+.make-reservation-page {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.add-button,
+.reserve-button {
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reserve-button {
+    background-color: #2196f3;
+}
+
+.add-button:hover,
+.reserve-button:hover {
+    opacity: 0.9;
+}
+
+.appointments-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.appointments-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}

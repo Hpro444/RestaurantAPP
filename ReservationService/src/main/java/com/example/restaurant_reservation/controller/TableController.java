@@ -44,22 +44,46 @@ public class TableController {
         return ResponseEntity.ok(appointment);
     }
 
-    @PostMapping
+//    @PostMapping
+//    @CheckSecurity(roles = {"ADMIN", "MANAGER"})
+//    public ResponseEntity<String> createTable(@RequestHeader("Authorization") String authorization, @RequestBody TableDTO tableDTO) {
+//        try {
+//            tableService.addTableToRestaurant(tableDTO);
+//            return ResponseEntity.ok("Table created successfully");
+//        } catch (Exception e) {
+//            return ResponseEntity.badRequest().body("Table creation failed");
+//        }
+//    }
+
+    @PostMapping("/restaurant/{restaurantId}")
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})
-    public ResponseEntity<String> createTable(@RequestHeader("Authorization") String authorization, @RequestBody TableDTO tableDTO) {
+    public ResponseEntity<String> addTableToRestaurant(
+            @RequestHeader("Authorization") String authorization,
+            @PathVariable Long restaurantId,
+            @RequestBody TableDTO tableDTO
+    ) {
         try {
+            tableDTO.setRestaurantId(restaurantId); // Set the restaurant ID in the DTO
+            System.out.println("Trying to add table");
             tableService.addTableToRestaurant(tableDTO);
-            return ResponseEntity.ok("Table created successfully");
+            System.out.println("Table added successfully");
+            return ResponseEntity.ok("Table added successfully");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Table creation failed");
+            return ResponseEntity.badRequest().body("Failed to add table: " + e.getMessage());
         }
     }
+
 
     @PostMapping("/appointment")
     @CheckSecurity(roles = {"ADMIN", "MANAGER"})
     public ResponseEntity<String> addAppointmentToTable(@RequestHeader("Authorization") String authorization, @RequestBody AppointmentDTO appointmentDTO) {
         try {
+            System.out.println("Received AppointmentDTO: " + appointmentDTO);
+            System.out.println(appointmentDTO.getTableId());
+            System.out.println(appointmentDTO.getDate());
+            System.out.println("Trying to add appointment to table............");
             tableService.addAppointmentToTable(appointmentDTO);
+            System.out.println("Appointment added successfully !!!!");
             return ResponseEntity.ok("Appointment added successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -5,15 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5f8e2d-262c-443f-8ca9-4486361c1c11" name="Changes" comment="Filter">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/AddTablePage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/AddTablePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/EditRestaurantPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/EditRestaurantPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/AddAppointmentPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/AddAppointmentPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/MakeReservationPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/MakeReservationPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ShowTablesPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ShowTablesPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/RestaurantDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/RestaurantDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/RestaurantMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/RestaurantMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/controller/TableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/AppointmentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/AppointmentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/TableDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/dto/TableDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/TableMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/mapper/TableMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/TableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/src/main/java/com/example/restaurant_reservation/service/implementations/TableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/TableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/controller/TableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/dto/TableDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/dto/TableDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/mapper/TableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/mapper/TableMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/TableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ReservationService/target/classes/com/example/restaurant_reservation/service/implementations/TableServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ManagedRestaurantsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ManagedRestaurantsPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/AddTablePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/AddTablePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/AddTablePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/AddTablePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/ManagedRestaurantsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ManagedRestaurantsPage.jsx" afterDir="false" />
     </list>
     <list id="36cefd5f-468b-4df1-b4f2-f8e3bd15a186" name="Changes by Windows11" comment="Changes by Windows11" />

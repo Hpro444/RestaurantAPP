@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TableDTO {
+    private Long id;
     private int capacity;
     private boolean isMergeable;
     private String zone;
