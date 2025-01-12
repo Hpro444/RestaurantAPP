@@ -53,7 +53,7 @@ function MakeReservationPage() {
                 customerId: userId, // Add customer ID
                 appointmentID: appointmentId, // Appointment ID from the clicked button
                 tableId: parseInt(tableId), // Ensure tableId is a number
-                description: "Reserved by Manager", // Custom description
+                description: "Reserved", // Custom description
             };
 
             console.log("Reservation Payload:", payload); // Debug the payload
